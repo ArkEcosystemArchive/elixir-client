@@ -1,4 +1,4 @@
-defmodule ArkElixirClient.Models.Block do
+defmodule ArkClient.Models.Block do
   @moduledoc """
   Block model.
   """
@@ -43,7 +43,7 @@ defmodule ArkElixirClient.Models.Block do
   }
 
   @doc """
-  Builds an ArkElixirClient.Models.Block struct from the API response map.
+  Builds an ArkClient.Models.Block struct from the API response map.
   """
   @spec build(Map.t()) :: t()
   def build(%{"id" => id} = attributes) do

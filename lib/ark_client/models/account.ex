@@ -1,4 +1,4 @@
-defmodule ArkElixirClient.Models.Account do
+defmodule ArkClient.Models.Account do
   @moduledoc """
   Account model.
   """
@@ -29,7 +29,7 @@ defmodule ArkElixirClient.Models.Account do
   }
 
   @doc """
-  Builds an ArkElixirClient.Models.Account struct from the API response map.
+  Builds an ArkClient.Models.Account struct from the API response map.
   """
   @spec build(Map.t()) :: t()
   def build(%{"address" => address} = attributes) do

@@ -1,28 +1,28 @@
-defmodule ArkElixirClient.Vote do
+defmodule ArkClient.Vote do
   @moduledoc """
-  Documentation for ArkElixirClient.Vote.
+  Documentation for ArkClient.Vote.
   """
 
-  import ArkElixir
+  import ArkClient
 
   @doc """
   Sign and create a new vote.
 
   ## Examples
 
-      iex> ArkElixirClient.Vote.vote(client)
+      iex> ArkClient.Vote.vote(client)
       :world
 
   """
-  @spec vote(ArkElixirClient.Client, String.t(), String.t(), String.t()) :: ArkElixirClient.response()
+  @spec vote(ArkClient.Client, String.t(), String.t(), String.t()) :: ArkClient.response()
   def vote(client, secret, delegate, second_secret \\ nil) do
     transaction =
-      ArkElixirClient.Util.TransactionBuilder.create_vote(
+      ArkClient.Util.TransactionBuilder.create_vote(
         ["+" <> delegate],
         secret,
         second_secret,
         client.network_address
-      ) |> ArkElixirClient.Util.TransactionBuilder.transaction_to_params
+      ) |> ArkClient.Util.TransactionBuilder.transaction_to_params
 
     post(client, 'peer/transactions', %{transactions: [transaction]})
   end
@@ -32,19 +32,19 @@ defmodule ArkElixirClient.Vote do
 
   ## Examples
 
-      iex> ArkElixirClient.Vote.unvote(client)
+      iex> ArkClient.Vote.unvote(client)
       :world
 
   """
-  @spec unvote(ArkElixirClient.Client, String.t(), String.t(), String.t()) :: ArkElixirClient.response()
+  @spec unvote(ArkClient.Client, String.t(), String.t(), String.t()) :: ArkClient.response()
   def unvote(client, secret, delegate, second_secret \\ nil) do
     transaction =
-      ArkElixirClient.Util.TransactionBuilder.create_vote(
+      ArkClient.Util.TransactionBuilder.create_vote(
         ["-" <> delegate],
         secret,
         second_secret,
         client.network_address
-      ) |> ArkElixirClient.Util.TransactionBuilder.transaction_to_params
+      ) |> ArkClient.Util.TransactionBuilder.transaction_to_params
 
     post(client, 'peer/transactions', %{transactions: [transaction]})
   end

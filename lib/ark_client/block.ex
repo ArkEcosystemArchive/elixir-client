@@ -1,20 +1,20 @@
-defmodule ArkElixirClient.Block do
+defmodule ArkClient.Block do
   @moduledoc """
-  Documentation for ArkElixirClient.Block.
+  Documentation for ArkClient.Block.
   """
 
-  import ArkElixir
+  import ArkClient
 
-  alias ArkElixirClient.Models.Block
+  alias ArkClient.Models.Block
 
   @doc """
   Get block by id.
 
   ## Examples
 
-      iex(3)> ArkElixirClient.Block.block(client, "887102556000070987")
+      iex(3)> ArkClient.Block.block(client, "887102556000070987")
       {:ok,
-       %ArkElixirClient.Models.Block{
+       %ArkClient.Models.Block{
          block_signature: "3045022100cf25e7aa0ad979b8a681930dda181337f6aec2f45f95fc15f8082a0acab7d501022061e66f303278245abeb30ec63e9cf282d6180d1f10439f0b11741bafa52a8e18",
          confirmations: 27,
          generator_id: "DHQ4Fjsyiop3qBR4otAjAu6cBHkgRELqGA",
@@ -33,7 +33,7 @@ defmodule ArkElixirClient.Block do
          version: 0
        }}
   """
-  @spec block(Tesla.Client.t(), String.t()) :: ArkElixirClient.response()
+  @spec block(Tesla.Client.t(), String.t()) :: ArkClient.response()
   def block(client, id) do
     client
     |> get("api/blocks/get", query: [id: id])
@@ -45,10 +45,10 @@ defmodule ArkElixirClient.Block do
 
   ## Examples
 
-      iex> ArkElixirClient.Block.blocks(client)
+      iex> ArkClient.Block.blocks(client)
       {:ok,
        [
-         %ArkElixirClient.Models.Block{
+         %ArkClient.Models.Block{
            block_signature: "3045022100cf25e7aa0ad979b8a681930dda181337f6aec2f45f95fc15f8082a0acab7d501022061e66f303278245abeb30ec63e9cf282d6180d1f10439f0b11741bafa52a8e18",
            confirmations: 1,
            generator_id: "DHQ4Fjsyiop3qBR4otAjAu6cBHkgRELqGA",
@@ -66,14 +66,14 @@ defmodule ArkElixirClient.Block do
            total_forged: "200000000",
            version: 0
          },
-         %ArkElixirClient.Models.Block{...},
-         %ArkElixirClient.Models.Block{...},
-         %ArkElixirClient.Models.Block{...},
-         %ArkElixirClient.Models.Block{...},
+         %ArkClient.Models.Block{...},
+         %ArkClient.Models.Block{...},
+         %ArkClient.Models.Block{...},
+         %ArkClient.Models.Block{...},
          ...
        ]}
   """
-  @spec blocks(Tesla.Client.t(), Keyword.t()) :: ArkElixirClient.response()
+  @spec blocks(Tesla.Client.t(), Keyword.t()) :: ArkClient.response()
   def blocks(client, parameters \\ []) do
     client
     |> get("api/blocks", query: parameters)
@@ -85,10 +85,10 @@ defmodule ArkElixirClient.Block do
 
   ## Examples
 
-      iex> ArkElixirClient.Block.epoch(client)
+      iex> ArkClient.Block.epoch(client)
       {:ok, "2017-03-21T13:00:00.000Z"}
   """
-  @spec epoch(Tesla.Client.t()) :: ArkElixirClient.response()
+  @spec epoch(Tesla.Client.t()) :: ArkClient.response()
   def epoch(client) do
     client
     |> get("api/blocks/getEpoch")
@@ -104,10 +104,10 @@ defmodule ArkElixirClient.Block do
 
   ## Examples
 
-      iex> ArkElixirClient.Block.fee(client)
+      iex> ArkClient.Block.fee(client)
       {:ok, 10000000}
   """
-  @spec fee(Tesla.Client.t()) :: ArkElixirClient.response()
+  @spec fee(Tesla.Client.t()) :: ArkClient.response()
   def fee(client) do
     client
     |> get("api/blocks/getFee")
@@ -123,7 +123,7 @@ defmodule ArkElixirClient.Block do
 
   ## Examples
 
-      iex> ArkElixirClient.Block.fees(client)
+      iex> ArkClient.Block.fees(client)
       {:ok,
        %{
          "delegate" => 2500000000,
@@ -133,7 +133,7 @@ defmodule ArkElixirClient.Block do
          "vote" => 100000000
        }}
   """
-  @spec fees(Tesla.Client.t()) :: ArkElixirClient.response()
+  @spec fees(Tesla.Client.t()) :: ArkClient.response()
   def fees(client) do
     client
     |> get("api/blocks/getFees")
@@ -149,10 +149,10 @@ defmodule ArkElixirClient.Block do
 
   ## Examples
 
-      iex> ArkElixirClient.Block.height(client)
+      iex> ArkClient.Block.height(client)
       {:ok, %{"height" => 3102123, "id" => "6065299679901800950", "success" => true}}
   """
-  @spec height(Tesla.Client.t()) :: ArkElixirClient.response()
+  @spec height(Tesla.Client.t()) :: ArkClient.response()
   def height(client) do
     get(client, "api/blocks/getHeight")
   end
@@ -162,10 +162,10 @@ defmodule ArkElixirClient.Block do
 
   ## Examples
 
-      iex> ArkElixirClient.Block.milestone(client)
+      iex> ArkClient.Block.milestone(client)
       {:ok, 1}
   """
-  @spec milestone(Tesla.Client.t()) :: ArkElixirClient.response()
+  @spec milestone(Tesla.Client.t()) :: ArkClient.response()
   def milestone(client) do
     client
     |> get("api/blocks/getMilestone")
@@ -181,10 +181,10 @@ defmodule ArkElixirClient.Block do
 
   ## Examples
 
-      iex> ArkElixirClient.Block.nethash(client)
+      iex> ArkClient.Block.nethash(client)
       {:ok, "578e820911f24e039733b45e4882b73e301f813a0d2c31330dafda84534ffa23"}
   """
-  @spec nethash(Tesla.Client) :: ArkElixirClient.response()
+  @spec nethash(Tesla.Client) :: ArkClient.response()
   def nethash(client) do
     client
     |> get("api/blocks/getNethash")
@@ -200,10 +200,10 @@ defmodule ArkElixirClient.Block do
 
   ## Examples
 
-      iex> ArkElixirClient.Block.reward(client)
+      iex> ArkClient.Block.reward(client)
       {:ok, 200000000}
   """
-  @spec reward(Tesla.Client.t()) :: ArkElixirClient.response()
+  @spec reward(Tesla.Client.t()) :: ArkClient.response()
   def reward(client) do
     client
     |> get("api/blocks/getReward")
@@ -219,7 +219,7 @@ defmodule ArkElixirClient.Block do
 
   ## Examples
 
-      iex> ArkElixirClient.Block.status(client)
+      iex> ArkClient.Block.status(client)
       {:ok,
        %{
          "epoch" => "2017-03-21T13:00:00.000Z",
@@ -232,7 +232,7 @@ defmodule ArkElixirClient.Block do
          "supply" => 13120429400000000
        }}
   """
-  @spec status(Tesla.Client.t()) :: ArkElixirClient.response()
+  @spec status(Tesla.Client.t()) :: ArkClient.response()
   def status(client) do
     get(client, "api/blocks/getStatus")
   end
@@ -242,11 +242,11 @@ defmodule ArkElixirClient.Block do
 
   ## Examples
 
-      iex> ArkElixirClient.Block.supply(client)
+      iex> ArkClient.Block.supply(client)
       {:ok, 13120431600000000}
 
   """
-  @spec supply(Tesla.Client.t()) :: ArkElixirClient.response()
+  @spec supply(Tesla.Client.t()) :: ArkClient.response()
   def supply(client) do
     client
     |> get("api/blocks/getSupply")

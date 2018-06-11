@@ -1,6 +1,6 @@
-defmodule ArkElixirClient.Client do
+defmodule ArkClient.Client do
   @moduledoc """
-  Documentation for ArkElixirClient.Client.
+  Documentation for ArkClient.Client.
 
   This module generates a Tesla.Client for use in future requests. Feel free
   to make your own Tesla Client struct and pass that around.
@@ -16,7 +16,7 @@ defmodule ArkElixirClient.Client do
 
   ## Examples
 
-      iex> ArkElixirClient.Client.new(client)
+      iex> ArkClient.Client.new(client)
       %Tesla.Client{
         fun: nil,
         post: [],
@@ -65,7 +65,7 @@ defmodule ArkElixirClient.Client do
       {Tesla.Middleware.BaseUrl, url},
       {Tesla.Middleware.Headers, headers},
       {Tesla.Middleware.JSON, []},
-      {ArkElixirClient.Middleware.Logger, [log_level: log_level]},
+      {ArkClient.Middleware.Logger, [log_level: log_level]},
     ]
 
     Tesla.build_client(pre)

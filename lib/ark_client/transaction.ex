@@ -1,19 +1,19 @@
-defmodule ArkElixirClient.Transaction do
+defmodule ArkClient.Transaction do
   @moduledoc """
-  Documentation for ArkElixirClient.Transaction.
+  Documentation for ArkClient.Transaction.
   """
 
-  import ArkElixir
+  import ArkClient
 
-  alias ArkElixirClient.Models.Transaction
-  alias ArkElixirClient.Util.TransactionBuilder
+  alias ArkClient.Models.Transaction
+  alias ArkClient.Util.TransactionBuilder
 
   @doc """
   Sign and create a new transaction.
 
   ## Examples
 
-      iex> ArkElixirClient.Transaction.create(client, "DFAVFGgkpYc4hrvUNZRf9Tpi7irWeKexLc", 100000000, "can't sleep! clowns will eat me!", "meniscus drive despoil music poplin prolong landau huarache govern hotbox")
+      iex> ArkClient.Transaction.create(client, "DFAVFGgkpYc4hrvUNZRf9Tpi7irWeKexLc", 100000000, "can't sleep! clowns will eat me!", "meniscus drive despoil music poplin prolong landau huarache govern hotbox")
       {:ok,
        %{
          "success" => true,
@@ -27,7 +27,7 @@ defmodule ArkElixirClient.Transaction do
     String.t(),
     String.t(),
     String.t()
-  ) :: ArkElixirClient.response()
+  ) :: ArkClient.response()
   def create(
     client,
     recipient_id,
@@ -54,7 +54,7 @@ defmodule ArkElixirClient.Transaction do
 
   ## Examples
 
-      iex> ArkElixirClient.Transaction.create_from_signed_object(client, transaction)
+      iex> ArkClient.Transaction.create_from_signed_object(client, transaction)
       {:ok,
        %{
          "success" => true,
@@ -64,7 +64,7 @@ defmodule ArkElixirClient.Transaction do
   @spec create_from_signed_object(
     Tesla.Client.t(),
     Keyword.t()
-  ) :: ArkElixirClient.response()
+  ) :: ArkClient.response()
   def create_from_signed_object(client, transaction) do
     post(client, "peer/transactions", %{transactions: [transaction]})
   end
@@ -74,9 +74,9 @@ defmodule ArkElixirClient.Transaction do
 
   ## Examples
 
-      iex> ArkElixirClient.Transaction.transaction(client, "4a5f96b24091b747fb7fd34952ef465d9b8ec5f73d1b234405bf2718d2a87d56")
+      iex> ArkClient.Transaction.transaction(client, "4a5f96b24091b747fb7fd34952ef465d9b8ec5f73d1b234405bf2718d2a87d56")
       {:ok,
-       %ArkElixirClient.Models.Transaction{
+       %ArkClient.Models.Transaction{
          amount: 100000000,
          asset: nil,
          blockid: "5375521981080787257",
@@ -92,7 +92,7 @@ defmodule ArkElixirClient.Transaction do
          vendor_field: "can't sleep! clowns will eat me!"
        }}
   """
-  @spec transaction(Tesla.Client.t(), Keyword.t()) :: ArkElixirClient.response()
+  @spec transaction(Tesla.Client.t(), Keyword.t()) :: ArkClient.response()
   def transaction(client, id) do
     client
     |> get("api/transactions/get", query: [id: id])
@@ -104,10 +104,10 @@ defmodule ArkElixirClient.Transaction do
 
   ## Examples
 
-      iex> ArkElixirClient.Transaction.transactions(client)
+      iex> ArkClient.Transaction.transactions(client)
       {:ok,
        [
-         %ArkElixirClient.Models.Transaction{
+         %ArkClient.Models.Transaction{
            amount: 1105,
            asset: %{},
            blockid: "10000164854398237004",
@@ -122,13 +122,13 @@ defmodule ArkElixirClient.Transaction do
            type: 0,
            vendor_field: "Goose Voter - True Block Weight"
          },
-         %ArkElixirClient.Models.Transaction{amount: 52, asset: nil, ...},
-         %ArkElixirClient.Models.Transaction{amount: 57, ...},
-         %ArkElixirClient.Models.Transaction{...},
+         %ArkClient.Models.Transaction{amount: 52, asset: nil, ...},
+         %ArkClient.Models.Transaction{amount: 57, ...},
+         %ArkClient.Models.Transaction{...},
          ...
        ]}
   """
-  @spec transactions(Tesla.Client.t(), Keyword.t()) :: ArkElixirClient.response()
+  @spec transactions(Tesla.Client.t(), Keyword.t()) :: ArkClient.response()
   def transactions(client, parameters \\ []) do
     client
     |> get("api/transactions", query: parameters)
@@ -140,9 +140,9 @@ defmodule ArkElixirClient.Transaction do
 
   ## Examples
 
-      iex> ArkElixirClient.Transaction.unconfirmed_transaction(client, "5a4f96b24091b747fb7fd34952ef465d9b8ec5f73d1b234405bf2718d2a87d45")
+      iex> ArkClient.Transaction.unconfirmed_transaction(client, "5a4f96b24091b747fb7fd34952ef465d9b8ec5f73d1b234405bf2718d2a87d45")
       {:ok,
-       %ArkElixirClient.Models.Transaction{
+       %ArkClient.Models.Transaction{
          amount: 100000000,
          asset: nil,
          blockid: nil,
@@ -161,7 +161,7 @@ defmodule ArkElixirClient.Transaction do
   @spec unconfirmed_transaction(
     Tesla.Client.t(),
     String.t()
-  ) :: ArkElixirClient.response()
+  ) :: ArkClient.response()
   def unconfirmed_transaction(client, id) do
     client
     |> get("api/transactions/unconfirmed/get", query: [id: id])
@@ -173,13 +173,13 @@ defmodule ArkElixirClient.Transaction do
 
   ## Examples
 
-      iex> ArkElixirClient.Transaction.unconfirmed_transactions(client)
+      iex> ArkClient.Transaction.unconfirmed_transactions(client)
       {:ok, []}
   """
   @spec unconfirmed_transactions(
     Tesla.Client.t(),
     Keyword.t()
-  ) :: ArkElixirClient.response()
+  ) :: ArkClient.response()
   def unconfirmed_transactions(client, parameters \\ []) do
     client
     |> get("api/transactions/unconfirmed", query: parameters)

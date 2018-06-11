@@ -1,18 +1,18 @@
-defmodule ArkElixirClient.Delegate do
+defmodule ArkClient.Delegate do
   @moduledoc """
-  Documentation for ArkElixirClient.Delegate.
+  Documentation for ArkClient.Delegate.
   """
 
-  import ArkElixir
+  import ArkClient
 
-  alias ArkElixirClient.Models.{Account, Delegate}
+  alias ArkClient.Models.{Account, Delegate}
 
   @doc """
   Create a delegate.
 
   DEPRECATED
   """
-  @spec create(Tesla.Client.t(), String.t(), String.t(), String.t()) :: ArkElixirClient.response()
+  @spec create(Tesla.Client.t(), String.t(), String.t(), String.t()) :: ArkClient.response()
   def create(_client, _secret, _username, _second_secret \\ nil) do
     raise "POST /api/delegates is deprecated."
   end
@@ -22,10 +22,10 @@ defmodule ArkElixirClient.Delegate do
 
   ## Examples
 
-      iex> ArkElixirClient.Delegate.count(client)
+      iex> ArkClient.Delegate.count(client)
       {:ok, 198}
   """
-  @spec count(Tesla.Client.t()) :: ArkElixirClient.response()
+  @spec count(Tesla.Client.t()) :: ArkClient.response()
   def count(client) do
     client
     |> get("api/delegates/count")
@@ -41,9 +41,9 @@ defmodule ArkElixirClient.Delegate do
 
   ## Examples
 
-      iex> ArkElixirClient.Delegate.delegate(client)
+      iex> ArkClient.Delegate.delegate(client)
       {:ok,
-       %ArkElixirClient.Models.Delegate{
+       %ArkClient.Models.Delegate{
          address: "DQCZQzibtABoggT9ygSzFNQ3A7PJyxttPP",
          approval: 0.09,
          missedblocks: 1748,
@@ -55,7 +55,7 @@ defmodule ArkElixirClient.Delegate do
          vote: "12385839821762"
        }}
   """
-  @spec delegate(Tesla.Client.t(), Keyword.t()) :: ArkElixirClient.response()
+  @spec delegate(Tesla.Client.t(), Keyword.t()) :: ArkClient.response()
   def delegate(client, parameters \\ []) do
     client
     |> get("api/delegates/get", query: parameters)
@@ -67,10 +67,10 @@ defmodule ArkElixirClient.Delegate do
 
   ## Examples
 
-      iex> ArkElixirClient.Delegate.delegates(client)
+      iex> ArkClient.Delegate.delegates(client)
       {:ok,
        [
-         %ArkElixirClient.Models.Delegate{
+         %ArkClient.Models.Delegate{
            address: "DARiJqhogp2Lu6bxufUFQQMuMyZbxjCydN",
            approval: 4.32,
            missedblocks: 1722,
@@ -81,13 +81,13 @@ defmodule ArkElixirClient.Delegate do
            username: "boldninja",
            vote: "566475956800532"
          },
-         %ArkElixirClient.Models.Delegate{...},
-         %ArkElixirClient.Models.Delegate{...},
-         %ArkElixirClient.Models.Delegate{...},
+         %ArkClient.Models.Delegate{...},
+         %ArkClient.Models.Delegate{...},
+         %ArkClient.Models.Delegate{...},
          ...
        ]}
   """
-  @spec delegates(Tesla.Client.t(), Keyword.t()) :: ArkElixirClient.response()
+  @spec delegates(Tesla.Client.t(), Keyword.t()) :: ArkClient.response()
   def delegates(client, parameters \\ []) do
     client
     |> get("api/delegates", query: parameters)
@@ -103,7 +103,7 @@ defmodule ArkElixirClient.Delegate do
     Tesla.Client.t(),
     String.t(),
     Keyword.t()
-  ) :: ArkElixirClient.response()
+  ) :: ArkClient.response()
   def disable_forging(_client, _secret, _parameters \\ []) do
     raise "api/delegates/forging/disable has been deprecated."
   end
@@ -117,7 +117,7 @@ defmodule ArkElixirClient.Delegate do
     Tesla.Client.t(),
     String.t(),
     Keyword.t()
-  ) :: ArkElixirClient.response()
+  ) :: ArkClient.response()
   def enable_forging(_client, _secret, _parameters \\ []) do
     raise "api/delegates/forging/enable has been deprecated."
   end
@@ -127,10 +127,10 @@ defmodule ArkElixirClient.Delegate do
 
   ## Examples
 
-      iex> ArkElixirClient.Delegate.fee(client)
+      iex> ArkClient.Delegate.fee(client)
        {:ok, 2500000000}
   """
-  @spec fee(Tesla.Client.t()) :: ArkElixirClient.response()
+  @spec fee(Tesla.Client.t()) :: ArkClient.response()
   def fee(client) do
     client
     |> get("api/delegates/fee")
@@ -146,7 +146,7 @@ defmodule ArkElixirClient.Delegate do
 
   ## Examples
 
-      iex> ArkElixirClient.Delegate.forged_by_account(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
+      iex> ArkClient.Delegate.forged_by_account(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
       {:ok,
        %{
          "fees" => "190000000",
@@ -155,7 +155,7 @@ defmodule ArkElixirClient.Delegate do
          "success" => true
        }}
   """
-  @spec forged_by_account(Tesla.Client.t(), String.t()) :: ArkElixirClient.response()
+  @spec forged_by_account(Tesla.Client.t(), String.t()) :: ArkClient.response()
   def forged_by_account(client, generatorPublicKey) do
     get(
       client,
@@ -169,14 +169,15 @@ defmodule ArkElixirClient.Delegate do
 
   ## Examples
 
-      iex> ArkElixirClient.Delegate.forging_status(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
+      iex> ArkClient.Delegate.forging_status(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
       {:ok, true}
   """
+  @tag :skip
   @spec forging_status(
     Tesla.Client.t(),
     String.t(),
     Keyword.t()
-  ) :: ArkElixirClient.response()
+  ) :: ArkClient.response()
   def forging_status(client, public_key, parameters \\ []) do
     client
     |> get(
@@ -195,7 +196,7 @@ defmodule ArkElixirClient.Delegate do
 
   ## Examples
 
-      iex> ArkElixirClient.Delegate.next_forgers(client)
+      iex> ArkClient.Delegate.next_forgers(client)
       {:ok,
        %{
          "currentBlock" => 3102247,
@@ -213,7 +214,7 @@ defmodule ArkElixirClient.Delegate do
          "success" => true
        }}
   """
-  @spec next_forgers(Tesla.Client.t()) :: ArkElixirClient.response()
+  @spec next_forgers(Tesla.Client.t()) :: ArkClient.response()
   def next_forgers(client) do
     get(client, "api/delegates/getNextForgers")
   end
@@ -223,10 +224,10 @@ defmodule ArkElixirClient.Delegate do
 
   ## Examples
 
-      iex> ArkElixirClient.Delegate.search(client, "arkoar")
+      iex> ArkClient.Delegate.search(client, "arkoar")
       {:ok,
        [
-         %ArkElixirClient.Models.Delegate{
+         %ArkClient.Models.Delegate{
            address: "DQCZQzibtABoggT9ygSzFNQ3A7PJyxttPP",
            approval: nil,
            missedblocks: 1748,
@@ -244,7 +245,7 @@ defmodule ArkElixirClient.Delegate do
     Tesla.Client.t(),
     String.t(),
     Keyword.t()
-  ) :: ArkElixirClient.response()
+  ) :: ArkClient.response()
   def search(client, q, parameters \\ []) do
     client
     |> get("api/delegates/search", query: [q: q] ++ parameters)
@@ -256,11 +257,11 @@ defmodule ArkElixirClient.Delegate do
 
   ## Examples
 
-      iex> ArkElixirClient.Delegate.voters(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
-      iex(10)> ArkElixirClient.Delegate.voters(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
+      iex> ArkClient.Delegate.voters(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
+      iex(10)> ArkClient.Delegate.voters(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
       {:ok,
        [
-         %ArkElixirClient.Models.Account{
+         %ArkClient.Models.Account{
            address: "DP8SxqSnCV3Rsdvjeqrum2HA2CAgymCPJP",
            balance: "200000000",
            multisignatures: nil,
@@ -271,12 +272,12 @@ defmodule ArkElixirClient.Delegate do
            unconfirmed_balance: nil,
            unconfirmed_signature: nil
          },
-         %ArkElixirClient.Models.Account{...},
-         %ArkElixirClient.Models.Account{...},
+         %ArkClient.Models.Account{...},
+         %ArkClient.Models.Account{...},
          ...
        ]}
   """
-  @spec voters(Tesla.Client.t(), String.t()) :: ArkElixirClient.response()
+  @spec voters(Tesla.Client.t(), String.t()) :: ArkClient.response()
   def voters(client, public_key) do
     client
     |> get("api/delegates/voters", query: [publicKey: public_key])

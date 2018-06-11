@@ -1,20 +1,20 @@
-defmodule ArkElixirClient.Account do
+defmodule ArkClient.Account do
   @moduledoc """
-  Documentation for ArkElixirClient.Account.
+  Documentation for ArkClient.Account.
   """
 
-  import ArkElixir
+  import ArkClient
 
-  alias ArkElixirClient.Models.{Account, Delegate}
+  alias ArkClient.Models.{Account, Delegate}
 
   @doc """
   Get an account.
 
   ## Examples
 
-      iex> ArkElixirClient.Account.account(client, "DQCZQzibtABoggT9ygSzFNQ3A7PJyxttPP")
+      iex> ArkClient.Account.account(client, "DQCZQzibtABoggT9ygSzFNQ3A7PJyxttPP")
       {:ok,
-       %ArkElixirClient.Models.Account{
+       %ArkClient.Models.Account{
          address: "DQCZQzibtABoggT9ygSzFNQ3A7PJyxttPP",
          balance: "2164427163870",
          multisignatures: [],
@@ -26,7 +26,7 @@ defmodule ArkElixirClient.Account do
          unconfirmed_signature: 0
        }}
   """
-  @spec account(Tesla.Client.t(), String.t()) :: ArkElixirClient.response()
+  @spec account(Tesla.Client.t(), String.t()) :: ArkClient.response()
   def account(client, address) do
     client
     |> get("api/accounts", query: [address: address])
@@ -38,7 +38,7 @@ defmodule ArkElixirClient.Account do
 
   ## Examples
 
-      iex> ArkElixirClient.Account.balance(client, "DQCZQzibtABoggT9ygSzFNQ3A7PJyxttPP")
+      iex> ArkClient.Account.balance(client, "DQCZQzibtABoggT9ygSzFNQ3A7PJyxttPP")
       {:ok,
        %{
          "balance" => "2164627163870",
@@ -46,7 +46,7 @@ defmodule ArkElixirClient.Account do
          "unconfirmedBalance" => "2164627163870"
        }}
   """
-  @spec balance(Tesla.Client.t(), String.t()) :: ArkElixirClient.response()
+  @spec balance(Tesla.Client.t(), String.t()) :: ArkClient.response()
   def balance(client, address) do
     get(client, "api/accounts/getBalance", query: [address: address])
   end
@@ -56,10 +56,10 @@ defmodule ArkElixirClient.Account do
 
   ## Examples
 
-      iex> ArkElixirClient.Account.delegates(client, "DFAVFGgkpYc4hrvUNZRf9Tpi7irWeKexLc")
+      iex> ArkClient.Account.delegates(client, "DFAVFGgkpYc4hrvUNZRf9Tpi7irWeKexLc")
       {:ok,
        [
-         %ArkElixirClient.Models.Delegate{
+         %ArkClient.Models.Delegate{
            address: "DQCZQzibtABoggT9ygSzFNQ3A7PJyxttPP",
            approval: 0.09,
            missedblocks: 1748,
@@ -76,7 +76,7 @@ defmodule ArkElixirClient.Account do
     Tesla.Client.t(),
     String.t(),
     Keyword.t()
-  ) :: ArkElixirClient.response()
+  ) :: ArkClient.response()
   def delegates(client, address, parameters \\ []) do
     client
     |> get("api/accounts/delegates", query: [address: address] ++ parameters)
@@ -88,10 +88,10 @@ defmodule ArkElixirClient.Account do
 
   ## Examples
 
-      iex> ArkElixirClient.Account.fee(client)
+      iex> ArkClient.Account.fee(client)
       {:ok, %{"fee" => 2500000000, "success" => true}}
   """
-  @spec fee(Tesla.Client.t()) :: ArkElixirClient.response()
+  @spec fee(Tesla.Client.t()) :: ArkClient.response()
   def fee(client) do
     get(client, "api/accounts/delegates/fee")
   end
@@ -101,10 +101,10 @@ defmodule ArkElixirClient.Account do
 
   ## Examples
 
-      iex> ArkElixirClient.Account.publickey(client, "DQCZQzibtABoggT9ygSzFNQ3A7PJyxttPP")
+      iex> ArkClient.Account.publickey(client, "DQCZQzibtABoggT9ygSzFNQ3A7PJyxttPP")
       {:ok, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec"}
   """
-  @spec publickey(Tesla.Client.t(), String.t()) :: ArkElixirClient.response()
+  @spec publickey(Tesla.Client.t(), String.t()) :: ArkClient.response()
   def publickey(client, address) do
     case get(client, "api/accounts/getPublickey", query: [address: address]) do
       {:ok, %{"publicKey" => public_key, "success" => true}} ->
@@ -121,7 +121,7 @@ defmodule ArkElixirClient.Account do
 
   DEPRECATED
   """
-  @spec top(Tesla.Client.t(), Keyword.t()) :: ArkElixirClient.response()
+  @spec top(Tesla.Client.t(), Keyword.t()) :: ArkClient.response()
   def top(_client, _parameters \\ []) do
     raise "GET /api/accounts/top is deprecated."
   end

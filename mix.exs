@@ -1,10 +1,10 @@
-defmodule ArkElixirClient.MixProject do
+defmodule ArkClient.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :ark_elixir_client,
-      version: "0.1.0",
+      app: :ark_client,
+      version: "0.0.1",
       elixir: "~> 1.6",
       start_permanent: Mix.env() == :prod,
       deps: deps()
@@ -21,8 +21,6 @@ defmodule ArkElixirClient.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:base58, "~> 0.1.0"},
-      {:exbtc, "~> 0.1.3"},
       {:hackney, "~> 1.10"},
       {:jason, "~> 1.0"},
       {:temp, "~> 0.4"},

@@ -12,13 +12,11 @@
 
 ## Installation
 
-The package can be installed by adding `ark_elixir_client` to your list of dependencies in `mix.exs`:
+The package can be installed by adding `ark_client` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [
-    {:ark_elixir_client, github: "ArkEcosystem/elixir-client"}
-  ]
+  [{:ark_client, "~> 0.0.1"}]
 end
 ```
 

@@ -1,16 +1,16 @@
-defmodule ArkElixirClient do
+defmodule ArkClient do
   @moduledoc """
-  Documentation for ArkElixirClient.
+  Documentation for ArkClient.
   """
 
   @type response :: {:ok, any} | {:error, any}
 
   @doc """
-  Shortcut to `ArkElixirClient.Client.new/1`
+  Shortcut to `ArkClient.Client.new/1`
   """
   @spec client(Keyword.t()) :: Tesla.Client.t()
   def client(opts) do
-    ArkElixirClient.Client.new(opts)
+    ArkClient.Client.new(opts)
   end
 
   @doc """

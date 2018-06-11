@@ -1,4 +1,4 @@
-defmodule ArkElixirClient.Models.Transaction do
+defmodule ArkClient.Models.Transaction do
   @moduledoc """
   Transaction model.
   """
@@ -37,7 +37,7 @@ defmodule ArkElixirClient.Models.Transaction do
   }
 
   @doc """
-  Builds an ArkElixirClient.Models.Transaction struct from the API response map.
+  Builds an ArkClient.Models.Transaction struct from the API response map.
   """
   def build(nil) do
     %__MODULE__{}

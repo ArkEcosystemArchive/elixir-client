@@ -1,4 +1,4 @@
-defmodule ArkElixirClient.Middleware.Logger.Formatter do
+defmodule ArkClient.Middleware.Logger.Formatter do
   @moduledoc false
 
   # Heavily based on Elixir's Logger.Formatter
@@ -35,7 +35,7 @@ defmodule ArkElixirClient.Middleware.Logger.Formatter do
   defp output(binary, _, _, _), do: binary
 end
 
-defmodule ArkElixirClient.Middleware.Logger do
+defmodule ArkClient.Middleware.Logger do
   @behaviour Tesla.Middleware
 
   @moduledoc """
@@ -110,14 +110,14 @@ defmodule ArkElixirClient.Middleware.Logger do
   ```
   """
 
-  alias ArkElixirClient.Middleware.Logger.Formatter
+  alias ArkClient.Middleware.Logger.Formatter
 
   @config Application.get_env(:tesla, __MODULE__, [])
   @format Formatter.compile(@config[:format])
 
   @type log_level :: :info | :warn | :error
 
-  alias ArkElixirClient.Logger
+  alias ArkClient.Logger
 
   def call(env, next, opts) do
     {time, response} = :timer.tc(Tesla, :run, [env, next])
