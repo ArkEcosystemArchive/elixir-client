@@ -16,7 +16,7 @@ The package can be installed by adding `ark_client` to your list of dependencies
 
 ```elixir
 def deps do
-  [{:ark_client, "~> 0.0.1"}]
+  [{:ark_client, "~> 0.1.0"}]
 end
 ```
 
