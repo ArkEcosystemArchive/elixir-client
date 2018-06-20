@@ -5,11 +5,23 @@ defmodule ArkClient.API.Two.Models.Delegate do
   @derive Jason.Encoder
 
   defstruct [
-    :dummy
+    :username,
+    :address,
+    :public_key,
+    :votes,
+    :rank,
+    :blocks,
+    :production
   ]
 
   @type t() :: %__MODULE__{
-    dummy: Integer.t()
+    username: String.t(),
+    address: String.t(),
+    public_key: String.t(),
+    votes: Integer.t(),
+    rank: Integer.t(),
+    blocks: List.t(),
+    production: List.t()
   }
 
   @doc """
@@ -17,7 +29,13 @@ defmodule ArkClient.API.Two.Models.Delegate do
   """
   def build(attributes) do
     %__MODULE__{
-      dummy: Map.get(attributes, "dummy")
+      username: Map.get(attributes, "username"),
+      address: Map.get(attributes, "address"),
+      public_key: Map.get(attributes, "publicKey"),
+      votes: Map.get(attributes, "votes"),
+      rank: Map.get(attributes, "rank"),
+      blocks: Map.get(attributes, "blocks"),
+      production: Map.get(attributes, "production")
     }
   end
 end
