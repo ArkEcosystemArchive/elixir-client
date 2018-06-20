@@ -30,7 +30,7 @@ defmodule ArkClient.API.One.Transaction do
   """
   @spec transaction(Tesla.Client.t(), Keyword.t()) :: ArkClient.response()
   def transaction(client, id) do
-    client |> get("api/transactions/get", query: [id: id])
+    client |> get("transactions/get", query: [id: id])
   end
 
   @doc """
@@ -64,7 +64,7 @@ defmodule ArkClient.API.One.Transaction do
   """
   @spec transactions(Tesla.Client.t(), Keyword.t()) :: ArkClient.response()
   def transactions(client, parameters \\ []) do
-    client |> get("api/transactions", query: parameters)
+    client |> get("transactions", query: parameters)
   end
 
   @doc """
@@ -92,7 +92,7 @@ defmodule ArkClient.API.One.Transaction do
   """
   @spec unconfirmed_transaction(Tesla.Client.t(), String.t()) :: ArkClient.response()
   def unconfirmed_transaction(client, id) do
-    client |> get("api/transactions/unconfirmed/get", query: [id: id])
+    client |> get("transactions/unconfirmed/get", query: [id: id])
   end
 
   @doc """
@@ -105,6 +105,6 @@ defmodule ArkClient.API.One.Transaction do
   """
   @spec unconfirmed_transactions(Tesla.Client.t(), Keyword.t()) :: ArkClient.response()
   def unconfirmed_transactions(client, parameters \\ []) do
-    client |> get("api/transactions/unconfirmed", query: parameters)
+    client |> get("transactions/unconfirmed", query: parameters)
   end
 end

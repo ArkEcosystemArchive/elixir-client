@@ -25,7 +25,7 @@ defmodule ArkClient.API.One.Loader do
   """
   @spec autoconfigure(Tesla.Client.t()) :: ArkClient.response()
   def autoconfigure(client) do
-    client |> get("api/loader/autoconfigure")
+    client |> get("loader/autoconfigure")
   end
 
   @doc """
@@ -39,7 +39,7 @@ defmodule ArkClient.API.One.Loader do
   """
   @spec status(Telsa.Client.t()) :: ArkClient.response()
   def status(client) do
-    client |> get("api/loader/status")
+    client |> get("loader/status")
   end
 
   @doc """
@@ -59,6 +59,6 @@ defmodule ArkClient.API.One.Loader do
   """
   @spec sync(Tesla.Client.t()) :: ArkClient.response()
   def sync(client) do
-    client |> get("api/loader/status/sync")
+    client |> get("loader/status/sync")
   end
 end

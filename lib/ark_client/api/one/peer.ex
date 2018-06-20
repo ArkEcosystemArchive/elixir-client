@@ -25,7 +25,7 @@ defmodule ArkClient.API.One.Peer do
   """
   @spec peer(Tesla.Client.t(), String.t(), Integer.t()) :: ArkClient.response()
   def peer(client, ip, port) do
-    client |> get("api/peers/get", query: [ip: ip, port: port])
+    client |> get("peers/get", query: [ip: ip, port: port])
   end
 
   @doc """
@@ -55,7 +55,7 @@ defmodule ArkClient.API.One.Peer do
   """
   @spec peers(Tesla.Client.t(), Keyword.t()) :: ArkClient.response()
   def peers(client, parameters \\ []) do
-    client |> get("api/peers", query: parameters)
+    client |> get("peers", query: parameters)
   end
 
   @doc """
@@ -68,7 +68,7 @@ defmodule ArkClient.API.One.Peer do
   """
   @spec version(Tesla.Client.t()) :: ArkClient.response()
   def version(client) do
-    client |> get("api/peers/version")
+    client |> get("peers/version")
     end
   end
 end

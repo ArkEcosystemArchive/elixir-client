@@ -26,7 +26,7 @@ defmodule ArkClient.API.One.Account do
   """
   @spec account(Tesla.Client.t(), String.t()) :: ArkClient.response()
   def account(client, address) do
-    client |> get("api/accounts", query: [address: address])
+    client |> get("accounts", query: [address: address])
   end
 
   @doc """
@@ -44,7 +44,7 @@ defmodule ArkClient.API.One.Account do
   """
   @spec balance(Tesla.Client.t(), String.t()) :: ArkClient.response()
   def balance(client, address) do
-    client |> get("api/accounts/getBalance", query: [address: address])
+    client |> get("accounts/getBalance", query: [address: address])
   end
 
   @doc """
@@ -70,7 +70,7 @@ defmodule ArkClient.API.One.Account do
   """
   @spec delegates(Tesla.Client.t(), String.t(), Keyword.t()) :: ArkClient.response()
   def delegates(client, address, parameters \\ []) do
-    client |> get("api/accounts/delegates", query: [address: address] ++ parameters)
+    client |> get("accounts/delegates", query: [address: address] ++ parameters)
   end
 
   @doc """
@@ -83,7 +83,7 @@ defmodule ArkClient.API.One.Account do
   """
   @spec fee(Tesla.Client.t()) :: ArkClient.response()
   def fee(client) do
-    client |> get("api/accounts/delegates/fee")
+    client |> get("accounts/delegates/fee")
   end
 
   @doc """
@@ -96,6 +96,6 @@ defmodule ArkClient.API.One.Account do
   """
   @spec publickey(Tesla.Client.t(), String.t()) :: ArkClient.response()
   def publickey(client, address) do
-    client |> get("api/accounts/getPublickey", query: [address: address])
+    client |> get("accounts/getPublickey", query: [address: address])
   end
 end

@@ -15,6 +15,6 @@ defmodule ArkClient.API.One.Signature do
   """
   @spec fee(Tesla.Client.t()) :: ArkClient.response()
   def fee(client) do
-    client |> get("api/signatures/fee")
+    client |> get("signatures/fee")
   end
 end

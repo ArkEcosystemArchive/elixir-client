@@ -7,17 +7,17 @@ defmodule ArkClient.API.Two.Block do
 
   @spec account(Tesla.Client.t(), List.t()) :: ArkClient.response()
   def list(client, parameters \\ []) do
-    client |> get("api/blocks", parameters)
+    client |> get("blocks", parameters)
   end
 
   @spec account(Tesla.Client.t(), String.t()) :: ArkClient.response()
   def show(client, id) do
-    client |> get("api/blocks/#{id}")
+    client |> get("blocks/#{id}")
   end
 
   @spec account(Tesla.Client.t(), String.t(), List.t()) :: ArkClient.response()
   def transactions(client, id, parameters \\ []) do
-    client |> get("api/blocks/#{id}/transactions", parameters)
+    client |> get("blocks/#{id}/transactions", parameters)
   end
 
   @spec account(Tesla.Client.t(), List.t()) :: ArkClient.response()
