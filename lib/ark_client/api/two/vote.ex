@@ -5,7 +5,7 @@ defmodule ArkClient.API.Two.Account do
 
   import ArkClient
 
-  @spec account(Tesla.Client.t(), String.t()) :: ArkClient.response()
+  @spec account(Tesla.Client.t(), List.t()) :: ArkClient.response()
   def list(client, parameters \\ []) do
     get(client, "votes", parameters)
   end

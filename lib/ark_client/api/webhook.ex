@@ -5,12 +5,12 @@ defmodule ArkClient.API.Webhook do
 
   import ArkClient
 
-  @spec account(Tesla.Client.t(), String.t()) :: ArkClient.response()
+  @spec account(Tesla.Client.t(), List.t()) :: ArkClient.response()
   def list(client, parameters \\ []) do
     get(client, "webhooks", parameters)
   end
 
-  @spec account(Tesla.Client.t(), String.t()) :: ArkClient.response()
+  @spec account(Tesla.Client.t(), List.t()) :: ArkClient.response()
   def create(client, parameters) do
     post(client, "webhooks", parameters)
   end
@@ -20,13 +20,13 @@ defmodule ArkClient.API.Webhook do
     get(client, "webhooks/#{id}")
   end
 
-  @spec account(Tesla.Client.t(), String.t()) :: ArkClient.response()
+  @spec account(Tesla.Client.t(), List.t()) :: ArkClient.response()
   def update(client, id, parameters) do
-    put("webhooks/#{id}", parameters)
+    put(client, "webhooks/#{id}", parameters)
   end
 
   @spec account(Tesla.Client.t(), String.t()) :: ArkClient.response()
   def delete(client, id) do
-    delete("webhooks/#{id}")
+    delete(client, "webhooks/#{id}")
   end
 end

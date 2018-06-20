@@ -15,12 +15,12 @@ defmodule ArkClient.API.Two.Delegate do
     get(client, "delegates/#{id}")
   end
 
-  @spec account(Tesla.Client.t(), String.t()) :: ArkClient.response()
+  @spec account(Tesla.Client.t(), String.t(), List.t()) :: ArkClient.response()
   def blocks(client, id, parameters \\ []) do
     get(client, "delegates/#{id}/blocks", parameters)
   end
 
-  @spec account(Tesla.Client.t(), String.t()) :: ArkClient.response()
+  @spec account(Tesla.Client.t(), String.t(), List.t()) :: ArkClient.response()
   def voters(client, id, parameters \\ []) do
     get(client, "delegates/#{id}/voters", parameters)
   end
