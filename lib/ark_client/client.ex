@@ -33,9 +33,10 @@ defmodule ArkClient.Client do
   """
   @spec new(Map.t) :: Tesla.Client.t
   def new(%{
-    nethash: nethash,
     host: host,
-    version: version
+    api_version: api_version,
+    nethash: nethash,
+    core_version: core_version,
   })
   when is_bitstring(nethash)
   and is_bitstring(host)
@@ -43,8 +44,9 @@ defmodule ArkClient.Client do
     headers = [
       {"Content-Type", "application/json"},
       {"nethash", nethash},
-      {"version", version},
-      {"port", 1}
+      {"version", core_version},
+      {"port", 1},
+      {"API-Version", api_version}
     ]
 
     log_level =
@@ -61,13 +63,6 @@ defmodule ArkClient.Client do
     ]
 
     Tesla.build_client(pre)
-  end
-
-  def new(%{host: host} = opts) do
-    opts
-    |> Map.drop([:host])
-    |> Map.put(:host, "#{host}")
-    |> new
   end
 
   def new(_invalid) do
