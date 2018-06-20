@@ -34,18 +34,13 @@ defmodule ArkClient.Client do
   @spec new(Map.t) :: Tesla.Client.t
   def new(%{
     host: host,
-    api_version: api_version,
-    nethash: nethash,
-    core_version: core_version,
+    api_version: api_version
   })
   when is_bitstring(nethash)
   and is_bitstring(host)
   and is_bitstring(version) do
     headers = [
       {"Content-Type", "application/json"},
-      {"nethash", nethash},
-      {"version", core_version},
-      {"port", 1},
       {"API-Version", api_version}
     ]
 
