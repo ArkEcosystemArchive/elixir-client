@@ -5,11 +5,17 @@ defmodule ArkClient.API.Two.Models.Wallet do
   @derive Jason.Encoder
 
   defstruct [
-    :dummy
+    :address,
+    :public_key,
+    :balance,
+    :is_delegate
   ]
 
   @type t() :: %__MODULE__{
-    dummy: Integer.t()
+    address: String.t(),
+    public_key: String.t(),
+    balance: Integer.t(),
+    is_delegate: Boolean.t()
   }
 
   @doc """
@@ -17,7 +23,10 @@ defmodule ArkClient.API.Two.Models.Wallet do
   """
   def build(attributes) do
     %__MODULE__{
-      dummy: Map.get(attributes, "dummy")
+      address: Map.get(attributes, "address"),
+      public_key: Map.get(attributes, "publicKey"),
+      balance: Map.get(attributes, "balance"),
+      is_delegate: Map.get(attributes, "isDelegate")
     }
   end
 end
