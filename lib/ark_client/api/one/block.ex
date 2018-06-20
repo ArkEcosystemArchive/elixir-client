@@ -33,7 +33,7 @@ defmodule ArkClient.API.One.Block do
   """
   @spec block(Tesla.Client.t(), String.t()) :: ArkClient.response()
   def block(client, id) do
-    get(client, "api/blocks/get", query: [id: id])
+    client |> get("api/blocks/get", query: [id: id])
   end
 
   @doc """
@@ -71,7 +71,7 @@ defmodule ArkClient.API.One.Block do
   """
   @spec blocks(Tesla.Client.t(), Keyword.t()) :: ArkClient.response()
   def blocks(client, parameters \\ []) do
-    get(client, "api/blocks", query: parameters)
+    client |> get("api/blocks", query: parameters)
   end
 
   @doc """
@@ -84,7 +84,7 @@ defmodule ArkClient.API.One.Block do
   """
   @spec epoch(Tesla.Client.t()) :: ArkClient.response()
   def epoch(client) do
-    get(client, "api/blocks/getEpoch")
+    client |> get("api/blocks/getEpoch")
   end
 
   @doc """
@@ -97,7 +97,7 @@ defmodule ArkClient.API.One.Block do
   """
   @spec fee(Tesla.Client.t()) :: ArkClient.response()
   def fee(client) do
-    get(client, "api/blocks/getFee")
+    client |> get("api/blocks/getFee")
   end
 
   @doc """
@@ -117,7 +117,7 @@ defmodule ArkClient.API.One.Block do
   """
   @spec fees(Tesla.Client.t()) :: ArkClient.response()
   def fees(client) do
-    get(client, "api/blocks/getFees")
+    client |> get("api/blocks/getFees")
   end
 
   @doc """
@@ -130,7 +130,7 @@ defmodule ArkClient.API.One.Block do
   """
   @spec height(Tesla.Client.t()) :: ArkClient.response()
   def height(client) do
-    get(client, "api/blocks/getHeight")
+    client |> get("api/blocks/getHeight")
   end
 
   @doc """
@@ -143,7 +143,7 @@ defmodule ArkClient.API.One.Block do
   """
   @spec milestone(Tesla.Client.t()) :: ArkClient.response()
   def milestone(client) do
-    get(client, "api/blocks/getMilestone")
+    client |> get("api/blocks/getMilestone")
   end
 
   @doc """
@@ -156,7 +156,7 @@ defmodule ArkClient.API.One.Block do
   """
   @spec nethash(Tesla.Client) :: ArkClient.response()
   def nethash(client) do
-    get(client, "api/blocks/getNethash")
+    client |> get("api/blocks/getNethash")
   end
 
   @doc """
@@ -169,7 +169,7 @@ defmodule ArkClient.API.One.Block do
   """
   @spec reward(Tesla.Client.t()) :: ArkClient.response()
   def reward(client) do
-    get(client, "api/blocks/getReward")
+    client |> get("api/blocks/getReward")
   end
 
   @doc """
@@ -192,7 +192,7 @@ defmodule ArkClient.API.One.Block do
   """
   @spec status(Tesla.Client.t()) :: ArkClient.response()
   def status(client) do
-    get(client, "api/blocks/getStatus")
+    client |> get("api/blocks/getStatus")
   end
 
   @doc """
@@ -206,6 +206,6 @@ defmodule ArkClient.API.One.Block do
   """
   @spec supply(Tesla.Client.t()) :: ArkClient.response()
   def supply(client) do
-    get(client, "api/blocks/getSupply")
+    client |> get("api/blocks/getSupply")
   end
 end

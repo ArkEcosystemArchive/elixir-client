@@ -17,7 +17,7 @@ defmodule ArkClient do
   Shortcut to `Tesla.get/4`
   """
   @spec get(Tesla.Client.t(), String.t(), Keyword.t()) :: response()
-  def get(client, url, opts \\ []) do
+  def client |> get(url, opts \\ []) do
     client |> Tesla.get(url, opts) |> handle_response
   end
 
@@ -33,7 +33,7 @@ defmodule ArkClient do
   Shortcut to `Tesla.post/4`
   """
   @spec post(Tesla.Client.t(), String.t(), any(), Keyword.t()) :: response()
-  def post(client, url, body, opts \\ []) do
+  def client |> post(url, body, opts \\ []) do
     client |> Tesla.post(url, body, opts) |> handle_response
   end
 

@@ -7,11 +7,11 @@ defmodule ArkClient.API.Two.Account do
 
   @spec account(Tesla.Client.t(), List.t()) :: ArkClient.response()
   def list(client, parameters \\ []) do
-    get(client, "votes", parameters)
+    client |> get("votes", parameters)
   end
 
   @spec account(Tesla.Client.t(), String.t()) :: ArkClient.response()
   def show(client, id) do
-    get(client, "votes/#{id}")
+    client |> get("votes/#{id}")
   end
 end

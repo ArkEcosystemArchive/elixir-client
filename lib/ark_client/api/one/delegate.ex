@@ -15,7 +15,7 @@ defmodule ArkClient.API.One.Delegate do
   """
   @spec count(Tesla.Client.t()) :: ArkClient.response()
   def count(client) do
-    get(client, "api/delegates/count")
+    client |> get("api/delegates/count")
   end
 
   @doc """
@@ -39,7 +39,7 @@ defmodule ArkClient.API.One.Delegate do
   """
   @spec delegate(Tesla.Client.t(), Keyword.t()) :: ArkClient.response()
   def delegate(client, parameters \\ []) do
-    get(client, "api/delegates/get", query: parameters)
+    client |> get("api/delegates/get", query: parameters)
   end
 
   @doc """
@@ -69,7 +69,7 @@ defmodule ArkClient.API.One.Delegate do
   """
   @spec delegates(Tesla.Client.t(), Keyword.t()) :: ArkClient.response()
   def delegates(client, parameters \\ []) do
-    get(client, "api/delegates", query: parameters)
+    client |> get("api/delegates", query: parameters)
   end
 
   @doc """
@@ -82,7 +82,7 @@ defmodule ArkClient.API.One.Delegate do
   """
   @spec fee(Tesla.Client.t()) :: ArkClient.response()
   def fee(client) do
-    get(client, "api/delegates/fee")
+    client |> get("api/delegates/fee")
   end
 
   @doc """
@@ -150,7 +150,7 @@ defmodule ArkClient.API.One.Delegate do
   """
   @spec next_forgers(Tesla.Client.t()) :: ArkClient.response()
   def next_forgers(client) do
-    get(client, "api/delegates/getNextForgers")
+    client |> get("api/delegates/getNextForgers")
   end
 
   @doc """
@@ -181,7 +181,7 @@ defmodule ArkClient.API.One.Delegate do
     Keyword.t()
   ) :: ArkClient.response()
   def search(client, q, parameters \\ []) do
-    get(client, "api/delegates/search", query: [q: q] ++ parameters)
+    client |> get("api/delegates/search", query: [q: q] ++ parameters)
   end
 
   @doc """
@@ -211,6 +211,6 @@ defmodule ArkClient.API.One.Delegate do
   """
   @spec voters(Tesla.Client.t(), String.t()) :: ArkClient.response()
   def voters(client, public_key) do
-    get(client, "api/delegates/voters", query: [publicKey: public_key])
+    client |> get("api/delegates/voters", query: [publicKey: public_key])
   end
 end

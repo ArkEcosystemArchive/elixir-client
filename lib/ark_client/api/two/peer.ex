@@ -7,11 +7,11 @@ defmodule ArkClient.API.Two.Peer do
 
   @spec account(Tesla.Client.t(), List.t()) :: ArkClient.response()
   def list(client, parameters \\ []) do
-    get(client, "peers", parameters)
+    client |> get("peers", parameters)
   end
 
   @spec account(Tesla.Client.t(), String.t()) :: ArkClient.response()
   def show(client, ip) do
-    get(client, "peers/#{ip}")
+    client |> get("peers/#{ip}")
   end
 end

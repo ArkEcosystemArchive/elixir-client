@@ -7,21 +7,21 @@ defmodule ArkClient.API.Two.Delegate do
 
   @spec account(Tesla.Client.t(), String.t()) :: ArkClient.response()
   def list(client, parameters \\ []) do
-    get(client, "delegates", parameters)
+    client |> get("delegates", parameters)
   end
 
   @spec account(Tesla.Client.t(), String.t()) :: ArkClient.response()
   def show(client, id) do
-    get(client, "delegates/#{id}")
+    client |> get("delegates/#{id}")
   end
 
   @spec account(Tesla.Client.t(), String.t(), List.t()) :: ArkClient.response()
   def blocks(client, id, parameters \\ []) do
-    get(client, "delegates/#{id}/blocks", parameters)
+    client |> get("delegates/#{id}/blocks", parameters)
   end
 
   @spec account(Tesla.Client.t(), String.t(), List.t()) :: ArkClient.response()
   def voters(client, id, parameters \\ []) do
-    get(client, "delegates/#{id}/voters", parameters)
+    client |> get("delegates/#{id}/voters", parameters)
   end
 end

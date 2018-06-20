@@ -15,7 +15,7 @@ defmodule ArkClient.API.One.Transport do
   """
   @spec block(Tesla.Client.t(), String.t()) :: ArkClient.response()
   def block(client, id) do
-    get(client, "peer/block", query: [id: id])
+    client |> get("peer/block", query: [id: id])
   end
 
   @doc """
@@ -28,7 +28,7 @@ defmodule ArkClient.API.One.Transport do
   """
   @spec blocks(Tesla.Client.t()) :: ArkClient.response()
   def blocks(client) do
-    get(client, "peer/blocks")
+    client |> get("peer/blocks")
   end
 
   @doc """
@@ -38,7 +38,7 @@ defmodule ArkClient.API.One.Transport do
   """
   @spec blocks_common(Tesla.Client.t(), List.t()) :: ArkClient.response()
   def blocks_common(client, ids) do
-    get(client, "peer/blocks/common", query: [ids: Enum.join(ids, ",")])
+    client |> get("peer/blocks/common", query: [ids: Enum.join(ids, ",")])
   end
 
   @doc """
@@ -55,7 +55,7 @@ defmodule ArkClient.API.One.Transport do
   """
   @spec create_transactions(Tesla.Client.t(), List.t()) :: ArkClient.response()
   def create_transactions(client, transactions) do
-    post(client, "peer/transactions", %{transactions: transactions})
+    client |> post("peer/transactions", %{transactions: transactions})
   end
 
   @doc """
@@ -87,7 +87,7 @@ defmodule ArkClient.API.One.Transport do
   """
   @spec height(Tesla.Client.t()) :: ArkClient.response()
   def height(client) do
-    get(client, "peer/height")
+    client |> get("peer/height")
   end
 
   @doc """
@@ -117,7 +117,7 @@ defmodule ArkClient.API.One.Transport do
   """
   @spec list(Tesla.Client.t()) :: ArkClient.response()
   def list(client) do
-    get(client, "peer/list")
+    client |> get("peer/list")
   end
 
   @doc """
@@ -151,7 +151,7 @@ defmodule ArkClient.API.One.Transport do
   """
   @spec status(Tesla.Client.t()) :: ArkClient.response()
   def status(client) do
-    get(client, "peer/status")
+    client |> get("peer/status")
   end
 
   @doc """
@@ -164,7 +164,7 @@ defmodule ArkClient.API.One.Transport do
   """
   @spec transactions(Tesla.Client.t()) :: ArkClient.response()
   def transactions(client) do
-    get(client, "peer/transactions")
+    client |> get("peer/transactions")
   end
 
   @doc """
@@ -177,6 +177,6 @@ defmodule ArkClient.API.One.Transport do
   """
   @spec transactions_from_ids(Tesla.Client.t(), List.t()) :: ArkClient.response()
   def transactions_from_ids(client, ids) do
-    get(client, "peer/transactionsFromIds", query: [ids: Enum.join(ids, ",")])
+    client |> get("peer/transactionsFromIds", query: [ids: Enum.join(ids, ",")])
   end
 end
