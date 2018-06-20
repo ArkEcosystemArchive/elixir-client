@@ -1,4 +1,4 @@
-defmodule ArkClient.API.One.Models.Peer do
+defmodule ArkClient.API.Two.Models.Peer do
   @moduledoc """
   Peer model.
   """
@@ -25,7 +25,7 @@ defmodule ArkClient.API.One.Models.Peer do
   }
 
   @doc """
-  Builds an ArkClient.API.One.Models.Peer struct from the API response map.
+  Builds an ArkClient.API.Two.Models.Peer struct from the API response map.
   """
   def build(attributes) do
     %__MODULE__{
