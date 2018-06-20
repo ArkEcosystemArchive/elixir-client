@@ -1,4 +1,4 @@
-defmodule ArkClient.Models.Delegate do
+defmodule ArkClient.One.Models.Delegate do
   @moduledoc """
   Delegate model.
   """
@@ -29,7 +29,7 @@ defmodule ArkClient.Models.Delegate do
   }
 
   @doc """
-  Builds an ArkClient.Models.Delegate struct from the API response map.
+  Builds an ArkClient.One.Models.Delegate struct from the API response map.
   """
   def build(attributes) do
     %__MODULE__{

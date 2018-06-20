@@ -1,6 +1,6 @@
-defmodule ArkClient.Loader do
+defmodule ArkClient.One.Loader do
   @moduledoc """
-  Documentation for ArkClient.Loader.
+  Documentation for ArkClient.One.Loader.
   """
 
   import ArkClient
@@ -10,7 +10,7 @@ defmodule ArkClient.Loader do
 
   ## Examples
 
-      iex> ArkClient.Loader.autoconfigure(client)
+      iex> ArkClient.One.Loader.autoconfigure(client)
       {:ok,
        %{
          "network" => %{
@@ -23,7 +23,7 @@ defmodule ArkClient.Loader do
          "success" => true
        }}
   """
-  @spec autoconfigure(Tesla.Client.t()) :: ArkClient.response()
+  @spec autoconfigure(Tesla.Client.t()) :: ArkClient.One.response()
   def autoconfigure(client) do
     get(client, "api/loader/autoconfigure")
   end
@@ -33,11 +33,11 @@ defmodule ArkClient.Loader do
 
   ## Examples
 
-      iex> ArkClient.Loader.status(client)
+      iex> ArkClient.One.Loader.status(client)
       {:ok,
        %{"blocksCount" => 0, "loaded" => false, "now" => 3089786, "success" => true}}
   """
-  @spec status(Telsa.Client.t()) :: ArkClient.response()
+  @spec status(Telsa.Client.t()) :: ArkClient.One.response()
   def status(client) do
     get(client, "api/loader/status")
   end
@@ -47,7 +47,7 @@ defmodule ArkClient.Loader do
 
   ## Examples
 
-      iex> ArkClient.Loader.sync(client)
+      iex> ArkClient.One.Loader.sync(client)
       {:ok,
        %{
          "blocks" => -35,
@@ -57,7 +57,7 @@ defmodule ArkClient.Loader do
          "syncing" => false
        }}
   """
-  @spec sync(Tesla.Client.t()) :: ArkClient.response()
+  @spec sync(Tesla.Client.t()) :: ArkClient.One.response()
   def sync(client) do
     get(client, "api/loader/status/sync")
   end

@@ -1,21 +1,21 @@
-defmodule ArkClient.Transport do
+defmodule ArkClient.One.Transport do
   @moduledoc """
-  Documentation for ArkClient.Transport.
+  Documentation for ArkClient.One.Transport.
   """
 
   import ArkClient
 
-  alias ArkClient.Models.{Block, Peer, Transaction}
+  alias ArkClient.One.Models.{Block, Peer, Transaction}
 
   @doc """
   Get a single block.
 
   ## Examples
 
-      iex> ArkClient.Transport.block(client, "887102556000070987")
+      iex> ArkClient.One.Transport.block(client, "887102556000070987")
       {:ok, []}
   """
-  @spec block(Tesla.Client.t(), String.t()) :: ArkClient.response()
+  @spec block(Tesla.Client.t(), String.t()) :: ArkClient.One.response()
   def block(client, id) do
     client
     |> get("peer/block", query: [id: id])
@@ -27,10 +27,10 @@ defmodule ArkClient.Transport do
 
   ## Examples
 
-      iex(4)> ArkClient.Transport.blocks(client)
+      iex(4)> ArkClient.One.Transport.blocks(client)
       {:ok, []}
   """
-  @spec blocks(Tesla.Client.t()) :: ArkClient.response()
+  @spec blocks(Tesla.Client.t()) :: ArkClient.One.response()
   def blocks(client) do
     client
     |> get("peer/blocks")
@@ -42,7 +42,7 @@ defmodule ArkClient.Transport do
 
   WARNING: This doesn't seem to work.
   """
-  @spec blocks_common(Tesla.Client.t(), List.t()) :: ArkClient.response()
+  @spec blocks_common(Tesla.Client.t(), List.t()) :: ArkClient.One.response()
   def blocks_common(client, ids) do
     get(client, "peer/blocks/common", query: [ids: Enum.join(ids, ",")])
   end
@@ -52,7 +52,7 @@ defmodule ArkClient.Transport do
 
   ## Examples
 
-      iex> ArkClient.Transport.create_transactions(client, [transaction])
+      iex> ArkClient.One.Transport.create_transactions(client, [transaction])
       {:ok,
        %{
          "success" => true,
@@ -62,7 +62,7 @@ defmodule ArkClient.Transport do
   @spec create_transactions(
     Tesla.Client.t(),
     List.t()
-  ) :: ArkClient.response()
+  ) :: ArkClient.One.response()
   def create_transactions(client, transactions) do
     post(client, "peer/transactions", %{transactions: transactions})
   end
@@ -72,7 +72,7 @@ defmodule ArkClient.Transport do
 
   ## Examples
 
-      iex> ArkClient.Transport.height(client)
+      iex> ArkClient.One.Transport.height(client)
       {:ok,
        %{
          "header" => %{
@@ -94,7 +94,7 @@ defmodule ArkClient.Transport do
          "success" => true
        }}
   """
-  @spec height(Tesla.Client.t()) :: ArkClient.response()
+  @spec height(Tesla.Client.t()) :: ArkClient.One.response()
   def height(client) do
     get(client, "peer/height")
   end
@@ -104,10 +104,10 @@ defmodule ArkClient.Transport do
 
   ## Examples
 
-      iex> ArkClient.Transport.list(client)
+      iex> ArkClient.One.Transport.list(client)
       {:ok,
        [
-         %ArkClient.Models.Peer{
+         %ArkClient.One.Models.Peer{
            delay: 93,
            errors: 0,
            height: 3102404,
@@ -117,14 +117,14 @@ defmodule ArkClient.Transport do
            status: "OK",
            version: "1.1.1"
          },
-         %ArkClient.Models.Peer{delay: 210, errors: 0, height: 3102404, ...},
-         %ArkClient.Models.Peer{delay: 360, errors: 0, ...},
-         %ArkClient.Models.Peer{delay: 182, ...},
-         %ArkClient.Models.Peer{...},
+         %ArkClient.One.Models.Peer{delay: 210, errors: 0, height: 3102404, ...},
+         %ArkClient.One.Models.Peer{delay: 360, errors: 0, ...},
+         %ArkClient.One.Models.Peer{delay: 182, ...},
+         %ArkClient.One.Models.Peer{...},
          ...
        ]}
   """
-  @spec list(Tesla.Client.t()) :: ArkClient.response()
+  @spec list(Tesla.Client.t()) :: ArkClient.One.response()
   def list(client) do
     client
     |> get("peer/list")
@@ -136,7 +136,7 @@ defmodule ArkClient.Transport do
 
   ## Examples
 
-      iex> ArkClient.Transport.status(client)
+      iex> ArkClient.One.Transport.status(client)
       {:ok,
        %{
          "currentSlot" => 4185977,
@@ -160,7 +160,7 @@ defmodule ArkClient.Transport do
          "success" => true
        }}
   """
-  @spec status(Tesla.Client.t()) :: ArkClient.response()
+  @spec status(Tesla.Client.t()) :: ArkClient.One.response()
   def status(client) do
     get(client, "peer/status")
   end
@@ -170,10 +170,10 @@ defmodule ArkClient.Transport do
 
   ## Examples
 
-      iex> ArkClient.Transport.transactions(client)
+      iex> ArkClient.One.Transport.transactions(client)
       {:ok, []}
   """
-  @spec transactions(Tesla.Client.t()) :: ArkClient.response()
+  @spec transactions(Tesla.Client.t()) :: ArkClient.One.response()
   def transactions(client) do
     client
     |> get("peer/transactions")
@@ -185,13 +185,13 @@ defmodule ArkClient.Transport do
 
   ## Examples
 
-      iex> ArkClient.Transport.transactions_from_ids(client, [id])
+      iex> ArkClient.One.Transport.transactions_from_ids(client, [id])
       {:ok, []}
   """
   @spec transactions_from_ids(
     Tesla.Client.t(),
     List.t()
-  ) :: ArkClient.response()
+  ) :: ArkClient.One.response()
   def transactions_from_ids(client, ids) do
     client
     |> get("peer/transactionsFromIds", query: [ids: Enum.join(ids, ",")])

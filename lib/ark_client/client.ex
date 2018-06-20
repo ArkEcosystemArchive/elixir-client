@@ -5,12 +5,6 @@ defmodule ArkClient.Client do
   This module generates a Tesla.Client for use in future requests. Feel free
   to make your own Tesla Client struct and pass that around.
   """
-  @devnet_network_address <<0x1e>>
-  @mainnet_network_address <<0x17>>
-
-  def devnet_network_address, do: @devnet_network_address
-  def mainnet_network_address, do: @mainnet_network_address
-
   @doc """
   Create a new instance.
 
@@ -40,12 +34,10 @@ defmodule ArkClient.Client do
   @spec new(Map.t) :: Tesla.Client.t
   def new(%{
     nethash: nethash,
-    network_address: network_address,
     url: url,
     version: version
   })
   when is_bitstring(nethash)
-  and is_bitstring(network_address)
   and is_bitstring(url)
   and is_bitstring(version) do
     headers = [
@@ -65,16 +57,16 @@ defmodule ArkClient.Client do
       {Tesla.Middleware.BaseUrl, url},
       {Tesla.Middleware.Headers, headers},
       {Tesla.Middleware.JSON, []},
-      {ArkClient.Middleware.Logger, [log_level: log_level]},
+      {ArkClient.One.Middleware.Logger, [log_level: log_level]},
     ]
 
     Tesla.build_client(pre)
   end
 
-  def new(%{ip: ip, port: port, protocol: protocol} = opts) do
+  def new(%{host: host} = opts) do
     opts
-    |> Map.drop([:ip, :port, :protocol])
-    |> Map.put(:url, "#{protocol}://#{ip}:#{port}")
+    |> Map.drop([:host])
+    |> Map.put(:url, "#{host}")
     |> new
   end
 

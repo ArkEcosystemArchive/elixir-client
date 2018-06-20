@@ -1,20 +1,20 @@
-defmodule ArkClient.Block do
+defmodule ArkClient.One.Block do
   @moduledoc """
-  Documentation for ArkClient.Block.
+  Documentation for ArkClient.One.Block.
   """
 
   import ArkClient
 
-  alias ArkClient.Models.Block
+  alias ArkClient.One.Models.Block
 
   @doc """
   Get block by id.
 
   ## Examples
 
-      iex(3)> ArkClient.Block.block(client, "887102556000070987")
+      iex(3)> ArkClient.One.Block.block(client, "887102556000070987")
       {:ok,
-       %ArkClient.Models.Block{
+       %ArkClient.One.Models.Block{
          block_signature: "3045022100cf25e7aa0ad979b8a681930dda181337f6aec2f45f95fc15f8082a0acab7d501022061e66f303278245abeb30ec63e9cf282d6180d1f10439f0b11741bafa52a8e18",
          confirmations: 27,
          generator_id: "DHQ4Fjsyiop3qBR4otAjAu6cBHkgRELqGA",
@@ -33,7 +33,7 @@ defmodule ArkClient.Block do
          version: 0
        }}
   """
-  @spec block(Tesla.Client.t(), String.t()) :: ArkClient.response()
+  @spec block(Tesla.Client.t(), String.t()) :: ArkClient.One.response()
   def block(client, id) do
     client
     |> get("api/blocks/get", query: [id: id])
@@ -45,10 +45,10 @@ defmodule ArkClient.Block do
 
   ## Examples
 
-      iex> ArkClient.Block.blocks(client)
+      iex> ArkClient.One.Block.blocks(client)
       {:ok,
        [
-         %ArkClient.Models.Block{
+         %ArkClient.One.Models.Block{
            block_signature: "3045022100cf25e7aa0ad979b8a681930dda181337f6aec2f45f95fc15f8082a0acab7d501022061e66f303278245abeb30ec63e9cf282d6180d1f10439f0b11741bafa52a8e18",
            confirmations: 1,
            generator_id: "DHQ4Fjsyiop3qBR4otAjAu6cBHkgRELqGA",
@@ -66,14 +66,14 @@ defmodule ArkClient.Block do
            total_forged: "200000000",
            version: 0
          },
-         %ArkClient.Models.Block{...},
-         %ArkClient.Models.Block{...},
-         %ArkClient.Models.Block{...},
-         %ArkClient.Models.Block{...},
+         %ArkClient.One.Models.Block{...},
+         %ArkClient.One.Models.Block{...},
+         %ArkClient.One.Models.Block{...},
+         %ArkClient.One.Models.Block{...},
          ...
        ]}
   """
-  @spec blocks(Tesla.Client.t(), Keyword.t()) :: ArkClient.response()
+  @spec blocks(Tesla.Client.t(), Keyword.t()) :: ArkClient.One.response()
   def blocks(client, parameters \\ []) do
     client
     |> get("api/blocks", query: parameters)
@@ -85,10 +85,10 @@ defmodule ArkClient.Block do
 
   ## Examples
 
-      iex> ArkClient.Block.epoch(client)
+      iex> ArkClient.One.Block.epoch(client)
       {:ok, "2017-03-21T13:00:00.000Z"}
   """
-  @spec epoch(Tesla.Client.t()) :: ArkClient.response()
+  @spec epoch(Tesla.Client.t()) :: ArkClient.One.response()
   def epoch(client) do
     client
     |> get("api/blocks/getEpoch")
@@ -104,10 +104,10 @@ defmodule ArkClient.Block do
 
   ## Examples
 
-      iex> ArkClient.Block.fee(client)
+      iex> ArkClient.One.Block.fee(client)
       {:ok, 10000000}
   """
-  @spec fee(Tesla.Client.t()) :: ArkClient.response()
+  @spec fee(Tesla.Client.t()) :: ArkClient.One.response()
   def fee(client) do
     client
     |> get("api/blocks/getFee")
@@ -123,7 +123,7 @@ defmodule ArkClient.Block do
 
   ## Examples
 
-      iex> ArkClient.Block.fees(client)
+      iex> ArkClient.One.Block.fees(client)
       {:ok,
        %{
          "delegate" => 2500000000,
@@ -133,7 +133,7 @@ defmodule ArkClient.Block do
          "vote" => 100000000
        }}
   """
-  @spec fees(Tesla.Client.t()) :: ArkClient.response()
+  @spec fees(Tesla.Client.t()) :: ArkClient.One.response()
   def fees(client) do
     client
     |> get("api/blocks/getFees")
@@ -149,10 +149,10 @@ defmodule ArkClient.Block do
 
   ## Examples
 
-      iex> ArkClient.Block.height(client)
+      iex> ArkClient.One.Block.height(client)
       {:ok, %{"height" => 3102123, "id" => "6065299679901800950", "success" => true}}
   """
-  @spec height(Tesla.Client.t()) :: ArkClient.response()
+  @spec height(Tesla.Client.t()) :: ArkClient.One.response()
   def height(client) do
     get(client, "api/blocks/getHeight")
   end
@@ -162,10 +162,10 @@ defmodule ArkClient.Block do
 
   ## Examples
 
-      iex> ArkClient.Block.milestone(client)
+      iex> ArkClient.One.Block.milestone(client)
       {:ok, 1}
   """
-  @spec milestone(Tesla.Client.t()) :: ArkClient.response()
+  @spec milestone(Tesla.Client.t()) :: ArkClient.One.response()
   def milestone(client) do
     client
     |> get("api/blocks/getMilestone")
@@ -181,10 +181,10 @@ defmodule ArkClient.Block do
 
   ## Examples
 
-      iex> ArkClient.Block.nethash(client)
+      iex> ArkClient.One.Block.nethash(client)
       {:ok, "578e820911f24e039733b45e4882b73e301f813a0d2c31330dafda84534ffa23"}
   """
-  @spec nethash(Tesla.Client) :: ArkClient.response()
+  @spec nethash(Tesla.Client) :: ArkClient.One.response()
   def nethash(client) do
     client
     |> get("api/blocks/getNethash")
@@ -200,10 +200,10 @@ defmodule ArkClient.Block do
 
   ## Examples
 
-      iex> ArkClient.Block.reward(client)
+      iex> ArkClient.One.Block.reward(client)
       {:ok, 200000000}
   """
-  @spec reward(Tesla.Client.t()) :: ArkClient.response()
+  @spec reward(Tesla.Client.t()) :: ArkClient.One.response()
   def reward(client) do
     client
     |> get("api/blocks/getReward")
@@ -219,7 +219,7 @@ defmodule ArkClient.Block do
 
   ## Examples
 
-      iex> ArkClient.Block.status(client)
+      iex> ArkClient.One.Block.status(client)
       {:ok,
        %{
          "epoch" => "2017-03-21T13:00:00.000Z",
@@ -232,7 +232,7 @@ defmodule ArkClient.Block do
          "supply" => 13120429400000000
        }}
   """
-  @spec status(Tesla.Client.t()) :: ArkClient.response()
+  @spec status(Tesla.Client.t()) :: ArkClient.One.response()
   def status(client) do
     get(client, "api/blocks/getStatus")
   end
@@ -242,11 +242,11 @@ defmodule ArkClient.Block do
 
   ## Examples
 
-      iex> ArkClient.Block.supply(client)
+      iex> ArkClient.One.Block.supply(client)
       {:ok, 13120431600000000}
 
   """
-  @spec supply(Tesla.Client.t()) :: ArkClient.response()
+  @spec supply(Tesla.Client.t()) :: ArkClient.One.response()
   def supply(client) do
     client
     |> get("api/blocks/getSupply")

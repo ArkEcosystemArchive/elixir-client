@@ -1,4 +1,4 @@
-defmodule ArkClient.Models.Block do
+defmodule ArkClient.One.Models.Block do
   @moduledoc """
   Block model.
   """
@@ -43,7 +43,7 @@ defmodule ArkClient.Models.Block do
   }
 
   @doc """
-  Builds an ArkClient.Models.Block struct from the API response map.
+  Builds an ArkClient.One.Models.Block struct from the API response map.
   """
   @spec build(Map.t()) :: t()
   def build(%{"id" => id} = attributes) do

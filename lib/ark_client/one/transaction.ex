@@ -1,82 +1,21 @@
-defmodule ArkClient.Transaction do
+defmodule ArkClient.One.Transaction do
   @moduledoc """
-  Documentation for ArkClient.Transaction.
+  Documentation for ArkClient.One.Transaction.
   """
 
   import ArkClient
 
-  alias ArkClient.Models.Transaction
-  alias ArkClient.Util.TransactionBuilder
-
-  @doc """
-  Sign and create a new transaction.
-
-  ## Examples
-
-      iex> ArkClient.Transaction.create(client, "DFAVFGgkpYc4hrvUNZRf9Tpi7irWeKexLc", 100000000, "can't sleep! clowns will eat me!", "meniscus drive despoil music poplin prolong landau huarache govern hotbox")
-      {:ok,
-       %{
-         "success" => true,
-         "transactionIds" => ["4a5f96b24091b747fb7fd34952ef465d9b8ec5f73d1b234405bf2718d2a87d56"]
-       }}
-  """
-  @spec create(
-    Tesla.Client.t(),
-    String.t(),
-    String.t(),
-    String.t(),
-    String.t(),
-    String.t()
-  ) :: ArkClient.response()
-  def create(
-    client,
-    recipient_id,
-    amount,
-    vendor_field,
-    secret,
-    second_secret \\ nil
-  ) do
-    transaction =
-      recipient_id
-      |> TransactionBuilder.create_transfer(
-        amount,
-        vendor_field,
-        secret,
-        second_secret
-      )
-      |> TransactionBuilder.transaction_to_params
-
-    post(client, "peer/transactions", %{transactions: [transaction]})
-  end
-
-  @doc """
-  Create a new transaction.
-
-  ## Examples
-
-      iex> ArkClient.Transaction.create_from_signed_object(client, transaction)
-      {:ok,
-       %{
-         "success" => true,
-         "transactionIds" => ["4a5f96b24091b747fb7fd34952ef465d9b8ec5f73d1b234405bf2718d2a87d56"]
-       }}
-  """
-  @spec create_from_signed_object(
-    Tesla.Client.t(),
-    Keyword.t()
-  ) :: ArkClient.response()
-  def create_from_signed_object(client, transaction) do
-    post(client, "peer/transactions", %{transactions: [transaction]})
-  end
+  alias ArkClient.One.Models.Transaction
+  alias ArkClient.One.Util.TransactionBuilder
 
   @doc """
   Get a single transaction.
 
   ## Examples
 
-      iex> ArkClient.Transaction.transaction(client, "4a5f96b24091b747fb7fd34952ef465d9b8ec5f73d1b234405bf2718d2a87d56")
+      iex> ArkClient.One.Transaction.transaction(client, "4a5f96b24091b747fb7fd34952ef465d9b8ec5f73d1b234405bf2718d2a87d56")
       {:ok,
-       %ArkClient.Models.Transaction{
+       %ArkClient.One.Models.Transaction{
          amount: 100000000,
          asset: nil,
          blockid: "5375521981080787257",
@@ -92,7 +31,7 @@ defmodule ArkClient.Transaction do
          vendor_field: "can't sleep! clowns will eat me!"
        }}
   """
-  @spec transaction(Tesla.Client.t(), Keyword.t()) :: ArkClient.response()
+  @spec transaction(Tesla.Client.t(), Keyword.t()) :: ArkClient.One.response()
   def transaction(client, id) do
     client
     |> get("api/transactions/get", query: [id: id])
@@ -104,10 +43,10 @@ defmodule ArkClient.Transaction do
 
   ## Examples
 
-      iex> ArkClient.Transaction.transactions(client)
+      iex> ArkClient.One.Transaction.transactions(client)
       {:ok,
        [
-         %ArkClient.Models.Transaction{
+         %ArkClient.One.Models.Transaction{
            amount: 1105,
            asset: %{},
            blockid: "10000164854398237004",
@@ -122,13 +61,13 @@ defmodule ArkClient.Transaction do
            type: 0,
            vendor_field: "Goose Voter - True Block Weight"
          },
-         %ArkClient.Models.Transaction{amount: 52, asset: nil, ...},
-         %ArkClient.Models.Transaction{amount: 57, ...},
-         %ArkClient.Models.Transaction{...},
+         %ArkClient.One.Models.Transaction{amount: 52, asset: nil, ...},
+         %ArkClient.One.Models.Transaction{amount: 57, ...},
+         %ArkClient.One.Models.Transaction{...},
          ...
        ]}
   """
-  @spec transactions(Tesla.Client.t(), Keyword.t()) :: ArkClient.response()
+  @spec transactions(Tesla.Client.t(), Keyword.t()) :: ArkClient.One.response()
   def transactions(client, parameters \\ []) do
     client
     |> get("api/transactions", query: parameters)
@@ -140,9 +79,9 @@ defmodule ArkClient.Transaction do
 
   ## Examples
 
-      iex> ArkClient.Transaction.unconfirmed_transaction(client, "5a4f96b24091b747fb7fd34952ef465d9b8ec5f73d1b234405bf2718d2a87d45")
+      iex> ArkClient.One.Transaction.unconfirmed_transaction(client, "5a4f96b24091b747fb7fd34952ef465d9b8ec5f73d1b234405bf2718d2a87d45")
       {:ok,
-       %ArkClient.Models.Transaction{
+       %ArkClient.One.Models.Transaction{
          amount: 100000000,
          asset: nil,
          blockid: nil,
@@ -161,7 +100,7 @@ defmodule ArkClient.Transaction do
   @spec unconfirmed_transaction(
     Tesla.Client.t(),
     String.t()
-  ) :: ArkClient.response()
+  ) :: ArkClient.One.response()
   def unconfirmed_transaction(client, id) do
     client
     |> get("api/transactions/unconfirmed/get", query: [id: id])
@@ -173,13 +112,13 @@ defmodule ArkClient.Transaction do
 
   ## Examples
 
-      iex> ArkClient.Transaction.unconfirmed_transactions(client)
+      iex> ArkClient.One.Transaction.unconfirmed_transactions(client)
       {:ok, []}
   """
   @spec unconfirmed_transactions(
     Tesla.Client.t(),
     Keyword.t()
-  ) :: ArkClient.response()
+  ) :: ArkClient.One.response()
   def unconfirmed_transactions(client, parameters \\ []) do
     client
     |> get("api/transactions/unconfirmed", query: parameters)

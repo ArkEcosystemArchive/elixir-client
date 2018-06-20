@@ -1,6 +1,6 @@
-defmodule ArkClient.Signature do
+defmodule ArkClient.One.Signature do
   @moduledoc """
-  Documentation for ArkClient.Signature.
+  Documentation for ArkClient.One.Signature.
   """
 
   import ArkClient
@@ -10,7 +10,7 @@ defmodule ArkClient.Signature do
 
   DEPRECATED
   """
-  @spec create(Tesla.Client.t(), String.t(), String.t()) :: ArkClient.response()
+  @spec create(Tesla.Client.t(), String.t(), String.t()) :: ArkClient.One.response()
   def create(_client, _secret, _second_secret) do
     raise "POST /api/signatures is deprecated."
   end
@@ -20,10 +20,10 @@ defmodule ArkClient.Signature do
 
   ## Examples
 
-      iex> ArkClient.Signature.fee(client)
+      iex> ArkClient.One.Signature.fee(client)
       {:ok, 500000000}
   """
-  @spec fee(Tesla.Client.t()) :: ArkClient.response()
+  @spec fee(Tesla.Client.t()) :: ArkClient.One.response()
   def fee(client) do
     client
     |> get("api/signatures/fee")
