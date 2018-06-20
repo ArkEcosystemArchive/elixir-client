@@ -34,11 +34,11 @@ defmodule ArkClient.Client do
   @spec new(Map.t) :: Tesla.Client.t
   def new(%{
     nethash: nethash,
-    url: url,
+    host: host,
     version: version
   })
   when is_bitstring(nethash)
-  and is_bitstring(url)
+  and is_bitstring(host)
   and is_bitstring(version) do
     headers = [
       {"Content-Type", "application/json"},
@@ -54,10 +54,10 @@ defmodule ArkClient.Client do
       end
 
     pre = [
-      {Tesla.Middleware.BaseUrl, url},
+      {Tesla.Middleware.BaseUrl, host},
       {Tesla.Middleware.Headers, headers},
       {Tesla.Middleware.JSON, []},
-      {ArkClient.API.One.Middleware.Logger, [log_level: log_level]},
+      {ArkClient.Middleware.Logger, [log_level: log_level]},
     ]
 
     Tesla.build_client(pre)
@@ -66,7 +66,7 @@ defmodule ArkClient.Client do
   def new(%{host: host} = opts) do
     opts
     |> Map.drop([:host])
-    |> Map.put(:url, "#{host}")
+    |> Map.put(:host, "#{host}")
     |> new
   end
 
