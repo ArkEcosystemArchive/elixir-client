@@ -1,29 +1,21 @@
-defmodule ArkClient.One.Delegate do
+defmodule ArkClient.API.One.Delegate do
   @moduledoc """
-  Documentation for ArkClient.One.Delegate.
+  Documentation for ArkClient.API.One.Delegate.
   """
 
   import ArkClient
-
-  alias ArkClient.One.Models.{Account, Delegate}
 
   @doc """
   Get the count of delegates.
 
   ## Examples
 
-      iex> ArkClient.One.Delegate.count(client)
+      iex> ArkClient.API.One.Delegate.count(client)
       {:ok, 198}
   """
-  @spec count(Tesla.Client.t()) :: ArkClient.One.response()
+  @spec count(Tesla.Client.t()) :: ArkClient.response()
   def count(client) do
-    client
-    |> get("api/delegates/count")
-    |> case do
-      {:ok, %{"count" => count, "success" => true}} -> {:ok, count}
-      {:ok, invalid_response} -> {:error, invalid_response}
-      {:error, _message} = error -> error
-    end
+    get(client, "api/delegates/count")
   end
 
   @doc """
@@ -31,9 +23,9 @@ defmodule ArkClient.One.Delegate do
 
   ## Examples
 
-      iex> ArkClient.One.Delegate.delegate(client)
+      iex> ArkClient.API.One.Delegate.delegate(client)
       {:ok,
-       %ArkClient.One.Models.Delegate{
+       %ArkClient.API.One.Models.Delegate{
          address: "DQCZQzibtABoggT9ygSzFNQ3A7PJyxttPP",
          approval: 0.09,
          missedblocks: 1748,
@@ -45,11 +37,9 @@ defmodule ArkClient.One.Delegate do
          vote: "12385839821762"
        }}
   """
-  @spec delegate(Tesla.Client.t(), Keyword.t()) :: ArkClient.One.response()
+  @spec delegate(Tesla.Client.t(), Keyword.t()) :: ArkClient.response()
   def delegate(client, parameters \\ []) do
-    client
-    |> get("api/delegates/get", query: parameters)
-    |> handle_response
+    get(client, "api/delegates/get", query: parameters)
   end
 
   @doc """
@@ -57,10 +47,10 @@ defmodule ArkClient.One.Delegate do
 
   ## Examples
 
-      iex> ArkClient.One.Delegate.delegates(client)
+      iex> ArkClient.API.One.Delegate.delegates(client)
       {:ok,
        [
-         %ArkClient.One.Models.Delegate{
+         %ArkClient.API.One.Models.Delegate{
            address: "DARiJqhogp2Lu6bxufUFQQMuMyZbxjCydN",
            approval: 4.32,
            missedblocks: 1722,
@@ -71,17 +61,15 @@ defmodule ArkClient.One.Delegate do
            username: "boldninja",
            vote: "566475956800532"
          },
-         %ArkClient.One.Models.Delegate{...},
-         %ArkClient.One.Models.Delegate{...},
-         %ArkClient.One.Models.Delegate{...},
+         %ArkClient.API.One.Models.Delegate{...},
+         %ArkClient.API.One.Models.Delegate{...},
+         %ArkClient.API.One.Models.Delegate{...},
          ...
        ]}
   """
-  @spec delegates(Tesla.Client.t(), Keyword.t()) :: ArkClient.One.response()
+  @spec delegates(Tesla.Client.t(), Keyword.t()) :: ArkClient.response()
   def delegates(client, parameters \\ []) do
-    client
-    |> get("api/delegates", query: parameters)
-    |> handle_response
+    get(client, "api/delegates", query: parameters)
   end
 
   @doc """
@@ -89,18 +77,12 @@ defmodule ArkClient.One.Delegate do
 
   ## Examples
 
-      iex> ArkClient.One.Delegate.fee(client)
+      iex> ArkClient.API.One.Delegate.fee(client)
        {:ok, 2500000000}
   """
-  @spec fee(Tesla.Client.t()) :: ArkClient.One.response()
+  @spec fee(Tesla.Client.t()) :: ArkClient.response()
   def fee(client) do
-    client
-    |> get("api/delegates/fee")
-    |> case do
-      {:ok, %{"fee" => fee, "success" => true}} -> {:ok, fee}
-      {:ok, invalid_response} -> {:error, invalid_response}
-      {:error, _message} = error -> error
-    end
+    get(client, "api/delegates/fee")
   end
 
   @doc """
@@ -108,7 +90,7 @@ defmodule ArkClient.One.Delegate do
 
   ## Examples
 
-      iex> ArkClient.One.Delegate.forged_by_account(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
+      iex> ArkClient.API.One.Delegate.forged_by_account(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
       {:ok,
        %{
          "fees" => "190000000",
@@ -117,7 +99,7 @@ defmodule ArkClient.One.Delegate do
          "success" => true
        }}
   """
-  @spec forged_by_account(Tesla.Client.t(), String.t()) :: ArkClient.One.response()
+  @spec forged_by_account(Tesla.Client.t(), String.t()) :: ArkClient.response()
   def forged_by_account(client, generatorPublicKey) do
     get(
       client,
@@ -131,26 +113,16 @@ defmodule ArkClient.One.Delegate do
 
   ## Examples
 
-      iex> ArkClient.One.Delegate.forging_status(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
+      iex> ArkClient.API.One.Delegate.forging_status(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
       {:ok, true}
   """
   @tag :skip
-  @spec forging_status(
-    Tesla.Client.t(),
-    String.t(),
-    Keyword.t()
-  ) :: ArkClient.One.response()
+  @spec forging_status(Tesla.Client.t(), String.t(), Keyword.t()) :: ArkClient.response()
   def forging_status(client, public_key, parameters \\ []) do
-    client
-    |> get(
+    get(
       "api/delegates/forging/status",
       query: [publicKey: public_key] ++ parameters
     )
-    |> case do
-      {:ok, %{"enabled" => enabled, "success" => true}} -> {:ok, enabled}
-      {:ok, invalid_response} -> {:error, invalid_response}
-      {:error, _message} = error -> error
-    end
   end
 
   @doc """
@@ -158,7 +130,7 @@ defmodule ArkClient.One.Delegate do
 
   ## Examples
 
-      iex> ArkClient.One.Delegate.next_forgers(client)
+      iex> ArkClient.API.One.Delegate.next_forgers(client)
       {:ok,
        %{
          "currentBlock" => 3102247,
@@ -176,7 +148,7 @@ defmodule ArkClient.One.Delegate do
          "success" => true
        }}
   """
-  @spec next_forgers(Tesla.Client.t()) :: ArkClient.One.response()
+  @spec next_forgers(Tesla.Client.t()) :: ArkClient.response()
   def next_forgers(client) do
     get(client, "api/delegates/getNextForgers")
   end
@@ -186,10 +158,10 @@ defmodule ArkClient.One.Delegate do
 
   ## Examples
 
-      iex> ArkClient.One.Delegate.search(client, "arkoar")
+      iex> ArkClient.API.One.Delegate.search(client, "arkoar")
       {:ok,
        [
-         %ArkClient.One.Models.Delegate{
+         %ArkClient.API.One.Models.Delegate{
            address: "DQCZQzibtABoggT9ygSzFNQ3A7PJyxttPP",
            approval: nil,
            missedblocks: 1748,
@@ -207,11 +179,9 @@ defmodule ArkClient.One.Delegate do
     Tesla.Client.t(),
     String.t(),
     Keyword.t()
-  ) :: ArkClient.One.response()
+  ) :: ArkClient.response()
   def search(client, q, parameters \\ []) do
-    client
-    |> get("api/delegates/search", query: [q: q] ++ parameters)
-    |> handle_response
+    get(client, "api/delegates/search", query: [q: q] ++ parameters)
   end
 
   @doc """
@@ -219,11 +189,11 @@ defmodule ArkClient.One.Delegate do
 
   ## Examples
 
-      iex> ArkClient.One.Delegate.voters(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
-      iex(10)> ArkClient.One.Delegate.voters(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
+      iex> ArkClient.API.One.Delegate.voters(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
+      iex(10)> ArkClient.API.One.Delegate.voters(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
       {:ok,
        [
-         %ArkClient.One.Models.Account{
+         %ArkClient.API.One.Models.Account{
            address: "DP8SxqSnCV3Rsdvjeqrum2HA2CAgymCPJP",
            balance: "200000000",
            multisignatures: nil,
@@ -234,37 +204,13 @@ defmodule ArkClient.One.Delegate do
            unconfirmed_balance: nil,
            unconfirmed_signature: nil
          },
-         %ArkClient.One.Models.Account{...},
-         %ArkClient.One.Models.Account{...},
+         %ArkClient.API.One.Models.Account{...},
+         %ArkClient.API.One.Models.Account{...},
          ...
        ]}
   """
-  @spec voters(Tesla.Client.t(), String.t()) :: ArkClient.One.response()
+  @spec voters(Tesla.Client.t(), String.t()) :: ArkClient.response()
   def voters(client, public_key) do
-    client
-    |> get("api/delegates/voters", query: [publicKey: public_key])
-    |> handle_response
-  end
-
-  # private
-
-  defp handle_response({:ok, %{"accounts" => accounts}}) do
-    {:ok, Enum.map(accounts, &Account.build/1)}
-  end
-
-  defp handle_response({:ok, %{"delegates" => delegates}}) do
-    {:ok, Enum.map(delegates, &Delegate.build/1)}
-  end
-
-  defp handle_response({:ok, %{"delegate" => delegate}}) do
-    {:ok, Delegate.build(delegate)}
-  end
-
-  defp handle_response({:ok, invalid_response}) do
-    {:error, invalid_response}
-  end
-
-  defp handle_response({:error, _error} = response) do
-    response
+    get(client, "api/delegates/voters", query: [publicKey: public_key])
   end
 end

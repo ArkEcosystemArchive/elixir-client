@@ -1,25 +1,21 @@
-defmodule ArkClient.One.Transport do
+defmodule ArkClient.API.One.Transport do
   @moduledoc """
-  Documentation for ArkClient.One.Transport.
+  Documentation for ArkClient.API.One.Transport.
   """
 
   import ArkClient
-
-  alias ArkClient.One.Models.{Block, Peer, Transaction}
 
   @doc """
   Get a single block.
 
   ## Examples
 
-      iex> ArkClient.One.Transport.block(client, "887102556000070987")
+      iex> ArkClient.API.One.Transport.block(client, "887102556000070987")
       {:ok, []}
   """
-  @spec block(Tesla.Client.t(), String.t()) :: ArkClient.One.response()
+  @spec block(Tesla.Client.t(), String.t()) :: ArkClient.response()
   def block(client, id) do
-    client
-    |> get("peer/block", query: [id: id])
-    |> handle_response
+    get(client, "peer/block", query: [id: id])
   end
 
   @doc """
@@ -27,14 +23,12 @@ defmodule ArkClient.One.Transport do
 
   ## Examples
 
-      iex(4)> ArkClient.One.Transport.blocks(client)
+      iex(4)> ArkClient.API.One.Transport.blocks(client)
       {:ok, []}
   """
-  @spec blocks(Tesla.Client.t()) :: ArkClient.One.response()
+  @spec blocks(Tesla.Client.t()) :: ArkClient.response()
   def blocks(client) do
-    client
-    |> get("peer/blocks")
-    |> handle_response
+    get(client, "peer/blocks")
   end
 
   @doc """
@@ -42,7 +36,7 @@ defmodule ArkClient.One.Transport do
 
   WARNING: This doesn't seem to work.
   """
-  @spec blocks_common(Tesla.Client.t(), List.t()) :: ArkClient.One.response()
+  @spec blocks_common(Tesla.Client.t(), List.t()) :: ArkClient.response()
   def blocks_common(client, ids) do
     get(client, "peer/blocks/common", query: [ids: Enum.join(ids, ",")])
   end
@@ -52,17 +46,14 @@ defmodule ArkClient.One.Transport do
 
   ## Examples
 
-      iex> ArkClient.One.Transport.create_transactions(client, [transaction])
+      iex> ArkClient.API.One.Transport.create_transactions(client, [transaction])
       {:ok,
        %{
          "success" => true,
          "transactionIds" => ["4a5f96b24091b747fb7fd34952ef465d9b8ec5f73d1b234405bf2718d2a87d56"]
        }}
   """
-  @spec create_transactions(
-    Tesla.Client.t(),
-    List.t()
-  ) :: ArkClient.One.response()
+  @spec create_transactions(Tesla.Client.t(), List.t()) :: ArkClient.response()
   def create_transactions(client, transactions) do
     post(client, "peer/transactions", %{transactions: transactions})
   end
@@ -72,7 +63,7 @@ defmodule ArkClient.One.Transport do
 
   ## Examples
 
-      iex> ArkClient.One.Transport.height(client)
+      iex> ArkClient.API.One.Transport.height(client)
       {:ok,
        %{
          "header" => %{
@@ -94,7 +85,7 @@ defmodule ArkClient.One.Transport do
          "success" => true
        }}
   """
-  @spec height(Tesla.Client.t()) :: ArkClient.One.response()
+  @spec height(Tesla.Client.t()) :: ArkClient.response()
   def height(client) do
     get(client, "peer/height")
   end
@@ -104,10 +95,10 @@ defmodule ArkClient.One.Transport do
 
   ## Examples
 
-      iex> ArkClient.One.Transport.list(client)
+      iex> ArkClient.API.One.Transport.list(client)
       {:ok,
        [
-         %ArkClient.One.Models.Peer{
+         %ArkClient.API.One.Models.Peer{
            delay: 93,
            errors: 0,
            height: 3102404,
@@ -117,18 +108,16 @@ defmodule ArkClient.One.Transport do
            status: "OK",
            version: "1.1.1"
          },
-         %ArkClient.One.Models.Peer{delay: 210, errors: 0, height: 3102404, ...},
-         %ArkClient.One.Models.Peer{delay: 360, errors: 0, ...},
-         %ArkClient.One.Models.Peer{delay: 182, ...},
-         %ArkClient.One.Models.Peer{...},
+         %ArkClient.API.One.Models.Peer{delay: 210, errors: 0, height: 3102404, ...},
+         %ArkClient.API.One.Models.Peer{delay: 360, errors: 0, ...},
+         %ArkClient.API.One.Models.Peer{delay: 182, ...},
+         %ArkClient.API.One.Models.Peer{...},
          ...
        ]}
   """
-  @spec list(Tesla.Client.t()) :: ArkClient.One.response()
+  @spec list(Tesla.Client.t()) :: ArkClient.response()
   def list(client) do
-    client
-    |> get("peer/list")
-    |> handle_response
+    get(client, "peer/list")
   end
 
   @doc """
@@ -136,7 +125,7 @@ defmodule ArkClient.One.Transport do
 
   ## Examples
 
-      iex> ArkClient.One.Transport.status(client)
+      iex> ArkClient.API.One.Transport.status(client)
       {:ok,
        %{
          "currentSlot" => 4185977,
@@ -160,7 +149,7 @@ defmodule ArkClient.One.Transport do
          "success" => true
        }}
   """
-  @spec status(Tesla.Client.t()) :: ArkClient.One.response()
+  @spec status(Tesla.Client.t()) :: ArkClient.response()
   def status(client) do
     get(client, "peer/status")
   end
@@ -170,14 +159,12 @@ defmodule ArkClient.One.Transport do
 
   ## Examples
 
-      iex> ArkClient.One.Transport.transactions(client)
+      iex> ArkClient.API.One.Transport.transactions(client)
       {:ok, []}
   """
-  @spec transactions(Tesla.Client.t()) :: ArkClient.One.response()
+  @spec transactions(Tesla.Client.t()) :: ArkClient.response()
   def transactions(client) do
-    client
-    |> get("peer/transactions")
-    |> handle_response
+    get(client, "peer/transactions")
   end
 
   @doc """
@@ -185,42 +172,11 @@ defmodule ArkClient.One.Transport do
 
   ## Examples
 
-      iex> ArkClient.One.Transport.transactions_from_ids(client, [id])
+      iex> ArkClient.API.One.Transport.transactions_from_ids(client, [id])
       {:ok, []}
   """
-  @spec transactions_from_ids(
-    Tesla.Client.t(),
-    List.t()
-  ) :: ArkClient.One.response()
+  @spec transactions_from_ids(Tesla.Client.t(), List.t()) :: ArkClient.response()
   def transactions_from_ids(client, ids) do
-    client
-    |> get("peer/transactionsFromIds", query: [ids: Enum.join(ids, ",")])
-    |> handle_response
-  end
-
-  # private
-
-  defp handle_response({:ok, %{"block" => block}}) do
-    {:ok, Block.build(block)}
-  end
-
-  defp handle_response({:ok, %{"blocks" => blocks}}) do
-    {:ok, Enum.map(blocks, &Block.build/1)}
-  end
-
-  defp handle_response({:ok, %{"peers" => peers, "success" => true}}) do
-    {:ok, Enum.map(peers, &Peer.build/1)}
-  end
-
-  defp handle_response({:ok, %{"transactions" => transactions}}) do
-    {:ok, Enum.map(transactions, &Transaction.build/1)}
-  end
-
-  defp handle_response({:ok, invalid_response}) do
-    {:error, invalid_response}
-  end
-
-  defp handle_response({:error, _error} = response) do
-    response
+    get(client, "peer/transactionsFromIds", query: [ids: Enum.join(ids, ",")])
   end
 end

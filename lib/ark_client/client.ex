@@ -57,7 +57,7 @@ defmodule ArkClient.Client do
       {Tesla.Middleware.BaseUrl, url},
       {Tesla.Middleware.Headers, headers},
       {Tesla.Middleware.JSON, []},
-      {ArkClient.One.Middleware.Logger, [log_level: log_level]},
+      {ArkClient.API.One.Middleware.Logger, [log_level: log_level]},
     ]
 
     Tesla.build_client(pre)
