@@ -7,16 +7,16 @@ defmodule ArkClient.API.Two.Loader do
 
   @spec status(Tesla.Client.t()) :: ArkClient.response()
   def status(client) do
-    client |> get("node/status")
+    client |> get("api/node/status")
   end
 
   @spec syncing(Tesla.Client.t()) :: ArkClient.response()
   def syncing(client) do
-    client |> get("node/syncing")
+    client |> get("api/node/syncing")
   end
 
   @spec configuration(Tesla.Client.t()) :: ArkClient.response()
   def configuration(client) do
-    client |> get("node/configuration")
+    client |> get("api/node/configuration")
   end
 end

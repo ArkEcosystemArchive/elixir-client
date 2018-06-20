@@ -7,26 +7,26 @@ defmodule ArkClient.API.Webhook do
 
   @spec account(Tesla.Client.t(), List.t()) :: ArkClient.response()
   def list(client, parameters \\ []) do
-    client |> get("webhooks", parameters)
+    client |> get("api/webhooks", parameters)
   end
 
   @spec account(Tesla.Client.t(), List.t()) :: ArkClient.response()
   def create(client, parameters) do
-    client |> post("webhooks", parameters)
+    client |> post("api/webhooks", parameters)
   end
 
   @spec account(Tesla.Client.t(), String.t()) :: ArkClient.response()
   def show(client, id) do
-    client |> get("webhooks/#{id}")
+    client |> get("api/webhooks/#{id}")
   end
 
   @spec account(Tesla.Client.t(), List.t()) :: ArkClient.response()
   def update(client, id, parameters) do
-    client |> put("webhooks/#{id}", parameters)
+    client |> put("api/webhooks/#{id}", parameters)
   end
 
   @spec account(Tesla.Client.t(), String.t()) :: ArkClient.response()
   def delete(client, id) do
-    client |> delete("webhooks/#{id}")
+    client |> delete("api/webhooks/#{id}")
   end
 end
