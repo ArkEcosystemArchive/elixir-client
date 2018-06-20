@@ -5,11 +5,33 @@ defmodule ArkClient.API.Two.Models.Transaction do
   @derive Jason.Encoder
 
   defstruct [
-    :dummy
+    :id,
+    :block_id,
+    :type,
+    :amount,
+    :fee,
+    :sender,
+    :recipient,
+    :signature,
+    :vendor_field,
+    :asset,
+    :confirmations,
+    :timestamp
   ]
 
   @type t() :: %__MODULE__{
-    dummy: Integer.t()
+    id: String.t(),
+    block_id: String.t(),
+    type: Integer.t(),
+    amount: Integer.t(),
+    fee: Integer.t(),
+    sender: String.t(),
+    recipient: String.t(),
+    signature: String.t(),
+    vendor_field: String.t(),
+    asset: List.t(),
+    confirmations: Integer.t(),
+    timestamp: List.t()
   }
 
   @doc """
@@ -17,7 +39,18 @@ defmodule ArkClient.API.Two.Models.Transaction do
   """
   def build(attributes) do
     %__MODULE__{
-      dummy: Map.get(attributes, "dummy")
+      id: Map.get(attributes, "id"),
+      block_id: Map.get(attributes, "blockId"),
+      type: Map.get(attributes, "type"),
+      amount: Map.get(attributes, "amount"),
+      fee: Map.get(attributes, "fee"),
+      sender: Map.get(attributes, "sender"),
+      recipient: Map.get(attributes, "recipient"),
+      signature: Map.get(attributes, "signature"),
+      vendor_field: Map.get(attributes, "vendorField"),
+      asset: Map.get(attributes, "asset"),
+      confirmations: Map.get(attributes, "confirmations"),
+      timestamp: Map.get(attributes, "timestamp"),
     }
   end
 end
