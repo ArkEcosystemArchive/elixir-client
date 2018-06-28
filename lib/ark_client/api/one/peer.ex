@@ -1,6 +1,6 @@
-defmodule ArkClient.API.One.Peer do
+defmodule ArkEcosystem.Client.API.One.Peer do
   @moduledoc """
-  Documentation for ArkClient.API.One.Peer.
+  Documentation for ArkEcosystem.Client.API.One.Peer.
   """
 
   import ArkClient
@@ -10,9 +10,9 @@ defmodule ArkClient.API.One.Peer do
 
   ## Examples
 
-      iex> ArkClient.API.One.Peer.peer(client, "167.114.29.35", 4002)
+      iex> ArkEcosystem.Client.API.One.Peer.peer(client, "167.114.29.35", 4002)
       {:ok,
-       %ArkClient.API.One.Models.Peer{
+       %ArkEcosystem.Client.API.One.Models.Peer{
          delay: 85,
          errors: 0,
          height: 3102404,
@@ -23,7 +23,7 @@ defmodule ArkClient.API.One.Peer do
          version: "1.1.1"
        }}
   """
-  @spec peer(Tesla.Client.t(), String.t(), Integer.t()) :: ArkClient.response()
+  @spec peer(Tesla.Client.t(), String.t(), Integer.t()) :: ArkEcosystem.Client.response()
   def peer(client, ip, port) do
     client |> get("peers/get", query: [ip: ip, port: port])
   end
@@ -33,10 +33,10 @@ defmodule ArkClient.API.One.Peer do
 
   ## Examples
 
-      iex> ArkClient.API.One.Peer.peers(client)
+      iex> ArkEcosystem.Client.API.One.Peer.peers(client)
       {:ok,
        [
-         %ArkClient.API.One.Models.Peer{
+         %ArkEcosystem.Client.API.One.Models.Peer{
            delay: 93,
            errors: 0,
            height: 3102404,
@@ -46,14 +46,14 @@ defmodule ArkClient.API.One.Peer do
            status: "OK",
            version: "1.1.1"
          },
-         %ArkClient.API.One.Models.Peer{delay: 210, errors: 0, height: 3102404, ...},
-         %ArkClient.API.One.Models.Peer{delay: 360, errors: 0, ...},
-         %ArkClient.API.One.Models.Peer{delay: 182, ...},
-         %ArkClient.API.One.Models.Peer{...},
+         %ArkEcosystem.Client.API.One.Models.Peer{delay: 210, errors: 0, height: 3102404, ...},
+         %ArkEcosystem.Client.API.One.Models.Peer{delay: 360, errors: 0, ...},
+         %ArkEcosystem.Client.API.One.Models.Peer{delay: 182, ...},
+         %ArkEcosystem.Client.API.One.Models.Peer{...},
          ...
        ]}
   """
-  @spec peers(Tesla.Client.t(), Keyword.t()) :: ArkClient.response()
+  @spec peers(Tesla.Client.t(), Keyword.t()) :: ArkEcosystem.Client.response()
   def peers(client, parameters \\ []) do
     client |> get("peers", query: parameters)
   end
@@ -63,10 +63,10 @@ defmodule ArkClient.API.One.Peer do
 
   ## Examples
 
-      iex> ArkClient.API.One.Peer.version(client)
+      iex> ArkEcosystem.Client.API.One.Peer.version(client)
       {:ok, "1.1.1"}
   """
-  @spec version(Tesla.Client.t()) :: ArkClient.response()
+  @spec version(Tesla.Client.t()) :: ArkEcosystem.Client.response()
   def version(client) do
     client |> get("peers/version")
     end

@@ -1,15 +1,15 @@
-defmodule ArkClient.VoteTest do
+defmodule ArkEcosystem.Client.VoteTest do
   use ExUnit.Case
-  import ArkClient.Vote
+  import ArkEcosystem.Client.Vote
 
-  @client ArkClient.Client.new(%{
-            host: "https://dexplorer.ark.io:9443/",
+  @client ArkEcosystem.Client.new(%{
+            host: "https://dexplorer.ark.io:8443/api",
             nethash: "578e820911f24e039733b45e4882b73e301f813a0d2c31330dafda84534ffa23",
             version: "1.1.1"
           })
 
   @tag :skip
-  test "call ArkClient.Vote.vote" do
+  test "call ArkEcosystem.Client.Vote.vote" do
     response =
       vote(
         @client,
@@ -22,7 +22,7 @@ defmodule ArkClient.VoteTest do
   end
 
   @tag :skip
-  test "call ArkClient.Vote.unvote" do
+  test "call ArkEcosystem.Client.Vote.unvote" do
     response =
       unvote(
         @client,

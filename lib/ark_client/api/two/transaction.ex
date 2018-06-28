@@ -1,41 +1,41 @@
-defmodule ArkClient.API.Two.Transaction do
+defmodule ArkEcosystem.Client.API.Two.Transaction do
   @moduledoc """
-  Documentation for ArkClient.API.One.Transaction.
+  Documentation for ArkEcosystem.Client.API.One.Transaction.
   """
 
   import ArkClient
 
-  @spec list(Tesla.Client.t(), List.t()) :: ArkClient.response()
+  @spec list(Tesla.Client.t(), List.t()) :: ArkEcosystem.Client.response()
   def list(client, parameters \\ []) do
     client |> get("transactions", parameters)
   end
 
-  @spec create(Tesla.Client.t(), List.t()) :: ArkClient.response()
+  @spec create(Tesla.Client.t(), List.t()) :: ArkEcosystem.Client.response()
   def create(client, parameters) do
     client |> post("transactions", %{transactions: transactions})
   end
 
-  @spec show(Tesla.Client.t(), String.t()) :: ArkClient.response()
+  @spec show(Tesla.Client.t(), String.t()) :: ArkEcosystem.Client.response()
   def show(client, id) do
     client |> get("transactions/#{id}")
   end
 
-  @spec list_unconfirmed(Tesla.Client.t(), List.t()) :: ArkClient.response()
+  @spec list_unconfirmed(Tesla.Client.t(), List.t()) :: ArkEcosystem.Client.response()
   def list_unconfirmed(client, parameters \\ []) do
     client |> get("transactions/unconfirmed", parameters)
   end
 
-  @spec get_unconfirmed(Tesla.Client.t(), String.t()) :: ArkClient.response()
+  @spec get_unconfirmed(Tesla.Client.t(), String.t()) :: ArkEcosystem.Client.response()
   def get_unconfirmed(client, id) do
     client |> get("transactions/unconfirmed/#{id}")
   end
 
-  @spec search(Tesla.Client.t(), List.t()) :: ArkClient.response()
+  @spec search(Tesla.Client.t(), List.t()) :: ArkEcosystem.Client.response()
   def search(client, parameters) do
     client |> post("transactions/search", parameters)
   end
 
-  @spec types(Tesla.Client.t()) :: ArkClient.response()
+  @spec types(Tesla.Client.t()) :: ArkEcosystem.Client.response()
   def types(client) do
     client |> get("transactions/types")
   end

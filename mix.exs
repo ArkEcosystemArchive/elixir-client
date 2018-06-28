@@ -1,4 +1,4 @@
-defmodule ArkClient.MixProject do
+defmodule ArkEcosystem.Client.MixProject do
   use Mix.Project
 
   def project do

@@ -1,6 +1,6 @@
-defmodule ArkClient.API.One.Transaction do
+defmodule ArkEcosystem.Client.API.One.Transaction do
   @moduledoc """
-  Documentation for ArkClient.API.One.Transaction.
+  Documentation for ArkEcosystem.Client.API.One.Transaction.
   """
 
   import ArkClient
@@ -10,9 +10,9 @@ defmodule ArkClient.API.One.Transaction do
 
   ## Examples
 
-      iex> ArkClient.API.One.Transaction.transaction(client, "4a5f96b24091b747fb7fd34952ef465d9b8ec5f73d1b234405bf2718d2a87d56")
+      iex> ArkEcosystem.Client.API.One.Transaction.transaction(client, "4a5f96b24091b747fb7fd34952ef465d9b8ec5f73d1b234405bf2718d2a87d56")
       {:ok,
-       %ArkClient.API.One.Models.Transaction{
+       %ArkEcosystem.Client.API.One.Models.Transaction{
          amount: 100000000,
          asset: nil,
          blockid: "5375521981080787257",
@@ -28,7 +28,7 @@ defmodule ArkClient.API.One.Transaction do
          vendor_field: "can't sleep! clowns will eat me!"
        }}
   """
-  @spec transaction(Tesla.Client.t(), Keyword.t()) :: ArkClient.response()
+  @spec transaction(Tesla.Client.t(), Keyword.t()) :: ArkEcosystem.Client.response()
   def transaction(client, id) do
     client |> get("transactions/get", query: [id: id])
   end
@@ -38,10 +38,10 @@ defmodule ArkClient.API.One.Transaction do
 
   ## Examples
 
-      iex> ArkClient.API.One.Transaction.transactions(client)
+      iex> ArkEcosystem.Client.API.One.Transaction.transactions(client)
       {:ok,
        [
-         %ArkClient.API.One.Models.Transaction{
+         %ArkEcosystem.Client.API.One.Models.Transaction{
            amount: 1105,
            asset: %{},
            blockid: "10000164854398237004",
@@ -56,13 +56,13 @@ defmodule ArkClient.API.One.Transaction do
            type: 0,
            vendor_field: "Goose Voter - True Block Weight"
          },
-         %ArkClient.API.One.Models.Transaction{amount: 52, asset: nil, ...},
-         %ArkClient.API.One.Models.Transaction{amount: 57, ...},
-         %ArkClient.API.One.Models.Transaction{...},
+         %ArkEcosystem.Client.API.One.Models.Transaction{amount: 52, asset: nil, ...},
+         %ArkEcosystem.Client.API.One.Models.Transaction{amount: 57, ...},
+         %ArkEcosystem.Client.API.One.Models.Transaction{...},
          ...
        ]}
   """
-  @spec transactions(Tesla.Client.t(), Keyword.t()) :: ArkClient.response()
+  @spec transactions(Tesla.Client.t(), Keyword.t()) :: ArkEcosystem.Client.response()
   def transactions(client, parameters \\ []) do
     client |> get("transactions", query: parameters)
   end
@@ -72,9 +72,9 @@ defmodule ArkClient.API.One.Transaction do
 
   ## Examples
 
-      iex> ArkClient.API.One.Transaction.unconfirmed_transaction(client, "5a4f96b24091b747fb7fd34952ef465d9b8ec5f73d1b234405bf2718d2a87d45")
+      iex> ArkEcosystem.Client.API.One.Transaction.unconfirmed_transaction(client, "5a4f96b24091b747fb7fd34952ef465d9b8ec5f73d1b234405bf2718d2a87d45")
       {:ok,
-       %ArkClient.API.One.Models.Transaction{
+       %ArkEcosystem.Client.API.One.Models.Transaction{
          amount: 100000000,
          asset: nil,
          blockid: nil,
@@ -90,7 +90,7 @@ defmodule ArkClient.API.One.Transaction do
          vendor_field: "I’d rather let 1000 guilty men go free than chase after them."
        }}
   """
-  @spec unconfirmed_transaction(Tesla.Client.t(), String.t()) :: ArkClient.response()
+  @spec unconfirmed_transaction(Tesla.Client.t(), String.t()) :: ArkEcosystem.Client.response()
   def unconfirmed_transaction(client, id) do
     client |> get("transactions/unconfirmed/get", query: [id: id])
   end
@@ -100,10 +100,10 @@ defmodule ArkClient.API.One.Transaction do
 
   ## Examples
 
-      iex> ArkClient.API.One.Transaction.unconfirmed_transactions(client)
+      iex> ArkEcosystem.Client.API.One.Transaction.unconfirmed_transactions(client)
       {:ok, []}
   """
-  @spec unconfirmed_transactions(Tesla.Client.t(), Keyword.t()) :: ArkClient.response()
+  @spec unconfirmed_transactions(Tesla.Client.t(), Keyword.t()) :: ArkEcosystem.Client.response()
   def unconfirmed_transactions(client, parameters \\ []) do
     client |> get("transactions/unconfirmed", query: parameters)
   end

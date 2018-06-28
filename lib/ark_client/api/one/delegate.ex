@@ -1,6 +1,6 @@
-defmodule ArkClient.API.One.Delegate do
+defmodule ArkEcosystem.Client.API.One.Delegate do
   @moduledoc """
-  Documentation for ArkClient.API.One.Delegate.
+  Documentation for ArkEcosystem.Client.API.One.Delegate.
   """
 
   import ArkClient
@@ -10,10 +10,10 @@ defmodule ArkClient.API.One.Delegate do
 
   ## Examples
 
-      iex> ArkClient.API.One.Delegate.count(client)
+      iex> ArkEcosystem.Client.API.One.Delegate.count(client)
       {:ok, 198}
   """
-  @spec count(Tesla.Client.t()) :: ArkClient.response()
+  @spec count(Tesla.Client.t()) :: ArkEcosystem.Client.response()
   def count(client) do
     client |> get("delegates/count")
   end
@@ -23,9 +23,9 @@ defmodule ArkClient.API.One.Delegate do
 
   ## Examples
 
-      iex> ArkClient.API.One.Delegate.delegate(client)
+      iex> ArkEcosystem.Client.API.One.Delegate.delegate(client)
       {:ok,
-       %ArkClient.API.One.Models.Delegate{
+       %ArkEcosystem.Client.API.One.Models.Delegate{
          address: "DQCZQzibtABoggT9ygSzFNQ3A7PJyxttPP",
          approval: 0.09,
          missedblocks: 1748,
@@ -37,7 +37,7 @@ defmodule ArkClient.API.One.Delegate do
          vote: "12385839821762"
        }}
   """
-  @spec delegate(Tesla.Client.t(), Keyword.t()) :: ArkClient.response()
+  @spec delegate(Tesla.Client.t(), Keyword.t()) :: ArkEcosystem.Client.response()
   def delegate(client, parameters \\ []) do
     client |> get("delegates/get", query: parameters)
   end
@@ -47,10 +47,10 @@ defmodule ArkClient.API.One.Delegate do
 
   ## Examples
 
-      iex> ArkClient.API.One.Delegate.delegates(client)
+      iex> ArkEcosystem.Client.API.One.Delegate.delegates(client)
       {:ok,
        [
-         %ArkClient.API.One.Models.Delegate{
+         %ArkEcosystem.Client.API.One.Models.Delegate{
            address: "DARiJqhogp2Lu6bxufUFQQMuMyZbxjCydN",
            approval: 4.32,
            missedblocks: 1722,
@@ -61,13 +61,13 @@ defmodule ArkClient.API.One.Delegate do
            username: "boldninja",
            vote: "566475956800532"
          },
-         %ArkClient.API.One.Models.Delegate{...},
-         %ArkClient.API.One.Models.Delegate{...},
-         %ArkClient.API.One.Models.Delegate{...},
+         %ArkEcosystem.Client.API.One.Models.Delegate{...},
+         %ArkEcosystem.Client.API.One.Models.Delegate{...},
+         %ArkEcosystem.Client.API.One.Models.Delegate{...},
          ...
        ]}
   """
-  @spec delegates(Tesla.Client.t(), Keyword.t()) :: ArkClient.response()
+  @spec delegates(Tesla.Client.t(), Keyword.t()) :: ArkEcosystem.Client.response()
   def delegates(client, parameters \\ []) do
     client |> get("delegates", query: parameters)
   end
@@ -77,10 +77,10 @@ defmodule ArkClient.API.One.Delegate do
 
   ## Examples
 
-      iex> ArkClient.API.One.Delegate.fee(client)
+      iex> ArkEcosystem.Client.API.One.Delegate.fee(client)
        {:ok, 2500000000}
   """
-  @spec fee(Tesla.Client.t()) :: ArkClient.response()
+  @spec fee(Tesla.Client.t()) :: ArkEcosystem.Client.response()
   def fee(client) do
     client |> get("delegates/fee")
   end
@@ -90,7 +90,7 @@ defmodule ArkClient.API.One.Delegate do
 
   ## Examples
 
-      iex> ArkClient.API.One.Delegate.forged_by_account(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
+      iex> ArkEcosystem.Client.API.One.Delegate.forged_by_account(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
       {:ok,
        %{
          "fees" => "190000000",
@@ -99,7 +99,7 @@ defmodule ArkClient.API.One.Delegate do
          "success" => true
        }}
   """
-  @spec forged_by_account(Tesla.Client.t(), String.t()) :: ArkClient.response()
+  @spec forged_by_account(Tesla.Client.t(), String.t()) :: ArkEcosystem.Client.response()
   def forged_by_account(client, generatorPublicKey) do
     get(
       client,
@@ -113,11 +113,11 @@ defmodule ArkClient.API.One.Delegate do
 
   ## Examples
 
-      iex> ArkClient.API.One.Delegate.forging_status(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
+      iex> ArkEcosystem.Client.API.One.Delegate.forging_status(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
       {:ok, true}
   """
   @tag :skip
-  @spec forging_status(Tesla.Client.t(), String.t(), Keyword.t()) :: ArkClient.response()
+  @spec forging_status(Tesla.Client.t(), String.t(), Keyword.t()) :: ArkEcosystem.Client.response()
   def forging_status(client, public_key, parameters \\ []) do
     get(
       "delegates/forging/status",
@@ -130,7 +130,7 @@ defmodule ArkClient.API.One.Delegate do
 
   ## Examples
 
-      iex> ArkClient.API.One.Delegate.next_forgers(client)
+      iex> ArkEcosystem.Client.API.One.Delegate.next_forgers(client)
       {:ok,
        %{
          "currentBlock" => 3102247,
@@ -148,7 +148,7 @@ defmodule ArkClient.API.One.Delegate do
          "success" => true
        }}
   """
-  @spec next_forgers(Tesla.Client.t()) :: ArkClient.response()
+  @spec next_forgers(Tesla.Client.t()) :: ArkEcosystem.Client.response()
   def next_forgers(client) do
     client |> get("delegates/getNextForgers")
   end
@@ -158,10 +158,10 @@ defmodule ArkClient.API.One.Delegate do
 
   ## Examples
 
-      iex> ArkClient.API.One.Delegate.search(client, "arkoar")
+      iex> ArkEcosystem.Client.API.One.Delegate.search(client, "arkoar")
       {:ok,
        [
-         %ArkClient.API.One.Models.Delegate{
+         %ArkEcosystem.Client.API.One.Models.Delegate{
            address: "DQCZQzibtABoggT9ygSzFNQ3A7PJyxttPP",
            approval: nil,
            missedblocks: 1748,
@@ -179,7 +179,7 @@ defmodule ArkClient.API.One.Delegate do
     Tesla.Client.t(),
     String.t(),
     Keyword.t()
-  ) :: ArkClient.response()
+  ) :: ArkEcosystem.Client.response()
   def search(client, q, parameters \\ []) do
     client |> get("delegates/search", query: [q: q] ++ parameters)
   end
@@ -189,11 +189,11 @@ defmodule ArkClient.API.One.Delegate do
 
   ## Examples
 
-      iex> ArkClient.API.One.Delegate.voters(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
-      iex(10)> ArkClient.API.One.Delegate.voters(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
+      iex> ArkEcosystem.Client.API.One.Delegate.voters(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
+      iex(10)> ArkEcosystem.Client.API.One.Delegate.voters(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
       {:ok,
        [
-         %ArkClient.API.One.Models.Account{
+         %ArkEcosystem.Client.API.One.Models.Account{
            address: "DP8SxqSnCV3Rsdvjeqrum2HA2CAgymCPJP",
            balance: "200000000",
            multisignatures: nil,
@@ -204,12 +204,12 @@ defmodule ArkClient.API.One.Delegate do
            unconfirmed_balance: nil,
            unconfirmed_signature: nil
          },
-         %ArkClient.API.One.Models.Account{...},
-         %ArkClient.API.One.Models.Account{...},
+         %ArkEcosystem.Client.API.One.Models.Account{...},
+         %ArkEcosystem.Client.API.One.Models.Account{...},
          ...
        ]}
   """
-  @spec voters(Tesla.Client.t(), String.t()) :: ArkClient.response()
+  @spec voters(Tesla.Client.t(), String.t()) :: ArkEcosystem.Client.response()
   def voters(client, public_key) do
     client |> get("delegates/voters", query: [publicKey: public_key])
   end

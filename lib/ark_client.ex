@@ -1,16 +1,16 @@
-defmodule ArkClient do
+defmodule ArkEcosystem.Client do
   @moduledoc """
-  Documentation for ArkClient.
+  Documentation for ArkEcosystem.Client.
   """
 
   @type response :: {:ok, any} | {:error, any}
 
   @doc """
-  Shortcut to `ArkClient.Client.new/1`
+  Shortcut to `ArkEcosystem.Client.new/1`
   """
   @spec client(Keyword.t()) :: Tesla.Client.t()
   def client(opts) do
-    ArkClient.Client.new(opts)
+    ArkEcosystem.Client.new(opts)
   end
 
   @doc """
