@@ -1,9 +1,9 @@
 defmodule ArkEcosystem.Client.API.One.Transaction do
   @moduledoc """
-  Documentation for ArkEcosystem.Client.API.One.Transaction.
+  Documentation for ArkEcosystem.Client.API.One.Transaction
   """
 
-  import ArkClient
+  import ArkEcosystem.Client
 
   @doc """
   Get a single transaction.
@@ -28,7 +28,7 @@ defmodule ArkEcosystem.Client.API.One.Transaction do
          vendor_field: "can't sleep! clowns will eat me!"
        }}
   """
-  @spec transaction(Tesla.Client.t(), Keyword.t()) :: ArkEcosystem.Client.response()
+  @spec transaction(Tesla.Client.t(), String.t()) :: ArkEcosystem.Client.response()
   def transaction(client, id) do
     client |> get("transactions/get", query: [id: id])
   end

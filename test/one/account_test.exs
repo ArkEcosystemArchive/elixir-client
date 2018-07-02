@@ -1,6 +1,6 @@
-defmodule ArkEcosystem.Client.AccountTest do
+defmodule ArkEcosystem.Client.API.One.AccountTest do
   use ExUnit.Case
-  import ArkEcosystem.Client.Account
+  import ArkEcosystem.Client.API.One.Account
 
   @client ArkEcosystem.Client.new(%{
             host: "https://dexplorer.ark.io:8443/api",
@@ -10,31 +10,31 @@ defmodule ArkEcosystem.Client.AccountTest do
 
   @account "DLsCPHjjq1XL52hdHoJ91A56W7DR2faUu3"
 
-  test "call ArkEcosystem.Client.Account.balance" do
+  test "call ArkEcosystem.Client.API.One.Account.balance" do
     response = balance(@client, @account)
 
     assert({:ok, _} = response)
   end
 
-  test "call ArkEcosystem.Client.Account.publickey" do
+  test "call ArkEcosystem.Client.API.One.Account.publickey" do
     response = publickey(@client, @account)
 
     assert({:ok, _} = response)
   end
 
-  test "call ArkEcosystem.Client.Account.fee" do
+  test "call ArkEcosystem.Client.API.One.Account.fee" do
     response = fee(@client)
 
     assert({:ok, _} = response)
   end
 
-  test "call ArkEcosystem.Client.Account.delegates" do
+  test "call ArkEcosystem.Client.API.One.Account.delegates" do
     response = delegates(@client, @account)
 
     assert({:ok, _} = response)
   end
 
-  test "call ArkEcosystem.Client.Account.account" do
+  test "call ArkEcosystem.Client.API.One.Account.account" do
     response = account(@client, @account)
 
     assert({:ok, _} = response)

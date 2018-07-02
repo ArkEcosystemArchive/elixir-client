@@ -1,9 +1,9 @@
 defmodule ArkEcosystem.Client.API.Two.Transaction do
   @moduledoc """
-  Documentation for ArkEcosystem.Client.API.One.Transaction.
+  Documentation for ArkEcosystem.Client.API.One.Transaction
   """
 
-  import ArkClient
+  import ArkEcosystem.Client
 
   @spec list(Tesla.Client.t(), List.t()) :: ArkEcosystem.Client.response()
   def list(client, parameters \\ []) do
@@ -12,7 +12,7 @@ defmodule ArkEcosystem.Client.API.Two.Transaction do
 
   @spec create(Tesla.Client.t(), List.t()) :: ArkEcosystem.Client.response()
   def create(client, parameters) do
-    client |> post("transactions", %{transactions: transactions})
+    client |> post("transactions", %{transactions: parameters})
   end
 
   @spec show(Tesla.Client.t(), String.t()) :: ArkEcosystem.Client.response()

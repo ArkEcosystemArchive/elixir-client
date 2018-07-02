@@ -1,9 +1,9 @@
 defmodule ArkEcosystem.Client.API.One.Peer do
   @moduledoc """
-  Documentation for ArkEcosystem.Client.API.One.Peer.
+  Documentation for ArkEcosystem.Client.API.One.Peer
   """
 
-  import ArkClient
+  import ArkEcosystem.Client
 
   @doc """
   Get a single peer.
@@ -69,6 +69,5 @@ defmodule ArkEcosystem.Client.API.One.Peer do
   @spec version(Tesla.Client.t()) :: ArkEcosystem.Client.response()
   def version(client) do
     client |> get("peers/version")
-    end
   end
 end

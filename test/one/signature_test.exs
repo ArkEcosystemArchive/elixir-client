@@ -1,6 +1,6 @@
-defmodule ArkEcosystem.Client.SignatureTest do
+defmodule ArkEcosystem.Client.API.One.SignatureTest do
   use ExUnit.Case
-  import ArkEcosystem.Client.Signature
+  import ArkEcosystem.Client.API.One.Signature
 
   @client ArkEcosystem.Client.new(%{
             host: "https://dexplorer.ark.io:8443/api",
