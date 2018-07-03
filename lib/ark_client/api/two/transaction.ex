@@ -5,12 +5,12 @@ defmodule ArkEcosystem.Client.API.Two.Transaction do
 
   import ArkEcosystem.Client
 
-  @spec list(Tesla.Client.t(), List.t()) :: ArkEcosystem.Client.response()
+  @spec list(Tesla.Client.t(), Keyword.t()) :: ArkEcosystem.Client.response()
   def list(client, parameters \\ []) do
     client |> get("transactions", parameters)
   end
 
-  @spec create(Tesla.Client.t(), List.t()) :: ArkEcosystem.Client.response()
+  @spec create(Tesla.Client.t(), Keyword.t()) :: ArkEcosystem.Client.response()
   def create(client, parameters) do
     client |> post("transactions", %{transactions: parameters})
   end
@@ -20,7 +20,7 @@ defmodule ArkEcosystem.Client.API.Two.Transaction do
     client |> get("transactions/#{id}")
   end
 
-  @spec list_unconfirmed(Tesla.Client.t(), List.t()) :: ArkEcosystem.Client.response()
+  @spec list_unconfirmed(Tesla.Client.t(), Keyword.t()) :: ArkEcosystem.Client.response()
   def list_unconfirmed(client, parameters \\ []) do
     client |> get("transactions/unconfirmed", parameters)
   end
@@ -30,7 +30,7 @@ defmodule ArkEcosystem.Client.API.Two.Transaction do
     client |> get("transactions/unconfirmed/#{id}")
   end
 
-  @spec search(Tesla.Client.t(), List.t()) :: ArkEcosystem.Client.response()
+  @spec search(Tesla.Client.t(), Keyword.t()) :: ArkEcosystem.Client.response()
   def search(client, parameters) do
     client |> post("transactions/search", parameters)
   end

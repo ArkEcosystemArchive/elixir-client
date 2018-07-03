@@ -5,7 +5,7 @@ defmodule ArkEcosystem.Client.API.Two.Peer do
 
   import ArkEcosystem.Client
 
-  @spec list(Tesla.Client.t(), List.t()) :: ArkEcosystem.Client.response()
+  @spec list(Tesla.Client.t(), Keyword.t()) :: ArkEcosystem.Client.response()
   def list(client, parameters \\ []) do
     client |> get("peers", parameters)
   end

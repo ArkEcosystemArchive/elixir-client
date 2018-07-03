@@ -5,7 +5,7 @@ defmodule ArkEcosystem.Client.API.Two.Delegate do
 
   import ArkEcosystem.Client
 
-  @spec list(Tesla.Client.t(), List.t()) :: ArkEcosystem.Client.response()
+  @spec list(Tesla.Client.t(), Keyword.t()) :: ArkEcosystem.Client.response()
   def list(client, parameters \\ []) do
     client |> get("delegates", parameters)
   end
@@ -15,12 +15,12 @@ defmodule ArkEcosystem.Client.API.Two.Delegate do
     client |> get("delegates/#{id}")
   end
 
-  @spec blocks(Tesla.Client.t(), String.t(), List.t()) :: ArkEcosystem.Client.response()
+  @spec blocks(Tesla.Client.t(), String.t(), Keyword.t()) :: ArkEcosystem.Client.response()
   def blocks(client, id, parameters \\ []) do
     client |> get("delegates/#{id}/blocks", parameters)
   end
 
-  @spec voters(Tesla.Client.t(), String.t(), List.t()) :: ArkEcosystem.Client.response()
+  @spec voters(Tesla.Client.t(), String.t(), Keyword.t()) :: ArkEcosystem.Client.response()
   def voters(client, id, parameters \\ []) do
     client |> get("delegates/#{id}/voters", parameters)
   end
