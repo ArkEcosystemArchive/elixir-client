@@ -1,9 +1,9 @@
 defmodule ArkEcosystem.Client.API.One.Delegate do
   @moduledoc """
-  Documentation for ArkEcosystem.Client.API.One.Delegate.
+  Documentation for ArkEcosystem.Client.API.One.Delegate
   """
 
-  import ArkClient
+  import ArkEcosystem.Client
 
   @doc """
   Get the count of delegates.
@@ -101,8 +101,7 @@ defmodule ArkEcosystem.Client.API.One.Delegate do
   """
   @spec forged_by_account(Tesla.Client.t(), String.t()) :: ArkEcosystem.Client.response()
   def forged_by_account(client, generatorPublicKey) do
-    get(
-      client,
+    client |> get(
       "delegates/forging/getForgedByAccount",
       query: [generatorPublicKey: generatorPublicKey]
     )
@@ -116,10 +115,9 @@ defmodule ArkEcosystem.Client.API.One.Delegate do
       iex> ArkEcosystem.Client.API.One.Delegate.forging_status(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
       {:ok, true}
   """
-  @tag :skip
   @spec forging_status(Tesla.Client.t(), String.t(), Keyword.t()) :: ArkEcosystem.Client.response()
   def forging_status(client, public_key, parameters \\ []) do
-    get(
+    client |> get(
       "delegates/forging/status",
       query: [publicKey: public_key] ++ parameters
     )

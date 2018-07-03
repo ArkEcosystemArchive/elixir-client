@@ -1,16 +1,16 @@
-defmodule ArkEcosystem.Client.API.Two.Account do
+defmodule ArkEcosystem.Client.API.Two.Vote do
   @moduledoc """
-  Documentation for ArkEcosystem.Client.API.One.Account.
+  Documentation for ArkEcosystem.Client.API.One.Vote
   """
 
-  import ArkClient
+  import ArkEcosystem.Client
 
-  @spec account(Tesla.Client.t(), List.t()) :: ArkEcosystem.Client.response()
+  @spec list(Tesla.Client.t(), Keyword.t()) :: ArkEcosystem.Client.response()
   def list(client, parameters \\ []) do
     client |> get("votes", parameters)
   end
 
-  @spec account(Tesla.Client.t(), String.t()) :: ArkEcosystem.Client.response()
+  @spec show(Tesla.Client.t(), String.t()) :: ArkEcosystem.Client.response()
   def show(client, id) do
     client |> get("votes/#{id}")
   end

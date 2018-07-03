@@ -1,6 +1,6 @@
-defmodule ArkEcosystem.Client do
+defmodule ArkEcosystem.Client.Connection do
   @moduledoc """
-  Documentation for ArkEcosystem.Client.
+  Documentation for ArkEcosystem.Client.Connection
 
   This module generates a Tesla.Client for use in future requests. Feel free
   to make your own Tesla Client struct and pass that around.
@@ -10,7 +10,7 @@ defmodule ArkEcosystem.Client do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.new(client)
+      iex> ArkEcosystem.Client.Connection.new(client)
       %Tesla.Client{
         fun: nil,
         post: [],
@@ -36,8 +36,7 @@ defmodule ArkEcosystem.Client do
     host: host,
     version: version
   })
-  when is_bitstring(nethash)
-  and is_bitstring(host)
+  when is_bitstring(host)
   and is_bitstring(version) do
     headers = [
       {"Content-Type", "application/json"},

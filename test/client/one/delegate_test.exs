@@ -1,6 +1,6 @@
-defmodule ArkEcosystem.Client.DelegateTest do
+defmodule ArkEcosystem.Client.One.DelegateTest do
   use ExUnit.Case
-  import ArkEcosystem.Client.Delegate
+  import ArkEcosystem.Client.API.One.Delegate
 
   @client ArkEcosystem.Client.new(%{
             host: "https://dexplorer.ark.io:8443/api",
@@ -8,26 +8,26 @@ defmodule ArkEcosystem.Client.DelegateTest do
             version: "1.1.1"
           })
 
-  test "call ArkEcosystem.Client.Delegate.count" do
+  test "call ArkEcosystem.Client.API.One.Delegate.count" do
     response = count(@client)
 
     assert({:ok, _} = response)
   end
 
-  test "call ArkEcosystem.Client.Delegate.search" do
+  test "call ArkEcosystem.Client.API.One.Delegate.search" do
     response = search(@client, "bold", limit: 2)
 
     assert({:ok, _} = response)
   end
 
-  test "call ArkEcosystem.Client.Delegate.voters" do
+  test "call ArkEcosystem.Client.API.One.Delegate.voters" do
     response =
       voters(@client, "022cca9529ec97a772156c152a00aad155ee6708243e65c9d211a589cb5d43234d")
 
     assert({:ok, _} = response)
   end
 
-  test "call ArkEcosystem.Client.Delegate.delegate" do
+  test "call ArkEcosystem.Client.API.One.Delegate.delegate" do
     response =
       delegate(
         @client,
@@ -37,19 +37,19 @@ defmodule ArkEcosystem.Client.DelegateTest do
     assert({:ok, _} = response)
   end
 
-  test "call ArkEcosystem.Client.Delegate.delegates" do
+  test "call ArkEcosystem.Client.API.One.Delegate.delegates" do
     response = delegates(@client)
 
     assert({:ok, _} = response)
   end
 
-  test "call ArkEcosystem.Client.Delegate.fee" do
+  test "call ArkEcosystem.Client.API.One.Delegate.fee" do
     response = fee(@client)
 
     assert({:ok, _} = response)
   end
 
-  test "call ArkEcosystem.Client.Delegate.forged_by_account" do
+  test "call ArkEcosystem.Client.API.One.Delegate.forged_by_account" do
     response =
       forged_by_account(
         @client,
@@ -59,13 +59,13 @@ defmodule ArkEcosystem.Client.DelegateTest do
     assert({:ok, _} = response)
   end
 
-  test "call ArkEcosystem.Client.Delegate.next_forgers" do
+  test "call ArkEcosystem.Client.API.One.Delegate.next_forgers" do
     response = next_forgers(@client)
 
     assert({:ok, _} = response)
   end
 
-  test "call ArkEcosystem.Client.Delegate.forging_status" do
+  test "call ArkEcosystem.Client.API.One.Delegate.forging_status" do
     response =
       forging_status(
         @client,

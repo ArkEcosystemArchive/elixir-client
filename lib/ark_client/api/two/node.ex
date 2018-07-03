@@ -1,9 +1,9 @@
 defmodule ArkEcosystem.Client.API.Two.Loader do
   @moduledoc """
-  Documentation for ArkEcosystem.Client.API.One.Loader.
+  Documentation for ArkEcosystem.Client.API.One.Loader
   """
 
-  import ArkClient
+  import ArkEcosystem.Client
 
   @spec status(Tesla.Client.t()) :: ArkEcosystem.Client.response()
   def status(client) do

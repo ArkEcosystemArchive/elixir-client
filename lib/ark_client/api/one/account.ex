@@ -1,9 +1,9 @@
 defmodule ArkEcosystem.Client.API.One.Account do
   @moduledoc """
-  Documentation for ArkEcosystem.Client.API.One.Account.
+  Documentation for ArkEcosystem.Client.API.One.Account
   """
 
-  import ArkClient
+  import ArkEcosystem.Client
 
   @doc """
   Get an account.

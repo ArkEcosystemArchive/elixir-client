@@ -1,9 +1,9 @@
 defmodule ArkEcosystem.Client.API.One.Loader do
   @moduledoc """
-  Documentation for ArkEcosystem.Client.API.One.Loader.
+  Documentation for ArkEcosystem.Client.API.One.Loader
   """
 
-  import ArkClient
+  import ArkEcosystem.Client
 
   @doc """
   Auto-configure the client loader.

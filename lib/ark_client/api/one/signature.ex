@@ -1,9 +1,9 @@
 defmodule ArkEcosystem.Client.API.One.Signature do
   @moduledoc """
-  Documentation for ArkEcosystem.Client.API.One.Signature.
+  Documentation for ArkEcosystem.Client.API.One.Signature
   """
 
-  import ArkClient
+  import ArkEcosystem.Client
 
   @doc """
   Get the fee for a signature.

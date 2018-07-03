@@ -3,7 +3,7 @@ defmodule ArkEcosystem.Client.API.One.Block do
   Documentation for ArkEcosystem.Client.API.One.Block.
   """
 
-  import ArkClient
+  import ArkEcosystem.Client
 
   @doc """
   Get block by id.
@@ -88,7 +88,7 @@ defmodule ArkEcosystem.Client.API.One.Block do
   end
 
   @doc """
-  Get the transaction fee for sending "normal" transactions.
+  Get the transaction fee for sending "normal" transactions
 
   ## Examples
 

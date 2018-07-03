@@ -1,23 +1,23 @@
 defmodule ArkEcosystem.Client do
   @moduledoc """
-  Documentation for ArkEcosystem.Client.
+  Documentation for ArkEcosystem.Client
   """
 
   @type response :: {:ok, any} | {:error, any}
 
   @doc """
-  Shortcut to `ArkEcosystem.Client.new/1`
+  Shortcut to `ArkEcosystem.Client.Connection.new/1`
   """
-  @spec client(Keyword.t()) :: Tesla.Client.t()
-  def client(opts) do
-    ArkEcosystem.Client.new(opts)
+  @spec new(Keyword.t()) :: Tesla.Client.t()
+  def new(opts) do
+    ArkEcosystem.Client.Connection.new(opts)
   end
 
   @doc """
   Shortcut to `Tesla.get/4`
   """
   @spec get(Tesla.Client.t(), String.t(), Keyword.t()) :: response()
-  def client |> get(url, opts \\ []) do
+  def get(client, url, opts \\ []) do
     client |> Tesla.get(url, opts) |> handle_response
   end
 
@@ -33,7 +33,7 @@ defmodule ArkEcosystem.Client do
   Shortcut to `Tesla.post/4`
   """
   @spec post(Tesla.Client.t(), String.t(), any(), Keyword.t()) :: response()
-  def client |> post(url, body, opts \\ []) do
+  def post(client, url, body, opts \\ []) do
     client |> Tesla.post(url, body, opts) |> handle_response
   end
 
