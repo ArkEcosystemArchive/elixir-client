@@ -1,6 +1,6 @@
-defmodule ArkEcosystem.Client.API.One.Block do
+defmodule ArkEcosystem.Client.API.One.Blocks do
   @moduledoc """
-  Documentation for ArkEcosystem.Client.API.One.Block.
+  Documentation for ArkEcosystem.Client.API.One.Blocks
   """
 
   import ArkEcosystem.Client
@@ -10,7 +10,7 @@ defmodule ArkEcosystem.Client.API.One.Block do
 
   ## Examples
 
-      iex(3)> ArkEcosystem.Client.API.One.Block.block(client, "887102556000070987")
+      iex(3)> ArkEcosystem.Client.API.One.Blocks.block(client, "887102556000070987")
       {:ok,
        %ArkEcosystem.Client.API.One.Models.Block{
          block_signature: "3045022100cf25e7aa0ad979b8a681930dda181337f6aec2f45f95fc15f8082a0acab7d501022061e66f303278245abeb30ec63e9cf282d6180d1f10439f0b11741bafa52a8e18",
@@ -41,7 +41,7 @@ defmodule ArkEcosystem.Client.API.One.Block do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Block.blocks(client)
+      iex> ArkEcosystem.Client.API.One.Blocks.blocks(client)
       {:ok,
        [
          %ArkEcosystem.Client.API.One.Models.Block{
@@ -79,7 +79,7 @@ defmodule ArkEcosystem.Client.API.One.Block do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Block.epoch(client)
+      iex> ArkEcosystem.Client.API.One.Blocks.epoch(client)
       {:ok, "2017-03-21T13:00:00.000Z"}
   """
   @spec epoch(Tesla.Client.t()) :: ArkEcosystem.Client.response()
@@ -92,7 +92,7 @@ defmodule ArkEcosystem.Client.API.One.Block do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Block.fee(client)
+      iex> ArkEcosystem.Client.API.One.Blocks.fee(client)
       {:ok, 10000000}
   """
   @spec fee(Tesla.Client.t()) :: ArkEcosystem.Client.response()
@@ -105,7 +105,7 @@ defmodule ArkEcosystem.Client.API.One.Block do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Block.fees(client)
+      iex> ArkEcosystem.Client.API.One.Blocks.fees(client)
       {:ok,
        %{
          "delegate" => 2500000000,
@@ -125,7 +125,7 @@ defmodule ArkEcosystem.Client.API.One.Block do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Block.height(client)
+      iex> ArkEcosystem.Client.API.One.Blocks.height(client)
       {:ok, %{"height" => 3102123, "id" => "6065299679901800950", "success" => true}}
   """
   @spec height(Tesla.Client.t()) :: ArkEcosystem.Client.response()
@@ -138,7 +138,7 @@ defmodule ArkEcosystem.Client.API.One.Block do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Block.milestone(client)
+      iex> ArkEcosystem.Client.API.One.Blocks.milestone(client)
       {:ok, 1}
   """
   @spec milestone(Tesla.Client.t()) :: ArkEcosystem.Client.response()
@@ -151,7 +151,7 @@ defmodule ArkEcosystem.Client.API.One.Block do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Block.nethash(client)
+      iex> ArkEcosystem.Client.API.One.Blocks.nethash(client)
       {:ok, "578e820911f24e039733b45e4882b73e301f813a0d2c31330dafda84534ffa23"}
   """
   @spec nethash(Tesla.Client) :: ArkEcosystem.Client.response()
@@ -164,7 +164,7 @@ defmodule ArkEcosystem.Client.API.One.Block do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Block.reward(client)
+      iex> ArkEcosystem.Client.API.One.Blocks.reward(client)
       {:ok, 200000000}
   """
   @spec reward(Tesla.Client.t()) :: ArkEcosystem.Client.response()
@@ -177,7 +177,7 @@ defmodule ArkEcosystem.Client.API.One.Block do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Block.status(client)
+      iex> ArkEcosystem.Client.API.One.Blocks.status(client)
       {:ok,
        %{
          "epoch" => "2017-03-21T13:00:00.000Z",
@@ -200,7 +200,7 @@ defmodule ArkEcosystem.Client.API.One.Block do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Block.supply(client)
+      iex> ArkEcosystem.Client.API.One.Blocks.supply(client)
       {:ok, 13120431600000000}
 
   """
