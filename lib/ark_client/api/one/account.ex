@@ -98,4 +98,59 @@ defmodule ArkEcosystem.Client.API.One.Account do
   def publickey(client, address) do
     client |> get("accounts/getPublickey", query: [address: address])
   end
+
+  @doc """
+  Get the total amount of accounts.
+
+  ## Examples
+
+      iex> ArkEcosystem.Client.API.One.Account.count(client) 
+      {:ok,
+        %{
+          "count" => 841,
+          "success" => true
+        }}
+  """
+  @spec count(Tesla.Client.t()) :: ArkEcosystem.Client.response()
+  def count(client) do
+    client |> get("accounts/count")
+  end
+
+  @doc """
+  Get all accounts
+
+  ## Examples
+
+      iex> ArkEcosystem.Client.API.One.Account.all(client) 
+      // TODO
+  """
+  @spec all(Tesla.Client.t()) :: ArkEcosystem.Client.response()
+  def all(client) do
+    client |> get("accounts/getAllAccounts")
+  end
+
+  @doc """
+  Get the top accounts
+
+  ## Examples
+
+      iex> ArkEcosystem.Client.API.One.Account.top(client) 
+      {:ok,
+       %{
+         "accounts" => [
+           %{
+             "address" => "DGihocTkwDygiFvmg6aG8jThYTic47GzU9",
+             "balance" => "11499593562120633",
+             "publicKey" => "024c8247388a02ecd1de2a3e3fd5b7c61ecc2797fa3776599d558333ef1802d231"
+           },
+           ...
+          ],
+         "success" => true
+       }}
+  """
+  @spec top(Tesla.Client.t()) :: ArkEcosystem.Client.response()
+  def top(client) do
+    client |> get("accounts/top")
+  end
+
 end
