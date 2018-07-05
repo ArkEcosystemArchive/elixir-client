@@ -1,6 +1,6 @@
-defmodule ArkEcosystem.Client.API.One.TransactionTest do
+defmodule ArkEcosystem.Client.API.One.TransactionsTest do
   use ExUnit.Case
-  import ArkEcosystem.Client.API.One.Transaction
+  import ArkEcosystem.Client.API.One.Transactions
 
   @client ArkEcosystem.Client.new(%{
             host: "https://dexplorer.ark.io:8443/api",
@@ -8,20 +8,20 @@ defmodule ArkEcosystem.Client.API.One.TransactionTest do
             version: "1.1.1"
           })
 
-  test "call ArkEcosystem.Client.API.One.Transaction.transaction" do
+  test "call ArkEcosystem.Client.API.One.Transactions.transaction" do
     response =
       transaction(@client, "dfa5a992f392daf01e3db43e49799010ef13b107c592e9044ced99f7df3f81c9")
 
     assert({:ok, _} = response)
   end
 
-  test "call ArkEcosystem.Client.API.One.Transaction.transactions" do
+  test "call ArkEcosystem.Client.API.One.Transactions.transactions" do
     response = transactions(@client)
 
     assert({:ok, _} = response)
   end
 
-  test "call ArkEcosystem.Client.API.One.Transaction.unconfirmed_transaction" do
+  test "call ArkEcosystem.Client.API.One.Transactions.unconfirmed_transaction" do
     response =
       unconfirmed_transaction(
         @client,
@@ -31,7 +31,7 @@ defmodule ArkEcosystem.Client.API.One.TransactionTest do
     assert({:ok, _} = response)
   end
 
-  test "call ArkEcosystem.Client.API.One.Transaction.unconfirmed_transactions" do
+  test "call ArkEcosystem.Client.API.One.Transactions.unconfirmed_transactions" do
     response = unconfirmed_transactions(@client)
 
     assert({:ok, _} = response)

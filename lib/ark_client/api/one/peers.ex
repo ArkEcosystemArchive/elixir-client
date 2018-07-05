@@ -1,6 +1,6 @@
-defmodule ArkEcosystem.Client.API.One.Peer do
+defmodule ArkEcosystem.Client.API.One.Peers do
   @moduledoc """
-  Documentation for ArkEcosystem.Client.API.One.Peer
+  Documentation for ArkEcosystem.Client.API.One.Peers
   """
 
   import ArkEcosystem.Client
@@ -10,7 +10,7 @@ defmodule ArkEcosystem.Client.API.One.Peer do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Peer.peer(client, "167.114.29.35", 4002)
+      iex> ArkEcosystem.Client.API.One.Peers.peer(client, "167.114.29.35", 4002)
       {:ok,
        %ArkEcosystem.Client.API.One.Models.Peer{
          delay: 85,
@@ -33,7 +33,7 @@ defmodule ArkEcosystem.Client.API.One.Peer do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Peer.peers(client)
+      iex> ArkEcosystem.Client.API.One.Peers.peers(client)
       {:ok,
        [
          %ArkEcosystem.Client.API.One.Models.Peer{
@@ -63,7 +63,7 @@ defmodule ArkEcosystem.Client.API.One.Peer do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Peer.version(client)
+      iex> ArkEcosystem.Client.API.One.Peers.version(client)
       {:ok, "1.1.1"}
   """
   @spec version(Tesla.Client.t()) :: ArkEcosystem.Client.response()

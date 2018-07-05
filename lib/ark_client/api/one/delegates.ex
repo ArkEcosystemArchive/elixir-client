@@ -1,6 +1,6 @@
-defmodule ArkEcosystem.Client.API.One.Delegate do
+defmodule ArkEcosystem.Client.API.One.Delegates do
   @moduledoc """
-  Documentation for ArkEcosystem.Client.API.One.Delegate
+  Documentation for ArkEcosystem.Client.API.One.Delegates
   """
 
   import ArkEcosystem.Client
@@ -10,7 +10,7 @@ defmodule ArkEcosystem.Client.API.One.Delegate do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Delegate.count(client)
+      iex> ArkEcosystem.Client.API.One.Delegates.count(client)
       {:ok, 198}
   """
   @spec count(Tesla.Client.t()) :: ArkEcosystem.Client.response()
@@ -23,7 +23,7 @@ defmodule ArkEcosystem.Client.API.One.Delegate do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Delegate.delegate(client)
+      iex> ArkEcosystem.Client.API.One.Delegates.delegate(client)
       {:ok,
        %ArkEcosystem.Client.API.One.Models.Delegate{
          address: "DQCZQzibtABoggT9ygSzFNQ3A7PJyxttPP",
@@ -47,7 +47,7 @@ defmodule ArkEcosystem.Client.API.One.Delegate do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Delegate.delegates(client)
+      iex> ArkEcosystem.Client.API.One.Delegates.delegates(client)
       {:ok,
        [
          %ArkEcosystem.Client.API.One.Models.Delegate{
@@ -77,7 +77,7 @@ defmodule ArkEcosystem.Client.API.One.Delegate do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Delegate.fee(client)
+      iex> ArkEcosystem.Client.API.One.Delegates.fee(client)
        {:ok, 2500000000}
   """
   @spec fee(Tesla.Client.t()) :: ArkEcosystem.Client.response()
@@ -90,7 +90,7 @@ defmodule ArkEcosystem.Client.API.One.Delegate do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Delegate.forged_by_account(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
+      iex> ArkEcosystem.Client.API.One.Delegates.forged_by_account(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
       {:ok,
        %{
          "fees" => "190000000",
@@ -112,7 +112,7 @@ defmodule ArkEcosystem.Client.API.One.Delegate do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Delegate.forging_status(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
+      iex> ArkEcosystem.Client.API.One.Delegates.forging_status(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
       {:ok, true}
   """
   @spec forging_status(Tesla.Client.t(), String.t(), Keyword.t()) :: ArkEcosystem.Client.response()
@@ -128,7 +128,7 @@ defmodule ArkEcosystem.Client.API.One.Delegate do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Delegate.next_forgers(client)
+      iex> ArkEcosystem.Client.API.One.Delegates.next_forgers(client)
       {:ok,
        %{
          "currentBlock" => 3102247,
@@ -156,7 +156,7 @@ defmodule ArkEcosystem.Client.API.One.Delegate do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Delegate.search(client, "arkoar")
+      iex> ArkEcosystem.Client.API.One.Delegates.search(client, "arkoar")
       {:ok,
        [
          %ArkEcosystem.Client.API.One.Models.Delegate{
@@ -187,8 +187,8 @@ defmodule ArkEcosystem.Client.API.One.Delegate do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Delegate.voters(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
-      iex(10)> ArkEcosystem.Client.API.One.Delegate.voters(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
+      iex> ArkEcosystem.Client.API.One.Delegates.voters(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
+      iex(10)> ArkEcosystem.Client.API.One.Delegates.voters(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
       {:ok,
        [
          %ArkEcosystem.Client.API.One.Models.Account{

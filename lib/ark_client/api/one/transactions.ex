@@ -1,6 +1,6 @@
-defmodule ArkEcosystem.Client.API.One.Transaction do
+defmodule ArkEcosystem.Client.API.One.Transactions do
   @moduledoc """
-  Documentation for ArkEcosystem.Client.API.One.Transaction
+  Documentation for ArkEcosystem.Client.API.One.Transactions
   """
 
   import ArkEcosystem.Client
@@ -10,7 +10,7 @@ defmodule ArkEcosystem.Client.API.One.Transaction do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Transaction.transaction(client, "4a5f96b24091b747fb7fd34952ef465d9b8ec5f73d1b234405bf2718d2a87d56")
+      iex> ArkEcosystem.Client.API.One.Transactions.transaction(client, "4a5f96b24091b747fb7fd34952ef465d9b8ec5f73d1b234405bf2718d2a87d56")
       {:ok,
        %ArkEcosystem.Client.API.One.Models.Transaction{
          amount: 100000000,
@@ -38,7 +38,7 @@ defmodule ArkEcosystem.Client.API.One.Transaction do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Transaction.transactions(client)
+      iex> ArkEcosystem.Client.API.One.Transactions.transactions(client)
       {:ok,
        [
          %ArkEcosystem.Client.API.One.Models.Transaction{
@@ -72,7 +72,7 @@ defmodule ArkEcosystem.Client.API.One.Transaction do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Transaction.unconfirmed_transaction(client, "5a4f96b24091b747fb7fd34952ef465d9b8ec5f73d1b234405bf2718d2a87d45")
+      iex> ArkEcosystem.Client.API.One.Transactions.unconfirmed_transaction(client, "5a4f96b24091b747fb7fd34952ef465d9b8ec5f73d1b234405bf2718d2a87d45")
       {:ok,
        %ArkEcosystem.Client.API.One.Models.Transaction{
          amount: 100000000,
@@ -100,7 +100,7 @@ defmodule ArkEcosystem.Client.API.One.Transaction do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Transaction.unconfirmed_transactions(client)
+      iex> ArkEcosystem.Client.API.One.Transactions.unconfirmed_transactions(client)
       {:ok, []}
   """
   @spec unconfirmed_transactions(Tesla.Client.t(), Keyword.t()) :: ArkEcosystem.Client.response()

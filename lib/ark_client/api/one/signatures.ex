@@ -1,6 +1,6 @@
-defmodule ArkEcosystem.Client.API.One.Signature do
+defmodule ArkEcosystem.Client.API.One.Signatures do
   @moduledoc """
-  Documentation for ArkEcosystem.Client.API.One.Signature
+  Documentation for ArkEcosystem.Client.API.One.Signatures
   """
 
   import ArkEcosystem.Client
@@ -10,7 +10,7 @@ defmodule ArkEcosystem.Client.API.One.Signature do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Signature.fee(client)
+      iex> ArkEcosystem.Client.API.One.Signatures.fee(client)
       {:ok, 500000000}
   """
   @spec fee(Tesla.Client.t()) :: ArkEcosystem.Client.response()

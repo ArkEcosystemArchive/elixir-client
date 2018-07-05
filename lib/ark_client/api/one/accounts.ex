@@ -1,6 +1,6 @@
-defmodule ArkEcosystem.Client.API.One.Account do
+defmodule ArkEcosystem.Client.API.One.Accounts do
   @moduledoc """
-  Documentation for ArkEcosystem.Client.API.One.Account
+  Documentation for ArkEcosystem.Client.API.One.Accounts
   """
 
   import ArkEcosystem.Client
@@ -10,7 +10,7 @@ defmodule ArkEcosystem.Client.API.One.Account do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Account.account(client, "DQCZQzibtABoggT9ygSzFNQ3A7PJyxttPP")
+      iex> ArkEcosystem.Client.API.One.Accounts.account(client, "DQCZQzibtABoggT9ygSzFNQ3A7PJyxttPP")
       {:ok,
        %ArkEcosystem.Client.API.One.Models.Account{
          address: "DQCZQzibtABoggT9ygSzFNQ3A7PJyxttPP",
@@ -34,7 +34,7 @@ defmodule ArkEcosystem.Client.API.One.Account do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Account.balance(client, "DQCZQzibtABoggT9ygSzFNQ3A7PJyxttPP")
+      iex> ArkEcosystem.Client.API.One.Accounts.balance(client, "DQCZQzibtABoggT9ygSzFNQ3A7PJyxttPP")
       {:ok,
        %{
          "balance" => "2164627163870",
@@ -52,7 +52,7 @@ defmodule ArkEcosystem.Client.API.One.Account do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Account.delegates(client, "DFAVFGgkpYc4hrvUNZRf9Tpi7irWeKexLc")
+      iex> ArkEcosystem.Client.API.One.Accounts.delegates(client, "DFAVFGgkpYc4hrvUNZRf9Tpi7irWeKexLc")
       {:ok,
        [
          %ArkEcosystem.Client.API.One.Models.Delegate{
@@ -78,7 +78,7 @@ defmodule ArkEcosystem.Client.API.One.Account do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Account.fee(client)
+      iex> ArkEcosystem.Client.API.One.Accounts.fee(client)
       {:ok, %{"fee" => 2500000000, "success" => true}}
   """
   @spec fee(Tesla.Client.t()) :: ArkEcosystem.Client.response()
@@ -91,7 +91,7 @@ defmodule ArkEcosystem.Client.API.One.Account do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Account.publickey(client, "DQCZQzibtABoggT9ygSzFNQ3A7PJyxttPP")
+      iex> ArkEcosystem.Client.API.One.Accounts.publickey(client, "DQCZQzibtABoggT9ygSzFNQ3A7PJyxttPP")
       {:ok, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec"}
   """
   @spec publickey(Tesla.Client.t(), String.t()) :: ArkEcosystem.Client.response()
