@@ -1,40 +1,50 @@
 defmodule ArkEcosystem.Client.API.One.TransactionsTest do
   use ExUnit.Case
   import ArkEcosystem.Client.API.One.Transactions
+  import Tesla.Mock
 
   @client ArkEcosystem.Client.new(%{
-            host: "https://dexplorer.ark.io:8443/api",
+            host: "http://127.0.0.1:8443/api",
             nethash: "578e820911f24e039733b45e4882b73e301f813a0d2c31330dafda84534ffa23",
             version: "1.1.1"
           })
 
-  test "call ArkEcosystem.Client.API.One.Transactions.transaction" do
-    response =
-      transaction(@client, "dfa5a992f392daf01e3db43e49799010ef13b107c592e9044ced99f7df3f81c9")
+  setup do
+    mock fn
+      %{method: :get, url: "http://127.0.0.1:8443/api/transactions/get", query: [id: "dummy"]} ->
+        json(%{"success" => true, "transaction" => %{"id" => "dummy"}})
+      %{method: :get, url: "http://127.0.0.1:8443/api/transactions"} ->
+        json(%{"success" => true, "transactions" => [%{"id" => "dummy"}]})
+      %{method: :get, url: "http://127.0.0.1:8443/api/transactions/unconfirmed/get", query: [id: "dummy"]} ->
+        json(%{"success" => true, "transaction" => %{"id" => "dummy"}})
+      %{method: :get, url: "http://127.0.0.1:8443/api/transactions/unconfirmed"} ->
+        json(%{"success" => true, "transactions" => [%{"id" => "dummy"}]})
+    end
+    :ok
+  end
 
-    assert({:ok, _} = response)
+  test "call ArkEcosystem.Client.API.One.Transactions.transaction" do
+    assert {:ok, response} = transaction(@client, "dummy")
+    assert response["transaction"]["id"] == "dummy"
+    assert response["success"] == true
   end
 
   test "call ArkEcosystem.Client.API.One.Transactions.transactions" do
-    response = transactions(@client)
-
-    assert({:ok, _} = response)
+    assert {:ok,  response} = transactions(@client)
+    assert Enum.at(response["transactions"], 0)["id"] == "dummy"
+    assert response["success"] == true
   end
 
   test "call ArkEcosystem.Client.API.One.Transactions.unconfirmed_transaction" do
-    response =
-      unconfirmed_transaction(
-        @client,
-        "dfa5a992f392daf01e3db43e49799010ef13b107c592e9044ced99f7df3f81c9"
-      )
-
-    assert({:ok, _} = response)
+    assert {:ok, response} = unconfirmed_transaction(@client, "dummy")
+    assert response["transaction"]["id"] == "dummy"
+    assert response["success"] == true
   end
 
   test "call ArkEcosystem.Client.API.One.Transactions.unconfirmed_transactions" do
-    response = unconfirmed_transactions(@client)
-
-    assert({:ok, _} = response)
+    assert {:ok, response} = unconfirmed_transactions(@client)
+    assert Enum.at(response["transactions"], 0)["id"] == "dummy"
+    assert response["success"] == true
   end
 
 end
