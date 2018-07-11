@@ -121,12 +121,12 @@ defmodule ArkEcosystem.Client.API.One.Accounts do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Account.all(client) 
+      iex> ArkEcosystem.Client.API.One.Accounts.all(client, [limit: 30, offset: 10]) 
       // TODO
   """
-  @spec all(Tesla.Client.t()) :: ArkEcosystem.Client.response()
-  def all(client) do
-    client |> get("accounts/getAllAccounts")
+  @spec all(Tesla.Client.t(), Keyword.t()) :: ArkEcosystem.Client.response()
+  def all(client, parameters \\ []) do
+    client |> get("accounts/getAllAccounts", query: parameters)
   end
 
   @doc """
@@ -134,7 +134,7 @@ defmodule ArkEcosystem.Client.API.One.Accounts do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Account.top(client) 
+      iex> ArkEcosystem.Client.API.One.Accounts.top(client, [limit: 30, offset: 10]) 
       {:ok,
        %{
          "accounts" => [
@@ -148,9 +148,9 @@ defmodule ArkEcosystem.Client.API.One.Accounts do
          "success" => true
        }}
   """
-  @spec top(Tesla.Client.t()) :: ArkEcosystem.Client.response()
-  def top(client) do
-    client |> get("accounts/top")
+  @spec top(Tesla.Client.t(), Keyword.t()) :: ArkEcosystem.Client.response()
+  def top(client, parameters \\ []) do
+    client |> get("accounts/top", query: parameters)
   end
 
 end
