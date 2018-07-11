@@ -1,10 +1,10 @@
-# ARK Elixir - Client
+# Ark Elixir - Client
 
 <p align="center">
     <img src="https://github.com/ArkEcosystem/elixir-client/blob/master/banner.png" />
 </p>
 
-> A simple Elixir API client for the ARK Blockchain.
+> A simple Elixir API client for the Ark Blockchain.
 
 [![Build Status](https://img.shields.io/travis/ArkEcosystem/elixir-client/master.svg?style=flat-square)](https://travis-ci.org/ArkEcosystem/elixir-client)
 [![Latest Version](https://img.shields.io/github/release/ArkEcosystem/elixir-client.svg?style=flat-square)](https://github.com/ArkEcosystem/elixir-client/releases)
