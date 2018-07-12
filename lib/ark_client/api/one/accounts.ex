@@ -104,7 +104,7 @@ defmodule ArkEcosystem.Client.API.One.Accounts do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Account.count(client) 
+      iex> ArkEcosystem.Client.API.One.Accounts.count(client) 
       {:ok,
         %{
           "count" => 841,
@@ -121,7 +121,7 @@ defmodule ArkEcosystem.Client.API.One.Accounts do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Account.all(client) 
+      iex> ArkEcosystem.Client.API.One.Accounts.all(client) 
       // TODO
   """
   @spec all(Tesla.Client.t()) :: ArkEcosystem.Client.response()
@@ -134,7 +134,7 @@ defmodule ArkEcosystem.Client.API.One.Accounts do
 
   ## Examples
 
-      iex> ArkEcosystem.Client.API.One.Account.top(client) 
+      iex> ArkEcosystem.Client.API.One.Accounts.top(client) 
       {:ok,
        %{
          "accounts" => [
