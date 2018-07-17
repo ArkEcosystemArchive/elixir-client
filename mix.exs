@@ -21,12 +21,12 @@ defmodule ArkEcosystem.Client.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:excoveralls, "~> 0.9.1", only: :test},
       {:hackney, "~> 1.10"},
       {:jason, "~> 1.0"},
+      {:mock, "~> 0.3.0", only: :test},
       {:temp, "~> 0.4"},
-      {:tesla, "~> 1.0.0-beta.1"},
-
-      {:mock, "~> 0.3.0", only: :test}
+      {:tesla, "~> 1.0.0-beta.1"}
     ]
   end
 end
