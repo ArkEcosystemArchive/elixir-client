@@ -7,25 +7,9 @@
 > A simple Elixir API client for the Ark Blockchain.
 
 [![Build Status](https://img.shields.io/travis/ArkEcosystem/elixir-client/master.svg)](https://travis-ci.org/ArkEcosystem/elixir-client)
-[![Codecov](https://codecov.io/gh/arkecosystem/elixir-client)](https://img.shields.io/codecov/c/github/arkecosystem/elixir-client.svg)
+[![Codecov](https://img.shields.io/codecov/c/github/arkecosystem/elixir-client.svg)](https://codecov.io/gh/arkecosystem/elixir-client)
 [![Latest Version](https://img.shields.io/github/release/ArkEcosystem/elixir-client.svg)](https://github.com/ArkEcosystem/elixir-client/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-## Installation
-
-The package can be installed by adding `ark_client` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [{:ark_client, "~> 0.1.0"}]
-end
-```
-
-## Testing
-
-``` bash
-$ mix test
-```
 
 ## Documentation
 
