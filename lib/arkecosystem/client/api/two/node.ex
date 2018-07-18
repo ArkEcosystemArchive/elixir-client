@@ -1,4 +1,4 @@
-defmodule ArkEcosystem.Client.API.Two.Loader do
+defmodule ArkEcosystem.Client.API.Two.Node do
   @moduledoc """
   Documentation for ArkEcosystem.Client.API.One.Loader
   """
