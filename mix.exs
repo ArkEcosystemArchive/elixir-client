@@ -31,7 +31,7 @@ defmodule ArkEcosystem.Client.MixProject do
       {:jason, "~> 1.0"},
       {:mock, "~> 0.3.0", only: :test},
       {:temp, "~> 0.4"},
-      {:tesla, "~> 1.0.0-beta.1"}
+      {:tesla, "~> 1.1"}
     ]
   end
 
