@@ -17,7 +17,7 @@ defmodule ArkEcosystem.Client.API.Two.BlocksTest do
         json(%{"success" => true, "data" => [%{ "id": "dummyId" }]})
       %{method: :get, url: "http://127.0.0.1:4003/api/blocks/dummyId/transactions"} ->
         json(%{"success" => true, "data" => [%{ "id": "dummyTransactionId" }]})
-      %{method: :post, url: "http://127.0.0.1:4003/api/blocks/search", query: [q: "searchQuery"]} ->
+      %{method: :post, url: "http://127.0.0.1:4003/api/blocks/search"} ->
         json(%{"success" => true, "data" => [%{ "id": "dummySearch" }]})
     end
     :ok
@@ -42,7 +42,7 @@ defmodule ArkEcosystem.Client.API.Two.BlocksTest do
   end
 
   test "call ArkEcosystem.Client.API.Two.Blocks.search" do
-    assert {:ok, response} = search(@client, [q: "searchQuery"])
+    assert {:ok, response} = search(@client, %{q: "searchQuery"})
     assert Enum.at(response["data"], 0)["id"] == "dummySearch"
     assert response["success"] == true
   end
