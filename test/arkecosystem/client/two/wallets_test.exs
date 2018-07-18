@@ -2,6 +2,8 @@ defmodule ArkEcosystem.Client.API.Two.WalletsTest do
   use ExUnit.Case
   import ArkEcosystem.Client.API.Two.Wallet
   import Tesla.Mock
+  use Tesla
+  plug Tesla.Middleware.JSON
 
   @client ArkEcosystem.Client.new(%{
             host: "http://127.0.0.1:4003/api",
@@ -25,7 +27,7 @@ defmodule ArkEcosystem.Client.API.Two.WalletsTest do
         json(%{"success" => true, "data" => [%{ "id": "dummyReceivedTransactionId" }]})
       %{method: :get, url: "http://127.0.0.1:4003/api/wallets/dummyId/votes"} ->
         json(%{"success" => true, "data" => [%{ "id": "dummyVoteId" }]})
-      %{method: :post, url: "http://127.0.0.1:4003/api/wallets/search", query: [q: "searchQuery"]} ->
+      %{method: :post, url: "http://127.0.0.1:4003/api/wallets/search"} ->
         json(%{"success" => true, "data" => [%{ "id": "dummySearch" }]})
     end
     :ok
@@ -74,7 +76,7 @@ defmodule ArkEcosystem.Client.API.Two.WalletsTest do
   end
 
   test "call ArkEcosystem.Client.API.Two.Wallets.search" do
-    assert {:ok, response} = search(@client, [q: "searchQuery"])
+    assert {:ok, response} = search(@client, %{q: "searchQuery"})
     assert Enum.at(response["data"], 0)["id"] == "dummySearch"
     assert response["success"] == true
   end
