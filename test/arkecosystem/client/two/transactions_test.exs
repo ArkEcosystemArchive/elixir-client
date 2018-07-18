@@ -22,8 +22,8 @@ defmodule ArkEcosystem.Client.API.Two.TransactionsTest do
       %{method: :get, url: "http://127.0.0.1:4003/api/transactions/types"} ->
         json(%{"success" => true, "data" => %{ "TRANSFER": 0 }})
       %{method: :post, url: "http://127.0.0.1:4003/api/transactions"} ->
-        json(%{"success" => true, "data" => [%{ "id": "dummyUnconfirmedId" }]})
-      %{method: :post, url: "http://127.0.0.1:4003/api/transactions/search", query: [q: "searchQuery"]} ->
+        json(%{"success" => true, "data" => [%{ "id": "dummyCreatedId" }]})
+      %{method: :post, url: "http://127.0.0.1:4003/api/transactions/search"} ->
         json(%{"success" => true, "data" => [%{ "id": "dummySearch" }]})
     end
     :ok
@@ -60,13 +60,13 @@ defmodule ArkEcosystem.Client.API.Two.TransactionsTest do
   end
 
   test "call ArkEcosystem.Client.API.Two.Transactions.create" do
-    assert {:ok, response} = create(@client, [q: "searchQuery"])
-    assert Enum.at(response["data"], 0)["id"] == "dummySearch"
+    assert {:ok, response} = create(@client, %{id: "dummyCreatedId"})
+    assert Enum.at(response["data"], 0)["id"] == "dummyCreatedId"
     assert response["success"] == true
   end
 
   test "call ArkEcosystem.Client.API.Two.Transactions.search" do
-    assert {:ok, response} = search(@client, [q: "searchQuery"])
+    assert {:ok, response} = search(@client, %{q: "searchQuery"})
     assert Enum.at(response["data"], 0)["id"] == "dummySearch"
     assert response["success"] == true
   end
