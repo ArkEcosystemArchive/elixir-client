@@ -1,6 +1,6 @@
 defmodule ArkEcosystem.Client.API.Two.PeersTest do
   use ExUnit.Case
-  import ArkEcosystem.Client.API.Two.Peer
+  import ArkEcosystem.Client.API.Two.Peers
   import Tesla.Mock
 
   @client ArkEcosystem.Client.new(%{

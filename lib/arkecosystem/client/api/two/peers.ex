@@ -1,6 +1,6 @@
-defmodule ArkEcosystem.Client.API.Two.Peer do
+defmodule ArkEcosystem.Client.API.Two.Peers do
   @moduledoc """
-  Documentation for ArkEcosystem.Client.API.One.Peer
+  Documentation for ArkEcosystem.Client.API.One.Peers
   """
 
   import ArkEcosystem.Client

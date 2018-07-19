@@ -1,6 +1,6 @@
 defmodule ArkEcosystem.Client.API.Two.TransactionsTest do
   use ExUnit.Case
-  import ArkEcosystem.Client.API.Two.Transaction
+  import ArkEcosystem.Client.API.Two.Transactions
   import Tesla.Mock
 
   @client ArkEcosystem.Client.new(%{
