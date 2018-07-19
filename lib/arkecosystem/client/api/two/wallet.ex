@@ -1,6 +1,6 @@
-defmodule ArkEcosystem.Client.API.Two.Account do
+defmodule ArkEcosystem.Client.API.Two.Wallet do
   @moduledoc """
-  Documentation for ArkEcosystem.Client.API.One.Account
+  Documentation for ArkEcosystem.Client.API.One.Wallet
   """
 
   import ArkEcosystem.Client
@@ -30,8 +30,8 @@ defmodule ArkEcosystem.Client.API.Two.Account do
     client |> get("wallets/#{id}/transactions/sent", parameters)
   end
 
-  @spec received_transaction(Tesla.Client.t(), String.t(), Keyword.t()) :: ArkEcosystem.Client.response()
-  def received_transaction(client, id, parameters \\ []) do
+  @spec received_transactions(Tesla.Client.t(), String.t(), Keyword.t()) :: ArkEcosystem.Client.response()
+  def received_transactions(client, id, parameters \\ []) do
     client |> get("wallets/#{id}/transactions/received", parameters)
   end
 
