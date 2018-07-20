@@ -1,6 +1,6 @@
 defmodule ArkEcosystem.Client.API.Two.BlocksTest do
   use ExUnit.Case
-  import ArkEcosystem.Client.API.Two.Block
+  import ArkEcosystem.Client.API.Two.Blocks
   import Tesla.Mock
 
   @client ArkEcosystem.Client.new(%{

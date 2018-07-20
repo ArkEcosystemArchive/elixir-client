@@ -1,9 +1,7 @@
 defmodule ArkEcosystem.Client.API.Two.WalletsTest do
   use ExUnit.Case
-  import ArkEcosystem.Client.API.Two.Wallet
+  import ArkEcosystem.Client.API.Two.Wallets
   import Tesla.Mock
-  use Tesla
-  plug Tesla.Middleware.JSON
 
   @client ArkEcosystem.Client.new(%{
             host: "http://127.0.0.1:4003/api",
