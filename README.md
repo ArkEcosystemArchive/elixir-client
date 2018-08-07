@@ -6,7 +6,7 @@
 
 > A simple Elixir API client for the Ark Blockchain.
 
-[![Build Status](https://badgen.now.sh/travis/ArkEcosystem/elixir-client)](https://badgen.now.sh/travis/ArkEcosystem/elixir-client)
+[![Build Status](https://badgen.now.sh/travis/ArkEcosystem/elixir-client)](https://travis-ci.org/ArkEcosystem/elixir-client)
 [![Codecov](https://badgen.now.sh/codecov/c/github/arkecosystem/elixir-client)](https://codecov.io/gh/arkecosystem/elixir-client)
 [![Latest Version](https://badgen.now.sh/github/release/ArkEcosystem/elixir-client)](https://github.com/ArkEcosystem/elixir-client/releases)
 [![License: MIT](https://badgen.now.sh/badge/license/MIT/green)](https://opensource.org/licenses/MIT)
