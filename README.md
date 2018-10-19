@@ -1,10 +1,10 @@
-# Ark Elixir - Client
+# ARK Elixir - Client
 
 <p align="center">
     <img src="https://github.com/ArkEcosystem/elixir-client/blob/master/banner.png" />
 </p>
 
-> A simple Elixir API client for the Ark Blockchain.
+> A simple Elixir API client for the ARK Blockchain.
 
 [![Build Status](https://badgen.now.sh/circleci/github/ArkEcosystem/elixir-client)](https://circleci.com/gh/ArkEcosystem/elixir-client)
 [![Codecov](https://badgen.now.sh/codecov/c/github/arkecosystem/elixir-client)](https://codecov.io/gh/arkecosystem/elixir-client)
