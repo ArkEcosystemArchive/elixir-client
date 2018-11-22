@@ -18,15 +18,15 @@ defmodule ArkEcosystem.Client.API.One.AccountsTest do
       %{method: :get, url: "http://127.0.0.1:8443/api/accounts/delegates/fee"} ->
         json(%{"success" => true, "fee" => 2500000000})
       %{method: :get, url: "http://127.0.0.1:8443/api/accounts/delegates", query: [address: "dummy"]} ->
-        json(%{"success" => true, "delegates" => [%{"username" => "dummy"}]})
+        json(%{"success" => true, "delegates" => [%{username: "dummy"}]})
       %{method: :get, url: "http://127.0.0.1:8443/api/accounts", query: [address: "dummy"]} ->
-        json(%{"success" => true, "account" => %{"address" => "dummy"}})
+        json(%{"success" => true, "account" => %{address: "dummy"}})
       %{method: :get, url: "http://127.0.0.1:8443/api/accounts/count"} ->
         json(%{"success" => true, "count" => 42})
       %{method: :get, url: "http://127.0.0.1:8443/api/accounts/getAllAccounts"} ->
-        json(%{"success" => true, "accounts" => [%{"address" => "dummy"}]})
+        json(%{"success" => true, "accounts" => [%{address: "dummy"}]})
       %{method: :get, url: "http://127.0.0.1:8443/api/accounts/top"} ->
-        json(%{"success" => true, "wallets" => [%{"address" => "dummy"}]})
+        json(%{"success" => true, "wallets" => [%{address: "dummy"}]})
     end
     :ok
   end

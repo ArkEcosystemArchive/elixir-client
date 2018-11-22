@@ -14,9 +14,9 @@ defmodule ArkEcosystem.Client.One.BlocksTest do
       #%{method: :get, url: "http://127.0.0.1:8443/api/blocks/get", query: [id: "dummy"]} ->
       #  json(%{"success" => true, "block" => %{"id" = "dummy"}})
       %{method: :get, url: "http://127.0.0.1:8443/api/blocks"} ->
-        json(%{"success" => true, "blocks" => [%{"id" => "dummy"}]})
+        json(%{"success" => true, "blocks" => [%{id: "dummy"}]})
       %{method: :get, url: "http://127.0.0.1:8443/api/blocks/get"} ->
-        json(%{"success" => true, "block" => %{"id" => "dummy"}})
+        json(%{"success" => true, "block" => %{id: "dummy"}})
       %{method: :get, url: "http://127.0.0.1:8443/api/blocks/getEpoch"} ->
         json(%{"success" => true, "epoch" => "dummy::TimeZ"})
       %{method: :get, url: "http://127.0.0.1:8443/api/blocks/getHeight"} ->
@@ -26,7 +26,7 @@ defmodule ArkEcosystem.Client.One.BlocksTest do
       %{method: :get, url: "http://127.0.0.1:8443/api/blocks/getFee"} ->
         json(%{"success" => true, "fee" => "dummyFee"})
       %{method: :get, url: "http://127.0.0.1:8443/api/blocks/getFees"} ->
-        json(%{"success" => true, "fees" => %{"send": "dummyFee"}})
+        json(%{"success" => true, "fees" => %{send: "dummyFee"}})
       %{method: :get, url: "http://127.0.0.1:8443/api/blocks/getMilestone"} ->
         json(%{"success" => true, "milestone" => 1})
       %{method: :get, url: "http://127.0.0.1:8443/api/blocks/getReward"} ->
@@ -34,7 +34,7 @@ defmodule ArkEcosystem.Client.One.BlocksTest do
       %{method: :get, url: "http://127.0.0.1:8443/api/blocks/getSupply"} ->
         json(%{"success" => true, "supply" => 42})
       %{method: :get, url: "http://127.0.0.1:8443/api/blocks/getStatus"} ->
-        json(%{"success" => true, "epoch" => "dummy::TimeZ", "supply": 42})
+        json(%{"success" => true, "epoch" => "dummy::TimeZ", supply: 42})
     end
     :ok
   end
