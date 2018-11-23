@@ -12,9 +12,9 @@ defmodule ArkEcosystem.Client.API.One.PeersTest do
   setup do
     mock fn
       %{method: :get, url: "http://127.0.0.1:8443/api/peers/get", query: [ip: "0.0.0.0", port: 0]} ->
-        json(%{"success" => true, "peer" => %{"ip" => "0.0.0.0"}})
+        json(%{"success" => true, "peer" => %{ip: "0.0.0.0"}})
       %{method: :get, url: "http://127.0.0.1:8443/api/peers"} ->
-        json(%{"success" => true, "peers" => [%{"ip" => "0.0.0.0"}]})
+        json(%{"success" => true, "peers" => [%{ip: "0.0.0.0"}]})
       %{method: :get, url: "http://127.0.0.1:8443/api/peers/version"} ->
         json(%{"success" => true, "version" => "1"})
     end

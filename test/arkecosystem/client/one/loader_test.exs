@@ -16,7 +16,7 @@ defmodule ArkEcosystem.Client.API.One.LoaderTest do
       %{method: :get, url: "http://127.0.0.1:8443/api/loader/status/sync"} ->
         json(%{"success" => true, "syncing" => true})
       %{method: :get, url: "http://127.0.0.1:8443/api/loader/autoconfigure"} ->
-        json(%{"success" => true, "network" => %{"token": "dummy"}})
+        json(%{"success" => true, "network" => %{token: "dummy"}})
     end
     :ok
   end

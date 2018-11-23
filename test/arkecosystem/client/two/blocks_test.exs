@@ -12,13 +12,13 @@ defmodule ArkEcosystem.Client.API.Two.BlocksTest do
   setup do
     mock fn
       %{method: :get, url: "http://127.0.0.1:4003/api/blocks/dummyId"} ->
-        json(%{"success" => true, "data" => %{ "id": "dummyId" }})
+        json(%{"success" => true, "data" => %{ id: "dummyId" }})
       %{method: :get, url: "http://127.0.0.1:4003/api/blocks"} ->
-        json(%{"success" => true, "data" => [%{ "id": "dummyId" }]})
+        json(%{"success" => true, "data" => [%{ id: "dummyId" }]})
       %{method: :get, url: "http://127.0.0.1:4003/api/blocks/dummyId/transactions"} ->
-        json(%{"success" => true, "data" => [%{ "id": "dummyTransactionId" }]})
+        json(%{"success" => true, "data" => [%{ id: "dummyTransactionId" }]})
       %{method: :post, url: "http://127.0.0.1:4003/api/blocks/search"} ->
-        json(%{"success" => true, "data" => [%{ "id": "dummySearch" }]})
+        json(%{"success" => true, "data" => [%{ id: "dummySearch" }]})
     end
     :ok
   end

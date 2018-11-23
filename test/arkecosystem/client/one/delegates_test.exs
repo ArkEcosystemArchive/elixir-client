@@ -14,13 +14,13 @@ defmodule ArkEcosystem.Client.One.DelegatesTest do
       %{method: :get, url: "http://127.0.0.1:8443/api/delegates/count"} ->
         json(%{"success" => true, "count" => 42})
       %{method: :get, url: "http://127.0.0.1:8443/api/delegates/search", query: [q: "bold", limit: 2]} ->
-        json(%{"success" => true, "delegates" => [%{"username" => "boldninja"}]})
+        json(%{"success" => true, "delegates" => [%{username: "boldninja"}]})
       %{method: :get, url: "http://127.0.0.1:8443/api/delegates/voters", query: [publicKey: "dummy"]} ->
-        json(%{"success" => true, "accounts" => [%{"address": "dummy"}]})
+        json(%{"success" => true, "accounts" => [%{address: "dummy"}]})
       %{method: :get, url: "http://127.0.0.1:8443/api/delegates/get", query: [publicKey: "dummy"]} ->
-        json(%{"success" => true, "delegate" => %{"username" => "dummy"}})
+        json(%{"success" => true, "delegate" => %{username: "dummy"}})
       %{method: :get, url: "http://127.0.0.1:8443/api/delegates"} ->
-        json(%{"success" => true, "delegates" => [%{"username" => "dummy"}]})
+        json(%{"success" => true, "delegates" => [%{username: "dummy"}]})
       %{method: :get, url: "http://127.0.0.1:8443/api/delegates/fee"} ->
         json(%{"success" => true, "fee" => 2500000000})
       %{method: :get, url: "http://127.0.0.1:8443/api/delegates/forging/getForgedByAccount", query: [generatorPublicKey: "dummy"]} ->
