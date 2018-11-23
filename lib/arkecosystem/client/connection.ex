@@ -56,7 +56,7 @@ defmodule ArkEcosystem.Client.Connection do
       {ArkEcosystem.Client.Middleware.Logger, [log_level: log_level]},
     ]
 
-    Tesla.build_client(pre)
+    Tesla.client(pre)
   end
 
   def new(_invalid) do
