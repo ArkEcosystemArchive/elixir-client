@@ -12,13 +12,13 @@ defmodule ArkEcosystem.Client.API.One.TransactionsTest do
   setup do
     mock fn
       %{method: :get, url: "http://127.0.0.1:8443/api/transactions/get", query: [id: "dummy"]} ->
-        json(%{"success" => true, "transaction" => %{"id" => "dummy"}})
+        json(%{"success" => true, "transaction" => %{id: "dummy"}})
       %{method: :get, url: "http://127.0.0.1:8443/api/transactions"} ->
-        json(%{"success" => true, "transactions" => [%{"id" => "dummy"}]})
+        json(%{"success" => true, "transactions" => [%{id: "dummy"}]})
       %{method: :get, url: "http://127.0.0.1:8443/api/transactions/unconfirmed/get", query: [id: "dummy"]} ->
-        json(%{"success" => true, "transaction" => %{"id" => "dummy"}})
+        json(%{"success" => true, "transaction" => %{id: "dummy"}})
       %{method: :get, url: "http://127.0.0.1:8443/api/transactions/unconfirmed"} ->
-        json(%{"success" => true, "transactions" => [%{"id" => "dummy"}]})
+        json(%{"success" => true, "transactions" => [%{id: "dummy"}]})
     end
     :ok
   end
