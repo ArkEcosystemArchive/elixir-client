@@ -1,6 +1,6 @@
-defmodule ArkEcosystem.Client.API.Two.TransactionsTest do
+defmodule ArkEcosystem.Client.API.TransactionsTest do
   use ExUnit.Case
-  import ArkEcosystem.Client.API.Two.Transactions
+  import ArkEcosystem.Client.API.Transactions
   import Tesla.Mock
 
   @client ArkEcosystem.Client.new(%{
@@ -29,43 +29,43 @@ defmodule ArkEcosystem.Client.API.Two.TransactionsTest do
     :ok
   end
 
-  test "call ArkEcosystem.Client.API.Two.Transactions.list" do
+  test "call ArkEcosystem.Client.API.Transactions.list" do
     assert {:ok, response} = list(@client)
     assert Enum.at(response["data"],0)["id"] == "dummyId"
     assert response["success"] == true
   end
 
-  test "call ArkEcosystem.Client.API.Two.Transactions.show" do
+  test "call ArkEcosystem.Client.API.Transactions.show" do
     assert {:ok, response} = show(@client, "dummyId")
     assert response["data"]["id"] == "dummyId"
     assert response["success"] == true
   end
 
-  test "call ArkEcosystem.Client.API.Two.Transactions.list_unconfirmed" do
+  test "call ArkEcosystem.Client.API.Transactions.list_unconfirmed" do
     assert {:ok, response} = list_unconfirmed(@client)
     assert Enum.at(response["data"],0)["id"] == "dummyUnconfirmedId"
     assert response["success"] == true
   end
 
-  test "call ArkEcosystem.Client.API.Two.Transactions.get_unconfirmed" do
+  test "call ArkEcosystem.Client.API.Transactions.get_unconfirmed" do
     assert {:ok, response} = get_unconfirmed(@client, "dummyUnconfirmedId")
     assert response["data"]["id"] == "dummyUnconfirmedId"
     assert response["success"] == true
   end
 
-  test "call ArkEcosystem.Client.API.Two.Transactions.types" do
+  test "call ArkEcosystem.Client.API.Transactions.types" do
     assert {:ok, response} = types(@client)
     assert response["data"]["TRANSFER"] == 0
     assert response["success"] == true
   end
 
-  test "call ArkEcosystem.Client.API.Two.Transactions.create" do
+  test "call ArkEcosystem.Client.API.Transactions.create" do
     assert {:ok, response} = create(@client, %{id: "dummyCreatedId"})
     assert Enum.at(response["data"], 0)["id"] == "dummyCreatedId"
     assert response["success"] == true
   end
 
-  test "call ArkEcosystem.Client.API.Two.Transactions.search" do
+  test "call ArkEcosystem.Client.API.Transactions.search" do
     assert {:ok, response} = search(@client, %{q: "searchQuery"})
     assert Enum.at(response["data"], 0)["id"] == "dummySearch"
     assert response["success"] == true

@@ -1,6 +1,6 @@
-defmodule ArkEcosystem.Client.API.Two.Transactions do
+defmodule ArkEcosystem.Client.API.Transactions do
   @moduledoc """
-  Documentation for ArkEcosystem.Client.API.One.Transactions
+  Documentation for ArkEcosystem.Client.API.Transactions
   """
 
   import ArkEcosystem.Client

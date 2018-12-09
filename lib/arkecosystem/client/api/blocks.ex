@@ -1,6 +1,6 @@
-defmodule ArkEcosystem.Client.API.Two.Blocks do
+defmodule ArkEcosystem.Client.API.Blocks do
   @moduledoc """
-  Documentation for ArkEcosystem.Client.API.One.Blocks
+  Documentation for ArkEcosystem.Client.API.Blocks
   """
 
   import ArkEcosystem.Client
