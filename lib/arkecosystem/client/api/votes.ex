@@ -1,6 +1,6 @@
-defmodule ArkEcosystem.Client.API.Two.Votes do
+defmodule ArkEcosystem.Client.API.Votes do
   @moduledoc """
-  Documentation for ArkEcosystem.Client.API.One.Votes
+  Documentation for ArkEcosystem.Client.API.Votes
   """
 
   import ArkEcosystem.Client

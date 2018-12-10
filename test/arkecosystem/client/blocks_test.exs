@@ -1,6 +1,6 @@
-defmodule ArkEcosystem.Client.API.Two.BlocksTest do
+defmodule ArkEcosystem.Client.API.BlocksTest do
   use ExUnit.Case
-  import ArkEcosystem.Client.API.Two.Blocks
+  import ArkEcosystem.Client.API.Blocks
   import Tesla.Mock
 
   @client ArkEcosystem.Client.new(%{
@@ -23,25 +23,25 @@ defmodule ArkEcosystem.Client.API.Two.BlocksTest do
     :ok
   end
 
-  test "call ArkEcosystem.Client.API.Two.Blocks.list" do
+  test "call ArkEcosystem.Client.API.Blocks.list" do
     assert {:ok, response} = list(@client)
     assert Enum.at(response["data"],0)["id"] == "dummyId"
     assert response["success"] == true
   end
 
-  test "call ArkEcosystem.Client.API.Two.Blocks.show" do
+  test "call ArkEcosystem.Client.API.Blocks.show" do
     assert {:ok, response} = show(@client, "dummyId")
     assert response["data"]["id"] == "dummyId"
     assert response["success"] == true
   end
 
-  test "call ArkEcosystem.Client.API.Two.Blocks.transactions" do
+  test "call ArkEcosystem.Client.API.Blocks.transactions" do
     assert {:ok, response} = transactions(@client, "dummyId")
     assert Enum.at(response["data"], 0)["id"] == "dummyTransactionId"
     assert response["success"] == true
   end
 
-  test "call ArkEcosystem.Client.API.Two.Blocks.search" do
+  test "call ArkEcosystem.Client.API.Blocks.search" do
     assert {:ok, response} = search(@client, %{q: "searchQuery"})
     assert Enum.at(response["data"], 0)["id"] == "dummySearch"
     assert response["success"] == true

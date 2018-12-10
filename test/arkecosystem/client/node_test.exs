@@ -1,6 +1,6 @@
-defmodule ArkEcosystem.Client.API.Two.NodeTest do
+defmodule ArkEcosystem.Client.API.NodeTest do
   use ExUnit.Case
-  import ArkEcosystem.Client.API.Two.Node
+  import ArkEcosystem.Client.API.Node
   import Tesla.Mock
 
   @client ArkEcosystem.Client.new(%{
@@ -21,19 +21,19 @@ defmodule ArkEcosystem.Client.API.Two.NodeTest do
     :ok
   end
 
-  test "call ArkEcosystem.Client.API.Two.Node.status" do
+  test "call ArkEcosystem.Client.API.Node.status" do
     assert {:ok, response} = status(@client)
     assert response["data"]["synced"] == true
     assert response["success"] == true
   end
 
-  test "call ArkEcosystem.Client.API.Two.Node.syncing" do
+  test "call ArkEcosystem.Client.API.Node.syncing" do
     assert {:ok, response} = syncing(@client)
     assert response["data"]["syncing"] == true
     assert response["success"] == true
   end
 
-  test "call ArkEcosystem.Client.API.Two.Node.configuration" do
+  test "call ArkEcosystem.Client.API.Node.configuration" do
     assert {:ok, response} = configuration(@client)
     assert response["data"]["nethash"] == "dummyHash"
     assert response["success"] == true

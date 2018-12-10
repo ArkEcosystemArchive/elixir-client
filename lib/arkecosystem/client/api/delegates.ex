@@ -1,6 +1,6 @@
-defmodule ArkEcosystem.Client.API.Two.Delegates do
+defmodule ArkEcosystem.Client.API.Delegates do
   @moduledoc """
-  Documentation for ArkEcosystem.Client.API.One.Delegates
+  Documentation for ArkEcosystem.Client.API.Delegates
   """
 
   import ArkEcosystem.Client
