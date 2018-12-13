@@ -33,14 +33,12 @@ defmodule ArkEcosystem.Client.Connection do
   """
   @spec new(Map.t) :: Tesla.Client.t
   def new(%{
-    host: host,
-    version: version
+    host: host
   })
-  when is_bitstring(host)
-  and is_bitstring(version) do
+  when is_bitstring(host) do
     headers = [
       {"Content-Type", "application/json"},
-      {"API-Version", version}
+      {"API-Version", 2}
     ]
 
     log_level =

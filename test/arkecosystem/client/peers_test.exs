@@ -1,6 +1,6 @@
-defmodule ArkEcosystem.Client.API.Two.PeersTest do
+defmodule ArkEcosystem.Client.API.PeersTest do
   use ExUnit.Case
-  import ArkEcosystem.Client.API.Two.Peers
+  import ArkEcosystem.Client.API.Peers
   import Tesla.Mock
 
   @client ArkEcosystem.Client.new(%{
@@ -19,13 +19,13 @@ defmodule ArkEcosystem.Client.API.Two.PeersTest do
     :ok
   end
 
-  test "call ArkEcosystem.Client.API.Two.Peer.list" do
+  test "call ArkEcosystem.Client.API.Peer.list" do
     assert {:ok, response} = list(@client)
     assert Enum.at(response["data"], 0)["ip"] == "0.0.0.0"
     assert response["success"] == true
   end
 
-  test "call ArkEcosystem.Client.API.Two.Peer.show" do
+  test "call ArkEcosystem.Client.API.Peer.show" do
     assert {:ok, response} = show(@client, "0.0.0.0")
     assert response["data"]["ip"] == "0.0.0.0"
     assert response["success"] == true

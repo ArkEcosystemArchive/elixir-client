@@ -1,6 +1,6 @@
-defmodule ArkEcosystem.Client.API.Two.VotesTest do
+defmodule ArkEcosystem.Client.API.VotesTest do
   use ExUnit.Case
-  import ArkEcosystem.Client.API.Two.Votes
+  import ArkEcosystem.Client.API.Votes
   import Tesla.Mock
 
   @client ArkEcosystem.Client.new(%{
@@ -19,13 +19,13 @@ defmodule ArkEcosystem.Client.API.Two.VotesTest do
     :ok
   end
 
-  test "call ArkEcosystem.Client.API.Two.Votes.list" do
+  test "call ArkEcosystem.Client.API.Votes.list" do
     assert {:ok, response} = list(@client)
     assert Enum.at(response["data"], 0)["id"] == "dummyId"
     assert response["success"] == true
   end
 
-  test "call ArkEcosystem.Client.API.Two.Votes.show" do
+  test "call ArkEcosystem.Client.API.Votes.show" do
     assert {:ok, response} = show(@client, "dummyId")
     assert response["data"]["id"] == "dummyId"
     assert response["success"] == true
