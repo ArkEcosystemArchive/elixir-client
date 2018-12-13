@@ -35,8 +35,7 @@ defmodule ArkEcosystem.Client.Connection do
   def new(%{
     host: host
   })
-  when is_bitstring(host)
-  and is_bitstring(version) do
+  when is_bitstring(host) do
     headers = [
       {"Content-Type", "application/json"},
       {"API-Version", 2}
