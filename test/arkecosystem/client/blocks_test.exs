@@ -10,22 +10,26 @@ defmodule ArkEcosystem.Client.API.BlocksTest do
           })
 
   setup do
-    mock fn
+    mock(fn
       %{method: :get, url: "http://127.0.0.1:4003/api/blocks/dummyId"} ->
-        json(%{"success" => true, "data" => %{ id: "dummyId" }})
+        json(%{"success" => true, "data" => %{id: "dummyId"}})
+
       %{method: :get, url: "http://127.0.0.1:4003/api/blocks"} ->
-        json(%{"success" => true, "data" => [%{ id: "dummyId" }]})
+        json(%{"success" => true, "data" => [%{id: "dummyId"}]})
+
       %{method: :get, url: "http://127.0.0.1:4003/api/blocks/dummyId/transactions"} ->
-        json(%{"success" => true, "data" => [%{ id: "dummyTransactionId" }]})
+        json(%{"success" => true, "data" => [%{id: "dummyTransactionId"}]})
+
       %{method: :post, url: "http://127.0.0.1:4003/api/blocks/search"} ->
-        json(%{"success" => true, "data" => [%{ id: "dummySearch" }]})
-    end
+        json(%{"success" => true, "data" => [%{id: "dummySearch"}]})
+    end)
+
     :ok
   end
 
   test "call ArkEcosystem.Client.API.Blocks.list" do
     assert {:ok, response} = list(@client)
-    assert Enum.at(response["data"],0)["id"] == "dummyId"
+    assert Enum.at(response["data"], 0)["id"] == "dummyId"
     assert response["success"] == true
   end
 
@@ -46,5 +50,4 @@ defmodule ArkEcosystem.Client.API.BlocksTest do
     assert Enum.at(response["data"], 0)["id"] == "dummySearch"
     assert response["success"] == true
   end
-
 end

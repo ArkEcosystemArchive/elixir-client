@@ -48,7 +48,7 @@ defmodule ArkEcosystem.Client do
   # private
 
   defp handle_response({:ok, %{body: body, status: code}})
-  when is_integer(code) and code >= 200 and code < 300 do
+       when is_integer(code) and code >= 200 and code < 300 do
     {:ok, body}
   end
 
