@@ -25,12 +25,14 @@ defmodule ArkEcosystem.Client.API.Wallets do
     client |> get("wallets/#{id}/transactions", parameters)
   end
 
-  @spec sent_transactions(Tesla.Client.t(), String.t(), Keyword.t()) :: ArkEcosystem.Client.response()
+  @spec sent_transactions(Tesla.Client.t(), String.t(), Keyword.t()) ::
+          ArkEcosystem.Client.response()
   def sent_transactions(client, id, parameters \\ []) do
     client |> get("wallets/#{id}/transactions/sent", parameters)
   end
 
-  @spec received_transactions(Tesla.Client.t(), String.t(), Keyword.t()) :: ArkEcosystem.Client.response()
+  @spec received_transactions(Tesla.Client.t(), String.t(), Keyword.t()) ::
+          ArkEcosystem.Client.response()
   def received_transactions(client, id, parameters \\ []) do
     client |> get("wallets/#{id}/transactions/received", parameters)
   end

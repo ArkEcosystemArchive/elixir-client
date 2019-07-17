@@ -31,11 +31,11 @@ defmodule ArkEcosystem.Client.Connection do
         ]
       }
   """
-  @spec new(Map.t) :: Tesla.Client.t
+  @spec new(Map.t()) :: Tesla.Client.t()
   def new(%{
-    host: host
-  })
-  when is_bitstring(host) do
+        host: host
+      })
+      when is_bitstring(host) do
     headers = [
       {"Content-Type", "application/json"},
       {"API-Version", 2}
@@ -51,7 +51,7 @@ defmodule ArkEcosystem.Client.Connection do
       {Tesla.Middleware.BaseUrl, host},
       {Tesla.Middleware.Headers, headers},
       {Tesla.Middleware.JSON, []},
-      {ArkEcosystem.Client.Middleware.Logger, [log_level: log_level]},
+      {ArkEcosystem.Client.Middleware.Logger, [log_level: log_level]}
     ]
 
     Tesla.client(pre)
