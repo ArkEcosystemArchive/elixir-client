@@ -38,7 +38,6 @@ defmodule ArkEcosystem.Client.Connection do
       when is_bitstring(host) do
     headers = [
       {"Content-Type", "application/json"},
-      {"API-Version", 2}
     ]
 
     log_level =
