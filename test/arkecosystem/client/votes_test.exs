@@ -10,12 +10,14 @@ defmodule ArkEcosystem.Client.API.VotesTest do
           })
 
   setup do
-    mock fn
+    mock(fn
       %{method: :get, url: "http://127.0.0.1:4003/api/votes/dummyId"} ->
-        json(%{"success" => true, "data" => %{ id: "dummyId" }})
+        json(%{"success" => true, "data" => %{id: "dummyId"}})
+
       %{method: :get, url: "http://127.0.0.1:4003/api/votes"} ->
-        json(%{"success" => true, "data" => [%{ id: "dummyId" }]})
-    end
+        json(%{"success" => true, "data" => [%{id: "dummyId"}]})
+    end)
+
     :ok
   end
 
@@ -30,5 +32,4 @@ defmodule ArkEcosystem.Client.API.VotesTest do
     assert response["data"]["id"] == "dummyId"
     assert response["success"] == true
   end
-
 end

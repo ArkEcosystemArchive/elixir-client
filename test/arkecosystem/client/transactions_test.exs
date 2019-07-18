@@ -10,28 +10,38 @@ defmodule ArkEcosystem.Client.API.TransactionsTest do
           })
 
   setup do
-    mock fn
+    mock(fn
       %{method: :get, url: "http://127.0.0.1:4003/api/transactions/dummyId"} ->
-        json(%{"success" => true, "data" => %{ id: "dummyId" }})
+        json(%{"success" => true, "data" => %{id: "dummyId"}})
+
       %{method: :get, url: "http://127.0.0.1:4003/api/transactions"} ->
-        json(%{"success" => true, "data" => [%{ id: "dummyId" }]})
-      %{method: :get, url: "http://127.0.0.1:4003/api/transactions/unconfirmed/dummyUnconfirmedId"} ->
-        json(%{"success" => true, "data" => %{ id: "dummyUnconfirmedId" }})
+        json(%{"success" => true, "data" => [%{id: "dummyId"}]})
+
+      %{
+        method: :get,
+        url: "http://127.0.0.1:4003/api/transactions/unconfirmed/dummyUnconfirmedId"
+      } ->
+        json(%{"success" => true, "data" => %{id: "dummyUnconfirmedId"}})
+
       %{method: :get, url: "http://127.0.0.1:4003/api/transactions/unconfirmed"} ->
-        json(%{"success" => true, "data" => [%{ id: "dummyUnconfirmedId" }]})
+        json(%{"success" => true, "data" => [%{id: "dummyUnconfirmedId"}]})
+
       %{method: :get, url: "http://127.0.0.1:4003/api/transactions/types"} ->
-        json(%{"success" => true, "data" => %{ TRANSFER: 0 }})
+        json(%{"success" => true, "data" => %{TRANSFER: 0}})
+
       %{method: :post, url: "http://127.0.0.1:4003/api/transactions"} ->
-        json(%{"success" => true, "data" => [%{ id: "dummyCreatedId" }]})
+        json(%{"success" => true, "data" => [%{id: "dummyCreatedId"}]})
+
       %{method: :post, url: "http://127.0.0.1:4003/api/transactions/search"} ->
-        json(%{"success" => true, "data" => [%{ id: "dummySearch" }]})
-    end
+        json(%{"success" => true, "data" => [%{id: "dummySearch"}]})
+    end)
+
     :ok
   end
 
   test "call ArkEcosystem.Client.API.Transactions.list" do
     assert {:ok, response} = list(@client)
-    assert Enum.at(response["data"],0)["id"] == "dummyId"
+    assert Enum.at(response["data"], 0)["id"] == "dummyId"
     assert response["success"] == true
   end
 
@@ -43,7 +53,7 @@ defmodule ArkEcosystem.Client.API.TransactionsTest do
 
   test "call ArkEcosystem.Client.API.Transactions.list_unconfirmed" do
     assert {:ok, response} = list_unconfirmed(@client)
-    assert Enum.at(response["data"],0)["id"] == "dummyUnconfirmedId"
+    assert Enum.at(response["data"], 0)["id"] == "dummyUnconfirmedId"
     assert response["success"] == true
   end
 
@@ -70,5 +80,4 @@ defmodule ArkEcosystem.Client.API.TransactionsTest do
     assert Enum.at(response["data"], 0)["id"] == "dummySearch"
     assert response["success"] == true
   end
-
 end

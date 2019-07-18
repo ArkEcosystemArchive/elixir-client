@@ -12,7 +12,7 @@ defmodule ArkEcosystem.Client.MixProject do
       deps: deps(),
       name: "ArkEcosystem Elixir Client",
       source_url: "https://github.com/ArkEcosystem/elixir-client",
-      test_coverage: [tool: ExCoveralls],
+      test_coverage: [tool: ExCoveralls]
     ]
   end
 
