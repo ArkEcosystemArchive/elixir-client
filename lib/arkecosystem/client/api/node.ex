@@ -19,4 +19,9 @@ defmodule ArkEcosystem.Client.API.Node do
   def configuration(client) do
     client |> get("node/configuration")
   end
+
+  @spec crypto(Tesla.Client.t()) :: ArkEcosystem.Client.response()
+  def crypto(client) do
+    client |> get("node/configuration/crypto")
+  end
 end
