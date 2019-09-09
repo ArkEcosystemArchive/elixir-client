@@ -39,4 +39,9 @@ defmodule ArkEcosystem.Client.API.Transactions do
   def types(client) do
     client |> get("transactions/types")
   end
+
+  @spec fees(Tesla.Client.t()) :: ArkEcosystem.Client.response()
+  def fees(client) do
+    client |> get("transactions/fees")
+  end
 end
