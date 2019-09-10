@@ -22,7 +22,7 @@ defmodule ArkEcosystem.Client.API.TransactionsTest do
       %{method: :get, url: "http://127.0.0.1:4003/api/transactions/types"} ->
         json(%{"success" => true, "data" => %{"Transfer": 0}})
       %{method: :get, url: "http://127.0.0.1:4003/api/transactions/fees"} ->
-        json(%{"success" => true, "data" => %{transfer: 10000000}})
+        json(%{"success" => true, "data" => [%{transfer: 10000000}]})
       %{method: :post, url: "http://127.0.0.1:4003/api/transactions"} ->
         json(%{"success" => true, "data" => [%{id: "dummyCreatedId"}]})
       %{method: :post, url: "http://127.0.0.1:4003/api/transactions/search"} ->
@@ -63,7 +63,7 @@ defmodule ArkEcosystem.Client.API.TransactionsTest do
 
   test "call ArkEcosystem.Client.API.Transactions.fees" do
     assert {:ok, response} = fees(@client)
-    assert response["data"]["transfer"] == 10000000
+    assert Enum.at(response["data"], 0)["transfer"] == 10000000
     assert response["success"] == true
   end
 
