@@ -12,14 +12,14 @@ defmodule ArkEcosystem.Client.API.RoundsTest do
   setup do
     mock fn
       %{method: :get, url: "http://127.0.0.1:4003/api/rounds/12345/delegates"} ->
-        json(%{"success" => true, "data" => %{}})
+        json(%{"success" => true, "data" => [%{type: 0}]})
     end
     :ok
   end
 
   test "call ArkEcosystem.Client.API.Rounds.delegates" do
     assert {:ok, response} = delegates(@client, 12345)
-    assert response["data"] == %{}
+    assert Enum.at(response["data"], 0)["type"] == 0
     assert response["success"] == true
   end
 
