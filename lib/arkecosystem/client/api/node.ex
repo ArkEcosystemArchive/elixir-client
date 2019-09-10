@@ -24,4 +24,9 @@ defmodule ArkEcosystem.Client.API.Node do
   def crypto(client) do
     client |> get("node/configuration/crypto")
   end
+
+  @spec fees(Tesla.Client.t(), Keyword.t()) :: ArkEcosystem.Client.response()
+  def fees(client, parameters \\ [days: nil]) do
+    client |> get("node/fees", parameters)
+  end
 end
