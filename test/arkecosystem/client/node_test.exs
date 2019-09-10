@@ -12,13 +12,13 @@ defmodule ArkEcosystem.Client.API.NodeTest do
   setup do
     mock fn
       %{method: :get, url: "http://127.0.0.1:4003/api/node/status"} ->
-        json(%{"success" => true, "data" => %{ synced: true }})
+        json(%{"success" => true, "data" => %{synced: true}})
       %{method: :get, url: "http://127.0.0.1:4003/api/node/syncing"} ->
-        json(%{"success" => true, "data" => %{ syncing: true }})
+        json(%{"success" => true, "data" => %{syncing: true}})
       %{method: :get, url: "http://127.0.0.1:4003/api/node/configuration"} ->
-        json(%{"success" => true, "data" => %{ nethash: "dummyHash" }})
+        json(%{"success" => true, "data" => %{nethash: "dummyHash"}})
       %{method: :get, url: "http://127.0.0.1:4003/api/node/configuration/crypto"} ->
-        json(%{"success" => true, "data" => %{ exceptions: %{} }})
+        json(%{"success" => true, "data" => %{exceptions: %{}}})
     end
     :ok
   end

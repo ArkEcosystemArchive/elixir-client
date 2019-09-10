@@ -12,21 +12,21 @@ defmodule ArkEcosystem.Client.API.WalletsTest do
   setup do
     mock fn
       %{method: :get, url: "http://127.0.0.1:4003/api/wallets/dummyId"} ->
-        json(%{"success" => true, "data" => %{ id: "dummyId" }})
+        json(%{"success" => true, "data" => %{id: "dummyId"}})
       %{method: :get, url: "http://127.0.0.1:4003/api/wallets"} ->
-        json(%{"success" => true, "data" => [%{ id: "dummyId" }]})
+        json(%{"success" => true, "data" => [%{id: "dummyId"}]})
       %{method: :get, url: "http://127.0.0.1:4003/api/wallets/top"} ->
-        json(%{"success" => true, "data" => [%{ id: "dummyTopId" }]})
+        json(%{"success" => true, "data" => [%{id: "dummyTopId"}]})
       %{method: :get, url: "http://127.0.0.1:4003/api/wallets/dummyId/transactions"} ->
-        json(%{"success" => true, "data" => [%{ id: "dummyTransactionId" }]})
+        json(%{"success" => true, "data" => [%{id: "dummyTransactionId"}]})
       %{method: :get, url: "http://127.0.0.1:4003/api/wallets/dummyId/transactions/sent"} ->
-        json(%{"success" => true, "data" => [%{ id: "dummySentTransactionId" }]})
+        json(%{"success" => true, "data" => [%{id: "dummySentTransactionId"}]})
       %{method: :get, url: "http://127.0.0.1:4003/api/wallets/dummyId/transactions/received"} ->
-        json(%{"success" => true, "data" => [%{ id: "dummyReceivedTransactionId" }]})
+        json(%{"success" => true, "data" => [%{id: "dummyReceivedTransactionId"}]})
       %{method: :get, url: "http://127.0.0.1:4003/api/wallets/dummyId/votes"} ->
-        json(%{"success" => true, "data" => [%{ id: "dummyVoteId" }]})
+        json(%{"success" => true, "data" => [%{id: "dummyVoteId"}]})
       %{method: :post, url: "http://127.0.0.1:4003/api/wallets/search"} ->
-        json(%{"success" => true, "data" => [%{ id: "dummySearch" }]})
+        json(%{"success" => true, "data" => [%{id: "dummySearch"}]})
     end
     :ok
   end

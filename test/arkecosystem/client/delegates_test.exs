@@ -12,13 +12,13 @@ defmodule ArkEcosystem.Client.API.DelegatesTest do
   setup do
     mock fn
       %{method: :get, url: "http://127.0.0.1:4003/api/delegates/dummyId"} ->
-        json(%{"success" => true, "data" => %{ id: "dummyId" }})
+        json(%{"success" => true, "data" => %{id: "dummyId"}})
       %{method: :get, url: "http://127.0.0.1:4003/api/delegates"} ->
-        json(%{"success" => true, "data" => [%{ id: "dummyId" }]})
+        json(%{"success" => true, "data" => [%{id: "dummyId"}]})
       %{method: :get, url: "http://127.0.0.1:4003/api/delegates/dummyId/blocks"} ->
-        json(%{"success" => true, "data" => [%{ id: "dummyBlockId" }]})
+        json(%{"success" => true, "data" => [%{id: "dummyBlockId"}]})
       %{method: :get, url: "http://127.0.0.1:4003/api/delegates/dummyId/voters"} ->
-        json(%{"success" => true, "data" => [%{ id: "dummyVoter" }]})
+        json(%{"success" => true, "data" => [%{id: "dummyVoter"}]})
     end
     :ok
   end
