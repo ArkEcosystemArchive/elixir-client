@@ -20,7 +20,9 @@ defmodule ArkEcosystem.Client.API.TransactionsTest do
       %{method: :get, url: "http://127.0.0.1:4003/api/transactions/unconfirmed"} ->
         json(%{"success" => true, "data" => [%{ id: "dummyUnconfirmedId" }]})
       %{method: :get, url: "http://127.0.0.1:4003/api/transactions/types"} ->
-        json(%{"success" => true, "data" => %{ TRANSFER: 0 }})
+        json(%{"success" => true, "data" => %{ "Transfer": 0 }})
+      %{method: :get, url: "http://127.0.0.1:4003/api/transactions/fees"} ->
+        json(%{"success" => true, "data" => %{ "transfer": 10000000 }})
       %{method: :post, url: "http://127.0.0.1:4003/api/transactions"} ->
         json(%{"success" => true, "data" => [%{ id: "dummyCreatedId" }]})
       %{method: :post, url: "http://127.0.0.1:4003/api/transactions/search"} ->
@@ -55,7 +57,13 @@ defmodule ArkEcosystem.Client.API.TransactionsTest do
 
   test "call ArkEcosystem.Client.API.Transactions.types" do
     assert {:ok, response} = types(@client)
-    assert response["data"]["TRANSFER"] == 0
+    assert response["data"]["Transfer"] == 0
+    assert response["success"] == true
+  end
+
+  test "call ArkEcosystem.Client.API.Transactions.fees" do
+    assert {:ok, response} = fees(@client)
+    assert response["data"]["transfer"] == 10000000
     assert response["success"] == true
   end
 

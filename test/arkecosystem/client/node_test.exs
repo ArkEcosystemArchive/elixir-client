@@ -19,6 +19,8 @@ defmodule ArkEcosystem.Client.API.NodeTest do
         json(%{"success" => true, "data" => %{ nethash: "dummyHash" }})
       %{method: :get, url: "http://127.0.0.1:4003/api/node/configuration/crypto"} ->
         json(%{"success" => true, "data" => %{ exceptions: %{} }})
+      %{method: :get, url: "http://127.0.0.1:4003/api/node/fees"} ->
+        json(%{"success" => true, "data" => %{type: 0}})
     end
     :ok
   end
@@ -44,6 +46,12 @@ defmodule ArkEcosystem.Client.API.NodeTest do
   test "call ArkEcosystem.Client.API.Node.crypto" do
     assert {:ok, response} = crypto(@client)
     assert response["data"]["exceptions"] == %{}
+    assert response["success"] == true
+  end
+
+  test "call ArkEcosystem.Client.API.Node.fees" do
+    assert {:ok, response} = fees(@client)
+    assert response["data"]["type"] == 0
     assert response["success"] == true
   end
 
