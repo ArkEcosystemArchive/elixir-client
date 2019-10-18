@@ -17,6 +17,8 @@ defmodule ArkEcosystem.Client.API.WalletsTest do
         json(%{"success" => true, "data" => [%{ id: "dummyId" }]})
       %{method: :get, url: "http://127.0.0.1:4003/api/wallets/top"} ->
         json(%{"success" => true, "data" => [%{ id: "dummyTopId" }]})
+      %{method: :get, url: "http://127.0.0.1:4003/api/wallets/dummyId/locks"} ->
+        json(%{"success" => true, "data" => [%{ id: "dummyLockId" }]})
       %{method: :get, url: "http://127.0.0.1:4003/api/wallets/dummyId/transactions"} ->
         json(%{"success" => true, "data" => [%{ id: "dummyTransactionId" }]})
       %{method: :get, url: "http://127.0.0.1:4003/api/wallets/dummyId/transactions/sent"} ->
@@ -46,6 +48,12 @@ defmodule ArkEcosystem.Client.API.WalletsTest do
   test "call ArkEcosystem.Client.API.Wallets.top" do
     assert {:ok, response} = top(@client)
     assert Enum.at(response["data"],0)["id"] == "dummyTopId"
+    assert response["success"] == true
+  end
+
+  test "call ArkEcosystem.Client.API.Wallets.locks" do
+    assert {:ok, response} = locks(@client, "dummyId")
+    assert Enum.at(response["data"],0)["id"] == "dummyLockId"
     assert response["success"] == true
   end
 

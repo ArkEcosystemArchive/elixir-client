@@ -20,6 +20,11 @@ defmodule ArkEcosystem.Client.API.Wallets do
     client |> get("wallets/#{id}")
   end
 
+  @spec locks(Tesla.Client.t(), String.t(), Keyword.t()) :: ArkEcosystem.Client.response()
+  def locks(client, id, parameters \\ []) do
+    client |> get("wallets/#{id}/locks", parameters)
+  end
+
   @spec transactions(Tesla.Client.t(), String.t(), Keyword.t()) :: ArkEcosystem.Client.response()
   def transactions(client, id, parameters \\ []) do
     client |> get("wallets/#{id}/transactions", parameters)
