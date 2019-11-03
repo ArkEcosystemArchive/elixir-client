@@ -20,8 +20,8 @@ defmodule ArkEcosystem.Client.API.Locks do
     client |> post("locks/search", parameters)
   end
 
-  @spec search(Tesla.Client.t(), Keyword.t()) :: ArkEcosystem.Client.response()
-  def search(client, parameters) do
-    client |> post("unlocked/search", parameters)
+  @spec unlocked(Tesla.Client.t(), Keyword.t()) :: ArkEcosystem.Client.response()
+  def unlocked(client, parameters) do
+    client |> post("locks/unlocked", parameters)
   end
 end
